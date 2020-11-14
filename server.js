@@ -1,15 +1,18 @@
+// Dependencies 
 const express = require("express");
 const passport = require("./config/passport");
 const session = require("express-session");
+
 // const mongoose = require("mongoose");
 
+// Set up the express app 
 const app = express();
-
 const PORT = process.env.PORT || 3001;
+
+// Requiring our models folder for syncing 
 const db = require("./models");
 
-
-// Define middleware here
+// Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
