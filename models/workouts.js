@@ -1,10 +1,10 @@
 // create workout table---exporting in form of a function for later use 
 module.exports = function(sequelize, types) {
     const CreateWorkout = sequelize.define("CreateWorkout", {
-      lift: {
+      exercise: {
         type: types.STRING
       },
-      setS: {
+      sets: {
         type: types.NUMBER
       },
       reps: {
@@ -13,6 +13,9 @@ module.exports = function(sequelize, types) {
       weights: {
         type: types.NUMBER
       },
+      time: {
+          type: types.NUMBER
+      }
     });
 
     CreateWorkout.associate = function(data) {
