@@ -1,18 +1,21 @@
-// creating table for Create Workout page and exporting in form of a function for later use 
+// create previous workout table --- exporting in form of a function for later use 
 
-module.exports = function(sequelize, DataTypes) {
+module.exports = function(sequelize, previous) {
     const PreviousWorkout = sequelize.define("PreviousWorkout", {
+      workout: {
+        type: previous.BOOLEAN
+      },
       lift: {
-        type: DataTypes.STRING
+        type: previous.STRING
       },
       setS: {
-        type: DataTypes.NUMBER
+        type: previous.NUMBER
       },
       reps: {
-        type: DataTypes.NUMBER
+        type: previous.NUMBER
       },
       weights: {
-        type: DataTypes.NUMBER
+        type: previous.NUMBER
       },
     });
     PreviousWorkout.associate = function(workout) {

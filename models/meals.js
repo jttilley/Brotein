@@ -1,21 +1,20 @@
-// creating table for meals page and exporting in form of a function for later use 
-
-module.exports = function(sequelize, FoodTypes) {
+// create meals table ---exporting in form of a function for later use 
+module.exports = function(sequelize, nutrition) {
     const Meal = sequelize.define("meal", {
       food: {
-        type: FoodTypes.STRING
+        type: nutrion.STRING
       },
       protein: {
-        type: FoodTypes.NUMBER
+        type: nutrition.NUMBER
       },
       carbohydrates: {
-        type: FoodTypes.NUMBER
+        type: nutrition.NUMBER
       },
       fats: {
-        type: FoodTypes.NUMBER
+        type: nutrition.NUMBER
       },
       calories: {
-          type: FoodTypes.NUMBER
+          type: nutrition.NUMBER
       }
     });
     return Meal;

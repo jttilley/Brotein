@@ -1,20 +1,25 @@
-// creating table for Create Workout page and exporting in form of a function for later use 
-
-module.exports = function(sequelize, DataTypes) {
+// create workout table---exporting in form of a function for later use 
+module.exports = function(sequelize, types) {
     const CreateWorkout = sequelize.define("CreateWorkout", {
       lift: {
-        type: DataTypes.STRING
+        type: types.STRING
       },
       setS: {
-        type: DataTypes.NUMBER
+        type: types.NUMBER
       },
       reps: {
-        type: DataTypes.NUMBER
+        type: types.NUMBER
       },
       weights: {
-        type: DataTypes.NUMBER
+        type: types.NUMBER
       },
     });
+
+    CreateWorkout.associate = function(data) {
+        CreateWorkout.belongsTo(data.Users, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
     return CreateWorkout;
-  };
-  
+    }};
