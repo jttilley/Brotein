@@ -1,51 +1,39 @@
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const db = require('../models');
 
-const db = require("../models/user");
-
-// Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(
-  new LocalStrategy(
-    // Our user will sign in using an email, rather than a "username"
-    {
-      usernameField: "email"
-    },
-    (email, password, done) => {
-      // When a user tries to sign in this code runs
-      db.Users.findOne({
-        where: {
-          email: email
+  new LocalStrategy((username, password, done) => {
+    db.User.findOne(
+      {
+        username: username,
+      },
+      (err, user) => {
+        if (err) {
+          console.log('something went wrong\n', err);
+          return done(err);
         }
-      }).then(dbUser => {
-        // If there's no user with the given email
-        if (!dbUser) {
-          return done(null, false, {
-            message: "Incorrect email."
-          });
+        if (!user) {
+          return done(null, false, { message: 'No user found' });
         }
-        // If there is a user with the given email, but the password the user gives us is incorrect
-        else if (!dbUser.validPassword(password)) {
-          return done(null, false, {
-            message: "Incorrect password."
-          });
+        if (!user.validPassword(password, user.password)) {
+          return done(null, false, { message: 'incorrect password' });
+        } else {
+          return done(null, user);
         }
-        // If none of the above, return the user
-        return done(null, dbUser);
-      });
-    }
-  )
+      },
+    );
+  }),
 );
 
-// In order to help keep authentication state across HTTP requests,
-// Sequelize needs to serialize and deserialize the user
-// Just consider this part boilerplate needed to make it all work
-passport.serializeUser((user, cb) => {
-  cb(null, user);
+passport.serializeUser((user, done) => {
+  done(null, user.id);
 });
 
-passport.deserializeUser((obj, cb) => {
-  cb(null, obj);
+passport.deserializeUser((id, done) => {
+  db.User.findById(id, (err, user) => {
+    done(err, user);
+  });
 });
 
-// Exporting our configured passport
 module.exports = passport;
