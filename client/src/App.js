@@ -11,7 +11,7 @@ class App extends Component {
       <Router basename="/demoreactapp/">
         <div className="App">
           <div className="App__Aside">Welcome to Brotein
-          <p>Brotein is an one of the favorite workout app in the wold</p>
+          <p>Brotein is one of the favorite workout apps in the world</p>
           </div>
           <div className="App__Form">
             <div className="PageSwitcher">

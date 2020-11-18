@@ -47,4 +47,4 @@ class BarGraph extends Component {
 		return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
 	}
 }
-module.exports = BarGraph;                     
+module.exports = BarGraph;
