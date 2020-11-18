@@ -34,8 +34,8 @@ require('./routes/api-routes')(app);
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactNotes", { useNewUrlParser: true });
 
 // Start the server and sync Sequelize models 
-db.sequelize.sync().then(function() {
+// db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });
-});
+// });
