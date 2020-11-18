@@ -48,7 +48,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hook
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
-});
+});        
 
 // Start the server and sync Sequelize models 
   app.listen(PORT, function() {
