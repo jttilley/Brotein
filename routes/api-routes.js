@@ -12,12 +12,12 @@ module.exports = function (app) {
   });
 
   // get a workout
-  app.post('/api/workout/:id', function (req, res) {
+  app.get('/api/workout/:id', function (req, res) {
     console.log(req.params.id);
   });
 
   // get a meal
-  app.post('/api/meal/:id', function (req, res) {
+  app.get('/api/meal/:id', function (req, res) {
     console.log(req.params.id);
   });
 
