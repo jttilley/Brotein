@@ -44,7 +44,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CustomizedTables() {
+export default function MealTable() {
   const classes = useStyles();
 
   return (
