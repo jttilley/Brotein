@@ -6,9 +6,6 @@ const MemoryStore = require('memorystore')(session);
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-// const path = require("path");
-// const fs = require("fs"); 
-
 
 // Set up the express app 
 const app = express();
@@ -16,10 +13,6 @@ const PORT = process.env.PORT || 3001;
 
 // Requiring our models folder for syncing 
 const models = require("./models");
-
-// fs.readdirSync(__dirname + '/models').forEach(function(filename){
-//   if (~filename.indexOf('.js')) require(__dirname + '/models' +  filename); 
-// })
 
 // Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
@@ -52,7 +45,7 @@ if (process.env.NODE_ENV === 'production') {
 require('./routes/api/api-routes')(app); 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/react-auth-hooks', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Brotein', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

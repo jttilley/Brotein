@@ -3,7 +3,7 @@ const Workouts = require('../models/workouts');
 const Meals = require('../models/meals'); 
 
 // This file empties the Posts collection and inserts the books below
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/react-auth-hooks");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Brotein");
 
 const workout1 = new Workouts({
     exercise: 'Weight Lifting', 
@@ -30,3 +30,7 @@ const meal1 = new Meals({
 
 console.log(meal1); 
     if (err) return console.error(err); 
+
+meal1.save(function (err, workout1){
+    if (err) return console.error(err); 
+}); 
