@@ -30,4 +30,3 @@ const meal1 = new Meals({
 
 console.log(meal1); 
     if (err) return console.error(err); 
-});
