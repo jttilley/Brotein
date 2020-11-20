@@ -54,8 +54,6 @@ class AuthForm extends Component {
           </div>
         </Router>
       );
-
-    
     };
   }
 
