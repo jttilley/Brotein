@@ -1,36 +1,48 @@
 const mongoose = require('mongoose'); 
-const Workouts = require('../models/workouts'); 
-const Meals = require('../models/meals'); 
+const db = require('../models'); 
 
-// This file empties the Posts collection and inserts the books below
+
+// This file empties the collection and inserts the books below
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Brotein");
 
-const workout1 = new Workouts({
+const workout1 = [{
     exercise: 'Weight Lifting', 
     sets: 20, 
     reps: 2, 
     weight: 50, 
     duration: 20, 
     body: 'Workout1'
-}); 
+}]
 console.log(workout1); 
 
-workout1.save(function (err, workout1){
-    if (err) return console.error(err); 
-}); 
+db.Workouts.deleteMany({})
+  .then(() => db.Workouts.collection.insertMany(workout1))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
-const meal1 = new Meals({
+const meal1 = [{
     food: 'fish', 
     protein: 20,
     carbohydrates: 10,
     fats: 2,
     calories: 15, 
     body: 'Meal1'
-}); 
-
+}]
 console.log(meal1); 
-    if (err) return console.error(err); 
 
-meal1.save(function (err, workout1){
-    if (err) return console.error(err); 
-}); 
+db.Meals.deleteMany({})
+  .then(() => db.Meals.collection.insertMany(meal1))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
