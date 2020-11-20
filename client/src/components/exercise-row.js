@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CustomizedTables() {
+export default function ExcerciseTable() {
   const classes = useStyles();
 
   return (
