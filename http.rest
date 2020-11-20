@@ -1,4 +1,4 @@
-GET http://localhost:3001/api/meals 
+GET http://localhost:3001/api/meal/:id 
 
 
 

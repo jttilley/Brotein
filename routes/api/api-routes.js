@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose'); 
 const db = require('../models'); 
-const index = require('')
+
 
 module.exports = function (app) {
 
