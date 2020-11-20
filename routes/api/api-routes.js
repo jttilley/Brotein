@@ -37,48 +37,6 @@ module.exports = function (app) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-  // get index page if no routes are being called 
-  app.get("/", (req, res) => {
-    res.send 
-  });
-  
-  // get meals 
-  app.get('/api/meals', function (req, res) {
-      res.send(Meals); 
-    })
-
-  // get all workouts 
-  app.get("/api/allworkouts/:id", (req, res) => {
-    db.Workouts.findAll({
-      where: {
-        UserId: req.user.id 
-      } 
-    })
-    .then(findAll => {
-      res.send(findAll); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
-    })
-  });
-
-  // get all meals 
-  app.get("/api/allmeals/:id", (req, res) => {
-    db.Meals.findAll({
-      where: {
-        UsersId: req.users.id 
-      } 
-    })
-    .then(findAll => {
-      res.send(findAll); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
-    })
-  });
-
   // get a meal 
   app.get("/api/meal/:id", (req, res) => {
     db.Meals.findOne({
@@ -111,21 +69,36 @@ module.exports = function (app) {
     });
   });
 
-  // add a workout 
-  app.post("/api/workout/submit", (req, res) => {
-    db.Workouts.create({
-      exercise: req.body.exercise, 
-      sets: req.body.sets, 
-      reps: req.body.reps, 
-      weight: req.body.weight, 
-      duration: req.body.duration
+  // get all meals 
+  app.get("/api/allmeals/:id", (req, res) => {
+    db.Meals.findAll({
+      where: {
+        UsersId: req.users.id 
+      } 
     })
-      .then(addWorkout => {
-        res.send(addWorkout);
-      })
-      .catch(err => {
-        res.send(err);
-      });
+    .then(findAll => {
+      res.send(findAll); 
+    })
+    .catch(err => {
+      res.send(err); 
+      console.log(err); 
+    })
+  });
+
+  // get all workouts 
+  app.get("/api/allworkouts/:id", (req, res) => {
+    db.Workouts.findAll({
+      where: {
+        UserId: req.user.id 
+      } 
+    })
+    .then(findAll => {
+      res.send(findAll); 
+    })
+    .catch(err => {
+      res.send(err); 
+      console.log(err); 
+    })
   });
 
   // add a meal 
@@ -139,6 +112,23 @@ module.exports = function (app) {
     })
       .then(addMeal => {
         res.send(addMeal);
+      })
+      .catch(err => {
+        res.send(err);
+      });
+  });
+
+  // add a workout 
+  app.post("/api/workout/submit", (req, res) => {
+    db.Workouts.create({
+      exercise: req.body.exercise, 
+      sets: req.body.sets, 
+      reps: req.body.reps, 
+      weight: req.body.weight, 
+      duration: req.body.duration
+    })
+      .then(addWorkout => {
+        res.send(addWorkout);
       })
       .catch(err => {
         res.send(err);
@@ -162,7 +152,7 @@ module.exports = function (app) {
       });
 });
 
-  // Route for logging user out
+// Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
