@@ -1,31 +1,15 @@
   const mongoose = require("mongoose");
-
   const Schema = mongoose.Schema;
   
-  const Meal = new Schema({
-    
-    food: {
-      type: String,
-      trim: true
-    },
-
-    protein: {
-      type: Number
-    },
-  
-    carbohydrates: {
-      type: Number
-    },
-  
-    fats: {
-      type: Number,
-    }, 
-
-    calories: {
-      type: Number,
-    }
+  const mealSchema = new Schema({
+    food: {type: String},
+    protein: {type: Number},
+    carbohydrates: {type: Number},
+    fats: {type: Number}, 
+    calories: {type: Number}, 
+    body: String, 
   });
   
-  const Meals = mongoose.model("Meal", Meal);
-  
+  const Meals = mongoose.model('Meals', mealSchema);
+ 
   module.exports = Meals;
