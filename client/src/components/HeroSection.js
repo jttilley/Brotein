@@ -5,8 +5,7 @@ import '../CSS/HeroSection.css';
 function HeroSection() {
     return (
         <div className='hero-container'>
-            <img src='../pages/Photos/background.jpg' />
-            <h1>BROTIEN</h1>
+            <h1>BROTEIN</h1>
         </div>
     );
 }
