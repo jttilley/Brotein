@@ -145,4 +145,10 @@
     margin-left: 5px;
   }
   
-  
+.HomePage{
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
