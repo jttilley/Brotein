@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AuthForm from './pages/auth';
-//import './App.css';
-//import HomePage from './pages/home';
 import HomePage from './pages/home';
 import HealthPage from './pages/health';
 import NewMealPage from './pages/new-meal';
 import NewWorkOutPage from './pages/new-workout';
 import HistoryPage from './pages/history';
-
-
 
 class App extends Component {
   render() {
@@ -25,9 +21,6 @@ class App extends Component {
         <Route exact path="/history" component={HistoryPage} />
 
       </Router>
-
-
-
     );
   }
 }

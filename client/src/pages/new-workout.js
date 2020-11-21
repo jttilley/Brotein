@@ -1,7 +1,20 @@
 import React from 'react';
+import API from '../utils/API';
 
+let exercises = [];
 
 function NewWorkOutPage() {
+
+    // Load all books and store them with setBooks
+    useEffect(() => {
+        loadExercises()
+    }, [])
+
+    function loadExercises(){
+        API.getExercises() .then(res => {
+            exercises = res.results;
+        })
+    }
 
     return (
         <div>
