@@ -63,11 +63,7 @@ function Navbar() {
 
                         <li>
                             <Link
-<<<<<<< HEAD
-                                to='/new-workoutS'
-=======
                                 to='/new-workout'
->>>>>>> 078b14de124c111c389118bafd8c5916fa378f20
                                 className='nav-links-mobile'
                                 onClick={closeMobileMenu}
                             >
