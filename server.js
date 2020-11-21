@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Requiring our models folder for syncing 
-const models = require("./models");
+const db = require('./models')
 
 // Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
@@ -52,9 +52,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Brotein', {
 });     
 
 // test that we connect successfully or if a connection error occurs 
-const db = mongoose.connection; 
-db.on('error', console.error.bind(console, 'connection error:')); 
-db.once('open', function () {
+const DB = mongoose.connection; 
+DB.on('error', console.error.bind(console, 'connection error:')); 
+DB.once('open', function () {
   console.log('Successfully Connected!!'); 
 }); 
 
