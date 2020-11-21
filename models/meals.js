@@ -7,7 +7,7 @@
     carbohydrates: {type: Number},
     fats: {type: Number}, 
     calories: {type: Number}, 
-    body: {type:String}, 
+    body: {type:String}
   });
   
   const Meals = mongoose.model('Meals', mealSchema);
