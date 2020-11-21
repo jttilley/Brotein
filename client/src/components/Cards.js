@@ -1,10 +1,10 @@
 import React from 'react';
 import '../CSS/Cards.css';
 import CardItem from './cardItem';
-import health from '../img/health.jpg';
-import history from '../img/history.jpg';
-import newMeal from '../img/NewMeal.jpg';
-import newWorkout from '../img/newWorkout.jpg';
+import health from '../images/health.jpg';
+import history from '../images/history.jpg';
+import newMeal from '../images/NewMeal.jpg';
+import newWorkout from '../images/newWorkout.jpg';
 
 function Cards() {
     return (
@@ -40,7 +40,7 @@ function Cards() {
                             path='./new-workout'
                         />
                         {/* <CardItem
-                            src='images/img-8.jpg'
+                            src='images/images-8.jpg'
                             text='Ride through the Sahara Desert on a guided camel tour'
                             label='Adrenaline'
                             path='/sign-up' 
