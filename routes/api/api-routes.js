@@ -1,16 +1,12 @@
 
 // requiring our dependencies 
 const mongoose = require('mongoose'); 
-const db = require('../'); 
-const passport = require('../config/passport');
+const db = require('../../models'); 
+const passport = require('../../config/passport');
 const path = require('path');
+const mongojs = require("mongojs");
 
 module.exports = function (app) {
-
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + './public/index.html'));
-  });
 
 //////////////////////////////////////////////////////// API "GET" ROUTES  //////////////////////////////////////////////////////// 
 
@@ -31,7 +27,7 @@ module.exports = function (app) {
   });
 
   // get a workout 
-  app.get('/api/workouts/:id', (req, res) => {
+  app.get('/api/workout/:id', (req, res) => {
     db.Workouts.findOne(
       {
         _id: mongojs.ObjectId(req.params.id) 
