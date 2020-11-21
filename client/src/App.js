@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import SignUpForm from './pages/signup';
 import SignInForm from './pages/signin';
-//import './App.css';
+import './App.css';
 //import HomePage from './pages/home';
 import HomePage from './pages/Home';
 import HealthPage from './pages/health';
