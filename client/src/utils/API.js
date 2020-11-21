@@ -1,8 +1,7 @@
 import axios from "axios";
+const initUrl = "https://wger.de/api/v2/";
 
 export default {
-  const initUrl = "https://wger.de/api/v2/"
-
   getExercises: function() {
     return axios.get(initUrl + "exerciseinfo/?language=2&limit=224");
   },
