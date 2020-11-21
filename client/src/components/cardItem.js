@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CardItem(props) {
+    console.log();
     return (
         <>
             <li className='cards__item'>
@@ -9,7 +10,11 @@ function CardItem(props) {
                     <figure className='cards__item__pic-wrap' data-category={props.label}>
                         <img
                             className='cards__item__img'
+<<<<<<< HEAD
                             alt=' Image'
+=======
+                            alt='Image'
+>>>>>>> 078b14de124c111c389118bafd8c5916fa378f20
                             src={props.src}
                         />
                     </figure>

@@ -7,6 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -15,6 +19,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
+    
   },
 }))(TableCell);
 
@@ -22,23 +27,24 @@ const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
+        
     },
   },
 }))(TableRow);
 
-function createData(name, sets, reps, weight) {
-  return { name, sets, reps, weight };
+function createData(name, sets, reps, weight, time) {
+  return { name, sets, reps, weight, time };
 }
 
 const rows = [
-  createData('Bicep Curls', 4, 10, 30),
-  createData('Hammer Curls', 4, 10, 35),
-  createData('Shoulder Press', 3, 10, 110),
+  createData('Bicep Curls', 4, 10, 30, 7),
+  createData('Hammer Curls', 4, 10, 35, 5),
+  createData('Shoulder Press', 3, 10, 110, 6),
 ];
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
+    minWidth: 100,
   },
 });
 
@@ -46,14 +52,18 @@ export default function ExcerciseTable() {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
+    <Grid item xs={6}>
+    <Card className={classes.card} style={{borderRadius: '15px', backgroundColor: 'lightgray'}}>
+     <CardContent>
+     <TableContainer component={Paper}> 
+      <Table className={classes.table} aria-label="excercise table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Workout</StyledTableCell>
-            <StyledTableCell align="right">Sets&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">Reps&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">Weight&nbsp;(lbs)</StyledTableCell>
+            <StyledTableCell align="left">Sets&nbsp;</StyledTableCell>
+            <StyledTableCell align="left">Reps&nbsp;</StyledTableCell>
+            <StyledTableCell align="left">Weight&nbsp;(lbs)</StyledTableCell>
+            <StyledTableCell align="left">Times&nbsp;(minutes)</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -62,13 +72,17 @@ export default function ExcerciseTable() {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.sets}</StyledTableCell>
-              <StyledTableCell align="right">{row.reps}</StyledTableCell>
-              <StyledTableCell align="right">{row.weight}</StyledTableCell>
+              <StyledTableCell align="left">{row.sets}</StyledTableCell>
+              <StyledTableCell align="left">{row.reps}</StyledTableCell>
+              <StyledTableCell align="left">{row.weight}</StyledTableCell>
+              <StyledTableCell align="left">{row.time}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+      </TableContainer>
+    </CardContent>
+    </Card>
+    </Grid> 
   );
 }
