@@ -1,79 +1,57 @@
 
+// requiring our dependencies 
 const mongoose = require('mongoose'); 
-const db = require('../models'); 
-
+const db = require('../'); 
+const passport = require('../config/passport');
+const path = require('path');
 
 module.exports = function (app) {
 
-  // get all workouts
-  app.get('/api/new/workouts', function (req, res) {
-    console.log('Getting workouts');
+
+  app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname + './public/index.html'));
   });
 
-  // get all meals
-  app.get('/api/new/meals', function (req, res) {
-    console.log('Getting meals');
-  });
-
-  // get a workout
-  app.get('/api/workout/:id', function (req, res) {
-    console.log(req.params.id);
-  });
-
-  // get a meal
-  app.get('/api/meal/:id', function (req, res) {
-    console.log(req.params.id);
-  });
-
-  // add a workout
-  app.post('/api/workout', function (req, res) {
-    console.log(req.body);
-  });
-
-  // add a meal
-  app.post('/api/meal', function (req, res) {
-    console.log(req.body);
-  });
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////// API "GET" ROUTES  //////////////////////////////////////////////////////// 
 
   // get a meal 
-  app.get("/api/meal/:id", (req, res) => {
-    db.Meals.findOne({
-      where: {
-        UsersId: req.users.id 
-      } 
-    })
-    .then(findMeal => {
-      res.send(findMeal); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
-    })
+  app.get('/api/meal/:id', (req, res) => {
+    db.Meals.findOne(
+      {
+        _id: mongojs.ObjectId(req.params.id) 
+      },  
+      (error, data) => {
+        if (error) {
+          res.send(error); 
+        } else {
+          res.send(data)
+        }
+      }
+    ); 
   });
 
   // get a workout 
-  app.get("/api/workouts/:id", (req, res) => {
-    db.Workouts.findOne({
-      where: {
-        UsersId: req.users.id
+  app.get('/api/workouts/:id', (req, res) => {
+    db.Workouts.findOne(
+      {
+        _id: mongojs.ObjectId(req.params.id) 
+      }, 
+      (error, data) => {
+        if (error) {
+          res.send(error); 
+        } else {
+          res.send(data)
+        }
       }
-    }) 
-    .then(findWorkout => {
-      res.send(findWorkout); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
-    });
+    );
   });
+//////////////////////////////////////////////////////// API "GET ALL" ROUTES  //////////////////////////////////////////////////////// 
 
   // get all meals 
-  app.get("/api/allmeals/:id", (req, res) => {
+  app.get('/api/allmeals/:id', (req, res) => {
     db.Meals.findAll({
       where: {
-        UsersId: req.users.id 
+        UsersId: req.users.id  /////////////// do we need to  use req.params.id? 
       } 
     })
     .then(findAll => {
@@ -86,10 +64,10 @@ module.exports = function (app) {
   });
 
   // get all workouts 
-  app.get("/api/allworkouts/:id", (req, res) => {
+  app.get('/api/allworkouts/:id', (req, res) => {
     db.Workouts.findAll({
       where: {
-        UserId: req.user.id 
+        UserId: req.user.id /////////////// do we need to  use req.params.id? 
       } 
     })
     .then(findAll => {
@@ -100,9 +78,10 @@ module.exports = function (app) {
       console.log(err); 
     })
   });
+//////////////////////////////////////////////////////// API "POST/ADD" ROUTES  //////////////////////////////////////////////////////// 
 
   // add a meal 
-  app.post("/api/meals/submit", (req, res) => {
+  app.post('/api/meal/submit', (req, res) => {
     db.Meals.create({
       food: req.body.food, 
       protein: req.body.protein, 
@@ -119,7 +98,7 @@ module.exports = function (app) {
   });
 
   // add a workout 
-  app.post("/api/workout/submit", (req, res) => {
+  app.post('/api/workout/submit', (req, res) => {
     db.Workouts.create({
       exercise: req.body.exercise, 
       sets: req.body.sets, 
@@ -133,10 +112,123 @@ module.exports = function (app) {
       .catch(err => {
         res.send(err);
       });
+
   });
+//////////////////////////////////////////////////////// API "POST/UPDATE" ROUTES  //////////////////////////////////////////////////////// 
+app.post('/api/updateworkout/:id', (req, res) => {
+  db.Workouts.update(
+    {
+      _id: mongojs.ObjectId(req.params.id)
+    },
+    {
+      $set: {
+        exercise: req.body.exercise,
+        sets: req.body.sets,
+        reps: req.body.reps, 
+        weight: req.body.weight, 
+        duration: req.body.duration,
+        modified: Date.now()
+      }
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
+});
+
+app.post('/api/updatemeals/:id', (req, res) => {
+  db.Meals.update(
+    {
+      _id: mongojs.ObjectId(req.params.id)
+    },
+    {
+      $set: {
+        food: req.body.food,
+        protein: req.body.protein,
+        carbohydrates: req.body.carbohydrates, 
+        fats: req.body.fats, 
+        calories: req.body.calories,
+        modified: Date.now()
+      }
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
+});
+
+//////////////////////////////////////////////////////// API "DELETE" ROUTES  //////////////////////////////////////////////////////// 
+
+app.delete('/delete/workout/:id', (req, res) => {
+  db.Workouts.remove(
+    {
+      _id: mongojs.ObjectID(req.params.id)
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
+});
+
+app.delete('/delete/meals/:id', (req, res) => {
+  db.Meals.remove(
+    {
+      _id: mongojs.ObjectID(req.params.id)
+    },
+    (error, data) => {
+      if (error) {
+        res.send(error);
+      } else {
+        res.send(data);
+      }
+    }
+  );
+});
+
+app.delete('/clearall/workouts', (req, res) => {
+  db.Workouts.remove({}, (error, response) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(response);
+    }
+  });
+});
+
+app.delete('/clearall/meals', (req, res) => {
+  db.Meals.remove({}, (error, response) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(response);
+    }
+  });
+});
+
+//////////////////////////////////////////////////////// USER SIGN-UP/LOG-IN ROUTES //////////////////////////////////////////////////////// 
+
+// Using passport.authenticate middleware with  local strategy, if user has valid login credentials, send them to the members page otherwise the user will be sent an error
+  app.post('/api/login', passport.authenticate('local'), (req, res) => {
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+
 
  // route to sign up a user 
-  app.post("/api/signup", (req, res) => {
+  app.post('/api/signup', (req, res) => {
     db.Users.create({
       firstname: req.body.firstname, 
       lastname: req.body.lastname, 
@@ -145,31 +237,31 @@ module.exports = function (app) {
       password: req.body.password, 
     })
       .then(() => {
-        res.redirect(307, "/api/login");
+        res.redirect(307, '/api/login');
       })
       .catch(err => {
         res.status(401).json(err);
       });
 });
 
-// Route for logging user out
-  app.get("/logout", (req, res) => {
+// route for logging out the user 
+  app.get('/logout', (req, res) => {
     req.logout();
     res.redirect("/");
   });
 
-  // // Route for getting some data about our user to be used client side
-  // app.get("/api/user_data", (req, res) => {
-  //   if (!req.user) {
-  //     // The user is not logged in, send back an empty object
-  //     res.json({});
-  //   } else {
-  //     // Otherwise send back the user's email and id
-  //     // Sending back a password, even a hashed password, isn't a good idea
-  //     res.json({
-  //       email: req.user.email,
-  //       id: req.user.id
-  //     });
-  //   }
-  // });
-}
+// route for getting data about our user to be used client side
+  app.get('/api/user_data', (req, res) => {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        email: req.user.email,
+        id: req.user.id
+      });
+    }
+  });
+})}; 

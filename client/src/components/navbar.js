@@ -29,7 +29,7 @@ function Navbar() {
         <>
             <nav className='navbar'>
                 <div className='navbar-container'>
-                    <Link to='/Home.js' className='navbar-logo' onClick={closeMobileMenu}>
+                    <Link to='/Home' className='navbar-logo' onClick={closeMobileMenu}>
                         home
             <i class='fab fa-typo3' />
                     </Link>
@@ -44,7 +44,7 @@ function Navbar() {
                         </li>
                         <li className='nav-item'>
                             <Link
-                                to='/history.js'
+                                to='/history'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
@@ -53,7 +53,7 @@ function Navbar() {
                         </li>
                         <li className='nav-item'>
                             <Link
-                                to='/new-meal.js'
+                                to='/new-meal'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
@@ -63,7 +63,7 @@ function Navbar() {
 
                         <li>
                             <Link
-                                to='/new-workout.js'
+                                to='/new-workoutS'
                                 className='nav-links-mobile'
                                 onClick={closeMobileMenu}
                             >

@@ -7,7 +7,7 @@
     reps: {type: Number},
     weight: {type: Number}, 
     duration: {type: Number}, 
-    body: String
+    body: {type: String}
   });
     
   const Workouts = mongoose.model("Workouts", workoutSchema);
