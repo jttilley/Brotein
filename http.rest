@@ -1,4 +1,4 @@
-GET http://localhost:3001/api/meal/:id 
+PUT http://localhost:3001/api/updateworkout/:id 
 
 
 

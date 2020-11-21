@@ -10,11 +10,14 @@ import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
+import "./exercise-row.css"
+import Box from '@material-ui/core/Box';
 
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
+    // background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     color: theme.palette.common.white,
   },
   body: {
@@ -27,7 +30,8 @@ const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
-        
+      // minWidth: 100,
+    
     },
   },
 }))(TableRow);
@@ -53,7 +57,8 @@ export default function ExcerciseTable() {
 
   return (
     <Grid item xs={6}>
-    <Card className={classes.card} style={{borderRadius: '15px', backgroundColor: 'lightgray'}}>
+    <Box boxShadow={0}>
+    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)' }}>
      <CardContent>
      <TableContainer component={Paper}> 
       <Table className={classes.table} aria-label="excercise table">
@@ -83,6 +88,8 @@ export default function ExcerciseTable() {
       </TableContainer>
     </CardContent>
     </Card>
+    </Box>
     </Grid> 
+
   );
 }
