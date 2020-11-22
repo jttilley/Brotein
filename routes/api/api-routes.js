@@ -3,14 +3,19 @@
 const mongoose = require('mongoose'); 
 const db = require('../../models'); 
 const passport = require('../../config/passport');
-const path = require('path');
 const mongojs = require("mongojs");
+
+
+// const express = require('express');
+// const router = express.Router();
 
 module.exports = function (app) {
 
 //////////////////////////////////////////////////////// API "GET" ROUTES  //////////////////////////////////////////////////////// 
+ 
 
-  // get a meal 
+
+  // get a meal // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.get('/api/meal/:id', (req, res) => {
     db.Meals.findOne(
       {
@@ -26,7 +31,7 @@ module.exports = function (app) {
     ); 
   });
 
-  // get a workout 
+  // get a workout // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.get('/api/workout/:id', (req, res) => {
     db.Workouts.findOne(
       {
@@ -43,40 +48,30 @@ module.exports = function (app) {
   });
 //////////////////////////////////////////////////////// API "GET ALL" ROUTES  //////////////////////////////////////////////////////// 
 
-  // get all meals 
-  app.get('/api/allmeals/:id', (req, res) => {
-    db.Meals.findAll({
-      where: {
-        UsersId: req.users.id  /////////////// do we need to  use req.params.id? 
-      } 
-    })
-    .then(findAll => {
-      res.send(findAll); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
+  // get all meals // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
+  app.get('/api/allmeals', (req, res) => {
+    db.Meals.find({}, (error, data) =>{
+      if (error) {
+        res.send(error); 
+      } else {
+        res.json(data); 
+      }
     })
   });
 
-  // get all workouts 
-  app.get('/api/allworkouts/:id', (req, res) => {
-    db.Workouts.findAll({
-      where: {
-        UserId: req.user.id /////////////// do we need to  use req.params.id? 
-      } 
-    })
-    .then(findAll => {
-      res.send(findAll); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
+  // get all workouts // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
+  app.get('/api/allworkouts', (req, res) => {
+    db.Workouts.find({}, (error, data) =>{
+      if (error) {
+        res.send(error); 
+      } else {
+        res.json(data); 
+      }
     })
   });
 //////////////////////////////////////////////////////// API "POST/ADD" ROUTES  //////////////////////////////////////////////////////// 
 
-  // add a meal 
+  // add a meal // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.post('/api/meal/submit', (req, res) => {
     db.Meals.create({
       food: req.body.food, 
@@ -93,7 +88,7 @@ module.exports = function (app) {
       });
   });
 
-  // add a workout 
+  // add a workout // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.post('/api/workout/submit', (req, res) => {
     db.Workouts.create({
       exercise: req.body.exercise, 
@@ -114,7 +109,7 @@ module.exports = function (app) {
 app.post('/api/updateworkout/:id', (req, res) => {
   db.Workouts.update(
     {
-      _id: mongojs.ObjectId(req.params.id)
+      _id: mongojs.ObjectId(_id)
     },
     {
       $set: {
@@ -163,6 +158,7 @@ app.post('/api/updatemeals/:id', (req, res) => {
 
 //////////////////////////////////////////////////////// API "DELETE" ROUTES  //////////////////////////////////////////////////////// 
 
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
 app.delete('/delete/workout/:id', (req, res) => {
   db.Workouts.remove(
     {
@@ -178,6 +174,7 @@ app.delete('/delete/workout/:id', (req, res) => {
   );
 });
 
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
 app.delete('/delete/meals/:id', (req, res) => {
   db.Meals.remove(
     {
@@ -193,25 +190,27 @@ app.delete('/delete/meals/:id', (req, res) => {
   );
 });
 
-app.delete('/clearall/workouts', (req, res) => {
-  db.Workouts.remove({}, (error, response) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.send(response);
-    }
-  });
-});
+////////////////////// DO WE WANT TO KEEP THESE ROUTES? ///////////////////////////////
 
-app.delete('/clearall/meals', (req, res) => {
-  db.Meals.remove({}, (error, response) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.send(response);
-    }
-  });
-});
+// app.delete('/clearall/workouts', (req, res) => {
+//   db.Workouts.remove({}, (error, response) => {
+//     if (error) {
+//       res.send(error);
+//     } else {
+//       res.send(response);
+//     }
+//   });
+// });
+
+// app.delete('/clearall/meals', (req, res) => {
+//   db.Meals.remove({}, (error, response) => {
+//     if (error) {
+//       res.send(error);
+//     } else {
+//       res.send(response);
+//     }
+//   });
+// });
 
 //////////////////////////////////////////////////////// USER SIGN-UP/LOG-IN ROUTES //////////////////////////////////////////////////////// 
 
@@ -225,12 +224,12 @@ app.delete('/clearall/meals', (req, res) => {
 
  // route to sign up a user 
   app.post('/api/signup', (req, res) => {
-    db.Users.create({
+    db.User.create({
       firstname: req.body.firstname, 
       lastname: req.body.lastname, 
       email: req.body.email,
       username: req.body.username,
-      password: req.body.password, 
+      password: req.body.password 
     })
       .then(() => {
         res.redirect(307, '/api/login');

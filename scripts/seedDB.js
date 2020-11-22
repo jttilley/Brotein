@@ -46,3 +46,24 @@ db.Meals.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+
+const user1 = [{
+  firstname: 'test', 
+  lastname: 'test', 
+  email: 'test@test.com', 
+  username: 'test', 
+  password: 'test', 
+  admin: 0,
+}]
+console.log(user1); 
+
+db.User.deleteMany({})
+  .then(() => db.User.collection.insertMany(user1))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
