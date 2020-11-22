@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, NavLink } from 'react-router-dom';
 import AuthForm from './pages/auth';
-import HomePage from './pages/Home';
+import HomePage from './pages/home';
 import HealthPage from './pages/health';
 import NewMealPage from './pages/new-meal';
 import NewWorkOutPage from './pages/new-workout';
