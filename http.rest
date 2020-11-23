@@ -1,4 +1,5 @@
-POST http://localhost:3001/api/signup
+GET http://localhost:3000/home
+
 
 
 

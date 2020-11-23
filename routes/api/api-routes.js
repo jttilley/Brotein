@@ -106,10 +106,12 @@ module.exports = function (app) {
 
   });
 //////////////////////////////////////////////////////// API "POST/UPDATE" ROUTES  //////////////////////////////////////////////////////// 
-app.post('/api/updateworkout/:id', (req, res) => {
+
+// API TESTED AND SUCCESSFULLY RETURNING UPDATED KEY/VALUES
+app.put('/api/updateworkout/:id', (req, res) => {
   db.Workouts.update(
     {
-      _id: mongojs.ObjectId(_id)
+      _id: mongojs.ObjectId(req.params.id)
     },
     {
       $set: {
@@ -131,7 +133,9 @@ app.post('/api/updateworkout/:id', (req, res) => {
   );
 });
 
-app.post('/api/updatemeals/:id', (req, res) => {
+
+// API TESTED AND SUCCESSFULLY RETURNING UPDATED KEY/VALUES
+app.put('/api/updatemeals/:id', (req, res) => {
   db.Meals.update(
     {
       _id: mongojs.ObjectId(req.params.id)
@@ -190,40 +194,43 @@ app.delete('/delete/meals/:id', (req, res) => {
   );
 });
 
-////////////////////// DO WE WANT TO KEEP THESE ROUTES? ///////////////////////////////
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
+app.delete('/clearall/workouts', (req, res) => {
+  db.Workouts.remove({}, (error, response) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(response);
+    }
+  });
+});
 
-// app.delete('/clearall/workouts', (req, res) => {
-//   db.Workouts.remove({}, (error, response) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(response);
-//     }
-//   });
-// });
-
-// app.delete('/clearall/meals', (req, res) => {
-//   db.Meals.remove({}, (error, response) => {
-//     if (error) {
-//       res.send(error);
-//     } else {
-//       res.send(response);
-//     }
-//   });
-// });
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
+app.delete('/clearall/meals', (req, res) => {
+  db.Meals.remove({}, (error, response) => {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(response);
+    }
+  });
+});
 
 //////////////////////////////////////////////////////// USER SIGN-UP/LOG-IN ROUTES //////////////////////////////////////////////////////// 
 
 // Using passport.authenticate middleware with  local strategy, if user has valid login credentials, send them to the members page otherwise the user will be sent an error
-  app.post('/api/login', passport.authenticate('local'), (req, res) => {
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
+  
+app.get("/", (req, res) => {
+  // If the user already has an account send them to the home page
+  if (req.username) {
+    res.redirect('/Home');
+  }
+  res.sendFile(path.join(__dirname, "../../client/src/pages/sign-in"));
+}); 
 
 
- // route to sign up a user 
-  app.post('/api/signup', (req, res) => {
+// route to sign up a user 
+  app.post('/api/sign-up', (req, res) => {
     db.User.create({
       firstname: req.body.firstname, 
       lastname: req.body.lastname, 
@@ -238,6 +245,15 @@ app.delete('/delete/meals/:id', (req, res) => {
         res.status(401).json(err);
       });
 });
+
+  app.post('/api/login', passport.authenticate('local'), (req, res) => {
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+
+
+ 
 
 // route for logging out the user 
   app.get('/logout', (req, res) => {
@@ -260,3 +276,5 @@ app.delete('/delete/meals/:id', (req, res) => {
     }
   });
 })}; 
+
+
