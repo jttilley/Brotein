@@ -15,7 +15,7 @@ class App extends Component {
 
         <Route exact path="/" component={AuthForm} />
         <Route exact path="/home" component={HomePage} />
-        <Route exact path="/health" Component={HealthPage} />
+        <Route exact path="/health" component={HealthPage} />
         <Route exact path="/new-meal" component={NewMealPage} />
         <Route exact path="/new-workout" component={NewWorkOutPage} />
         <Route exact path="/history" component={HistoryPage} />
