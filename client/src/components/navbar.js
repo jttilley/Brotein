@@ -29,22 +29,22 @@ function Navbar() {
         <>
             <nav className='navbar'>
                 <div className='navbar-container'>
-                    <Link to='/Home.js' className='navbar-logo' onClick={closeMobileMenu}>
+                    <Link to='/Home' className='navbar-logo' onClick={closeMobileMenu}>
                         home
-            <i class='fab fa-typo3' />
+            <i className='fab fa-typo3' />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/health.js' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/health' className='nav-links' onClick={closeMobileMenu}>
                                 Health
               </Link>
                         </li>
                         <li className='nav-item'>
                             <Link
-                                to='/history.js'
+                                to='/history'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
@@ -53,7 +53,7 @@ function Navbar() {
                         </li>
                         <li className='nav-item'>
                             <Link
-                                to='/new-meal.js'
+                                to='/new-meal'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
@@ -63,7 +63,7 @@ function Navbar() {
 
                         <li>
                             <Link
-                                to='/new-workout.js'
+                                to='/new-workout'
                                 className='nav-links-mobile'
                                 onClick={closeMobileMenu}
                             >

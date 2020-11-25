@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3001;
 // Requiring our models folder for syncing 
 const db = require('./models')
 
+
 // Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

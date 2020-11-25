@@ -1,20 +1,21 @@
 
 // requiring our dependencies 
 const mongoose = require('mongoose'); 
-const db = require('../'); 
-const passport = require('../config/passport');
-const path = require('path');
+const db = require('../../models'); 
+const passport = require('../../config/passport');
+const mongojs = require("mongojs");
+
+
+// const express = require('express');
+// const router = express.Router();
 
 module.exports = function (app) {
 
-
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname + './public/index.html'));
-  });
-
 //////////////////////////////////////////////////////// API "GET" ROUTES  //////////////////////////////////////////////////////// 
+ 
 
-  // get a meal 
+
+  // get a meal // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.get('/api/meal/:id', (req, res) => {
     db.Meals.findOne(
       {
@@ -30,8 +31,8 @@ module.exports = function (app) {
     ); 
   });
 
-  // get a workout 
-  app.get('/api/workouts/:id', (req, res) => {
+  // get a workout // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
+  app.get('/api/workout/:id', (req, res) => {
     db.Workouts.findOne(
       {
         _id: mongojs.ObjectId(req.params.id) 
@@ -47,40 +48,30 @@ module.exports = function (app) {
   });
 //////////////////////////////////////////////////////// API "GET ALL" ROUTES  //////////////////////////////////////////////////////// 
 
-  // get all meals 
-  app.get('/api/allmeals/:id', (req, res) => {
-    db.Meals.findAll({
-      where: {
-        UsersId: req.users.id  /////////////// do we need to  use req.params.id? 
-      } 
-    })
-    .then(findAll => {
-      res.send(findAll); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
+  // get all meals // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
+  app.get('/api/allmeals', (req, res) => {
+    db.Meals.find({}, (error, data) =>{
+      if (error) {
+        res.send(error); 
+      } else {
+        res.json(data); 
+      }
     })
   });
 
-  // get all workouts 
-  app.get('/api/allworkouts/:id', (req, res) => {
-    db.Workouts.findAll({
-      where: {
-        UserId: req.user.id /////////////// do we need to  use req.params.id? 
-      } 
-    })
-    .then(findAll => {
-      res.send(findAll); 
-    })
-    .catch(err => {
-      res.send(err); 
-      console.log(err); 
+  // get all workouts // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
+  app.get('/api/allworkouts', (req, res) => {
+    db.Workouts.find({}, (error, data) =>{
+      if (error) {
+        res.send(error); 
+      } else {
+        res.json(data); 
+      }
     })
   });
 //////////////////////////////////////////////////////// API "POST/ADD" ROUTES  //////////////////////////////////////////////////////// 
 
-  // add a meal 
+  // add a meal // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.post('/api/meal/submit', (req, res) => {
     db.Meals.create({
       food: req.body.food, 
@@ -97,7 +88,7 @@ module.exports = function (app) {
       });
   });
 
-  // add a workout 
+  // add a workout // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
   app.post('/api/workout/submit', (req, res) => {
     db.Workouts.create({
       exercise: req.body.exercise, 
@@ -115,7 +106,9 @@ module.exports = function (app) {
 
   });
 //////////////////////////////////////////////////////// API "POST/UPDATE" ROUTES  //////////////////////////////////////////////////////// 
-app.post('/api/updateworkout/:id', (req, res) => {
+
+// API TESTED AND SUCCESSFULLY RETURNING UPDATED KEY/VALUES
+app.put('/api/updateworkout/:id', (req, res) => {
   db.Workouts.update(
     {
       _id: mongojs.ObjectId(req.params.id)
@@ -140,7 +133,9 @@ app.post('/api/updateworkout/:id', (req, res) => {
   );
 });
 
-app.post('/api/updatemeals/:id', (req, res) => {
+
+// API TESTED AND SUCCESSFULLY RETURNING UPDATED KEY/VALUES
+app.put('/api/updatemeals/:id', (req, res) => {
   db.Meals.update(
     {
       _id: mongojs.ObjectId(req.params.id)
@@ -167,6 +162,7 @@ app.post('/api/updatemeals/:id', (req, res) => {
 
 //////////////////////////////////////////////////////// API "DELETE" ROUTES  //////////////////////////////////////////////////////// 
 
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
 app.delete('/delete/workout/:id', (req, res) => {
   db.Workouts.remove(
     {
@@ -182,6 +178,7 @@ app.delete('/delete/workout/:id', (req, res) => {
   );
 });
 
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
 app.delete('/delete/meals/:id', (req, res) => {
   db.Meals.remove(
     {
@@ -197,6 +194,7 @@ app.delete('/delete/meals/:id', (req, res) => {
   );
 });
 
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
 app.delete('/clearall/workouts', (req, res) => {
   db.Workouts.remove({}, (error, response) => {
     if (error) {
@@ -207,6 +205,7 @@ app.delete('/clearall/workouts', (req, res) => {
   });
 });
 
+/////////////////// API TESTED SUCCESSFULLY ///////////////////////////
 app.delete('/clearall/meals', (req, res) => {
   db.Meals.remove({}, (error, response) => {
     if (error) {
@@ -220,21 +219,24 @@ app.delete('/clearall/meals', (req, res) => {
 //////////////////////////////////////////////////////// USER SIGN-UP/LOG-IN ROUTES //////////////////////////////////////////////////////// 
 
 // Using passport.authenticate middleware with  local strategy, if user has valid login credentials, send them to the members page otherwise the user will be sent an error
-  app.post('/api/login', passport.authenticate('local'), (req, res) => {
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
+  
+app.get("/", (req, res) => {
+  // If the user already has an account send them to the home page
+  if (req.username) {
+    res.redirect('/Home');
+  }
+  res.sendFile(path.join(__dirname, "../../client/src/pages/sign-in"));
+}); 
 
 
- // route to sign up a user 
-  app.post('/api/signup', (req, res) => {
-    db.Users.create({
+// route to sign up a user 
+  app.post('/api/sign-up', (req, res) => {
+    db.User.create({
       firstname: req.body.firstname, 
       lastname: req.body.lastname, 
       email: req.body.email,
       username: req.body.username,
-      password: req.body.password, 
+      password: req.body.password 
     })
       .then(() => {
         res.redirect(307, '/api/login');
@@ -243,6 +245,15 @@ app.delete('/clearall/meals', (req, res) => {
         res.status(401).json(err);
       });
 });
+
+  app.post('/api/login', passport.authenticate('local'), (req, res) => {
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+
+
+ 
 
 // route for logging out the user 
   app.get('/logout', (req, res) => {
@@ -265,3 +276,5 @@ app.delete('/clearall/meals', (req, res) => {
     }
   });
 })}; 
+
+

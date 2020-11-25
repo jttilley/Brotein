@@ -1,6 +1,10 @@
 import React from 'react';
 import '../CSS/Cards.css';
 import CardItem from './cardItem';
+import health from '../images/health.jpg';
+import history from '../images/history.jpg';
+import newMeal from '../images/NewMeal.jpg';
+import newWorkout from '../images/newWorkout.jpg';
 
 function Cards() {
     return (
@@ -10,37 +14,37 @@ function Cards() {
                 <div className='cards__wrapper'>
                     <ul className='cards__items'>
                         <CardItem
-                            src='./Photos/health.jpg'
+                            src={health}
                             text='Explore Health articles and videos!'
                             label='Health'
-                            path='./health.js'
+                            path='./health'
                         />
                         <CardItem
-                            src='./Photos/history.jpg'
+                            src={history}
                             text='View all your saved items!'
                             label='History'
-                            path='./history.js'
+                            path='./history'
                         />
                     </ul>
                     <ul className='cards__items'>
                         <CardItem
-                            src='./Photos/NewMeal.jpg'
+                            src={newMeal}
                             text='Explore recipes and create your next meal!'
                             label='New Meal'
-                            path='./new-meal.js'
+                            path='./new-meal'
                         />
                         <CardItem
-                            src='./Photos/newWorkout.jpg'
+                            src={newWorkout}
                             text='Track and browse through workout ideas and map your success!'
                             label='New Workout'
-                            path='./new-workout.js'
+                            path='./new-workout'
                         />
                         {/* <CardItem
-                            src='images/img-8.jpg'
+                            src='images/images-8.jpg'
                             text='Ride through the Sahara Desert on a guided camel tour'
                             label='Adrenaline'
-                            path='/sign-up' */}
-                        {/* /> */}
+                            path='/sign-up' 
+                         />  */}
                     </ul>
                 </div>
             </div>
