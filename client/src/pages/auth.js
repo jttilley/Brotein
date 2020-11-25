@@ -6,7 +6,7 @@ import SignInForm from './signin';
 class AuthForm extends Component {
     
     state = {
-      email: "",
+      username: "",
       password: ""
     };
   
