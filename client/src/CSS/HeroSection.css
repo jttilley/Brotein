@@ -20,7 +20,7 @@ image {
     background-position: center;
   }
   
-  .history-container {
+  .history-container, .health-container,.NewMeal-container, .Workout-container {
     height: 40vh;
     width: 100%;
     display: flex;
@@ -29,18 +29,29 @@ image {
     align-items: center;
     box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
     object-fit: contain;
-    background-image: url("../images/history.jpg");
     background-size: cover;
     background-position: center;
   }
+  .history-container{
+    background-image: url("../images/history.jpg");
+  }
+  .health-container{
+    background-image: url("../images/health.jpg");
+  }
+  .NewMeal-container{
+    background-image: url(../images/NewMeal.jpg);
+  }
+  .Workout-container{
+    background-image: url(../images/newWorkout.jpg);
+  }
 
-  .hero-container, .history-container > h1 {
+  .hero-container, .history-container, .health-container, .NewMeal-container, .Workout-container > h1 {
     color: #fff;
     font-size: 100px;
     margin-top: -100px;
   }
   
-  .hero-container, .history-container > p {
+  .hero-container, .history-container,.health-container, .NewMeal-container, .Workout-container > p {
     margin-top: 8px;
     color: #fff;
     font-size: 32px;
@@ -51,19 +62,19 @@ image {
 
   
   @media screen and (max-width: 960px) {
-    .hero-container, .history-container > h1 {
+    .hero-container, .history-container, .health-container, .NewMealBanner, .Workout-container > h1 {
       font-size: 70px;
       margin-top: -150px;
     }
   }
   
   @media screen and (max-width: 768px) {
-    .hero-container, .history-container > h1 {
+    .hero-container, .history-container, .health-container,.NewMealBanner, .Workout-container > h1 {
       font-size: 50px;
       margin-top: -100px;
     }
   
-    .hero-container, .history-container > p {
+    .hero-container, .history-container,.health-container, .NewMealBanner, .Workout-container > p {
       font-size: 30px;
     }
   
