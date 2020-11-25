@@ -1,6 +1,9 @@
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import API from '../utils/API';
-import exercises from '../utils/exercises'
+import exercises from '../utils/exercises';
+import Navbar from '../components/navbar';
+import WorkoutBanner from '../components/WorkoutBanner';
+
 
 
 function NewWorkOutPage() {
@@ -9,10 +12,11 @@ function NewWorkOutPage() {
     // const handleChange = () => {
 
     // }
-    
+
     return (
         <div>
-            <h2>New Work Out Page</h2>
+            <Navbar />
+            <WorkoutBanner />
         </div>
 
     );
