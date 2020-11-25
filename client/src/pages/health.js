@@ -9,8 +9,14 @@ function HealthPage() {
     return (
         <div>
             <Navbar />
-            <Youtube />
-            <Food />
+            <div class="row">
+                <div class="col-6">
+                    <Youtube /> 
+                </div>
+                <div class="col-6">
+                    <Food />
+                </div>
+            </div>
         </div>
 
     );

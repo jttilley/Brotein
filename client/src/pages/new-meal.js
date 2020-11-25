@@ -1,12 +1,15 @@
 import React from 'react';
-
+import MealTable from '../components/MealTable';
+import Navbar from '../components/navbar';
 
 function NewMealPage() {
 
     return (
-        <div>
+        <>
+            <Navbar />
             <h2>New Meal Page</h2>
-        </div>
+            <MealTable />
+        </>
 
     );
 };
