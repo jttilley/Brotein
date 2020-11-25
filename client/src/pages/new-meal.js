@@ -1,15 +1,17 @@
 import React from 'react';
-import MealTable from '../components/MealTable';
+import '../App.css';
 import Navbar from '../components/navbar';
+import NewMealBanner from '../components/newMealBanner';
+
+
 
 function NewMealPage() {
 
     return (
-        <>
+        <div>
             <Navbar />
-            <h2>New Meal Page</h2>
-            <MealTable />
-        </>
+            <NewMealBanner />
+        </div>
 
     );
 };

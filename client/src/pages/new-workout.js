@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import API from '../utils/API';
 import exercises from '../utils/exercises';
 import Navbar from '../components/navbar';
-import ExcerciseTable from '../components/ExerciseTable';
+import WorkoutBanner from '../components/workoutBanner';
+
 
 
 function NewWorkOutPage() {
@@ -11,12 +12,11 @@ function NewWorkOutPage() {
     const handleChange = () => {
 
     }
-    
+
     return (
         <div>
             <Navbar />
-            <h2>New Work Out Page</h2>
-            <ExcerciseTable />
+            <WorkoutBanner />
         </div>
     );
 };
