@@ -1,21 +1,15 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import API from '../utils/API';
+import exercises from '../utils/exercises'
 
-let exercises = [];
 
 function NewWorkOutPage() {
+    let exercises = [state, setState] = useContext;
 
-    // Load all books and store them with setBooks
-    useEffect(() => {
-        loadExercises()
-    }, [])
+    const handleChange = () => {
 
-    function loadExercises(){
-        API.getExercises() .then(res => {
-            exercises = res.results;
-        })
     }
-
+    
     return (
         <div>
             <h2>New Work Out Page</h2>
