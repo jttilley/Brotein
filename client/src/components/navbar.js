@@ -29,16 +29,26 @@ function Navbar() {
         <>
             <nav className='navbar'>
                 <div className='navbar-container'>
-                    <Link to='/Home' className='navbar-logo' onClick={closeMobileMenu}>
-                        home
-            <i className='fab fa-typo3' />
+                    <Link to='' className='navbar-logo' onClick={closeMobileMenu}>
+
+                        <i className='fab fa-typo3' />
                     </Link>
                     <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'>
-                            <Link to='/health' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/Home' className='nav-links' onClick={closeMobileMenu}>
+                                Home
+
+                                </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link
+                                to='/health'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
                                 Health
               </Link>
                         </li>
