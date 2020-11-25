@@ -4,11 +4,11 @@ import exercises from '../utils/exercises'
 
 
 function NewWorkOutPage() {
-    let exercises = [state, setState] = useContext;
+    // let exercises = [state, setState] = useContext;
 
-    const handleChange = () => {
+    // const handleChange = () => {
 
-    }
+    // }
     
     return (
         <div>
