@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import Cards from '../components/Cards';
-import HeroSection from '../components/HeroSection';
+import Cards from '../components/cards';
+import HeroSection from '../components/heroSection';
 import Navbar from '../components/navbar';
 
 function HomePage() {
@@ -10,7 +10,6 @@ function HomePage() {
       <Navbar />
       <HeroSection />
       <Cards />
-
     </>
   );
 }

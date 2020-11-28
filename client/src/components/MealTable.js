@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MealTable() {
+function MealTable() {
   const classes = useStyles();
 
   return (
@@ -89,3 +89,5 @@ export default function MealTable() {
     </Grid> 
   );
 }
+
+export default MealTable;

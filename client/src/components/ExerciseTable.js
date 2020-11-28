@@ -52,7 +52,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ExcerciseTable() {
+function ExcerciseTable() {
   const classes = useStyles();
 
   return (
@@ -93,3 +93,5 @@ export default function ExcerciseTable() {
 
   );
 }
+
+export default ExcerciseTable;

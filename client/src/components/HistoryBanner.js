@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import '../CSS/HeroSection.css';
+import '../css/heroSection.css';
 
 function HistoryBanner() {
     return (
