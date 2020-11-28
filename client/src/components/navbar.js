@@ -71,10 +71,10 @@ function Navbar() {
               </Link>
                         </li>
 
-                        <li>
+                        <li className='nav-item'>
                             <Link
                                 to='/new-workout'
-                                className='nav-links-mobile'
+                                className='nav-links'
                                 onClick={closeMobileMenu}
                             >
                                 New Workout

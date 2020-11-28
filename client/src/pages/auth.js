@@ -6,7 +6,7 @@ import SignInForm from './signin';
 class AuthForm extends Component {
     
     state = {
-      email: "",
+      username: "",
       password: ""
     };
   
@@ -37,17 +37,17 @@ class AuthForm extends Component {
             </div>
             <div className="App__Form">
               <div className="PageSwitcher">
-                  <NavLink to="/sign-in" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
-                  <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+                  <NavLink to="/signup" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign Up</NavLink>
+                  <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Sign In</NavLink>
                 </div>
 
                 <div className="FormTitle">
-                    <NavLink to="/sign-in" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink>
+                    <NavLink to="/signup" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign Up</NavLink> or <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Sign In</NavLink>
                 </div>
 
-                <Route exact path="/" component={SignUpForm}>
+                <Route exact path="/" component={SignInForm}>
                 </Route>
-                <Route path="/sign-in" component={SignInForm}>
+                <Route path="/signup" component={SignUpForm}>
                 </Route>
             </div>
 

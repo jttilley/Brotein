@@ -1,5 +1,5 @@
 
-// requiring our dependencies 
+// requiring dependencies 
 const mongoose = require('mongoose'); 
 const db = require('../../models'); 
 const passport = require('../../config/passport');
@@ -220,37 +220,41 @@ app.delete('/clearall/meals', (req, res) => {
 
 // Using passport.authenticate middleware with  local strategy, if user has valid login credentials, send them to the members page otherwise the user will be sent an error
   
+// If the user already has an account send them to the home page
+
 app.get("/", (req, res) => {
-  // If the user already has an account send them to the home page
+  console.log("test")
+
   if (req.username) {
-    res.redirect('/Home');
+    res.redirect('/home');
+    } else {
+      console.log("test")
+  res.redirect('https://google.com');
   }
-  res.sendFile(path.join(__dirname, "../../client/src/pages/sign-in"));
 }); 
+
+// route to sign in user 
+app.post('/sign-in', passport.authenticate('local'), (req, res) => {
+  res.json({
+    username: req.user.username,
+    id: req.user.id
+  });
 
 
 // route to sign up a user 
-  app.post('/api/sign-up', (req, res) => {
+  app.post('/sign-up', (req, res) => {
     db.User.create({
-      firstname: req.body.firstname, 
-      lastname: req.body.lastname, 
-      email: req.body.email,
+      fullname: req.body.fullname, 
       username: req.body.username,
       password: req.body.password 
     })
       .then(() => {
-        res.redirect(307, '/api/login');
+        res.redirect(307, '/sign-in');
       })
       .catch(err => {
         res.status(401).json(err);
       });
 });
-
-  app.post('/api/login', passport.authenticate('local'), (req, res) => {
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
 
 
  
@@ -275,6 +279,14 @@ app.get("/", (req, res) => {
       });
     }
   });
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
 })}; 
 
 
+// // add this in 
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });

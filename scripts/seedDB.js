@@ -48,9 +48,7 @@ db.Meals.deleteMany({})
   });
 
 const user1 = [{
-  firstname: 'test', 
-  lastname: 'test', 
-  email: 'test@test.com', 
+  fullname: 'test', 
   username: 'test', 
   password: 'test', 
   admin: 0,

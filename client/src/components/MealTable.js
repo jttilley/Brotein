@@ -7,6 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import "../css/exerciseTable.css"
+import Box from '@material-ui/core/Box';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -26,16 +31,16 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
+function createData(name, fat, carbs, protein, calories) {
+  return { name, fat, carbs, protein, calories };
 }
 
 const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
+  createData('Frozen yoghurt', 6.0, 24, 4.0, 159),
+  createData('Ice cream sandwich', 9.0, 37, 4.3, 237),
+  createData('Eclair', 16.0, 24, 6.0, 262),
+  createData('Cupcake', 3.7, 67, 4.3, 305),
+  createData('Gingerbread', 16.0, 49, 3.9, 356),
 ];
 
 const useStyles = makeStyles({
@@ -44,19 +49,23 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MealTable() {
+function MealTable() {
   const classes = useStyles();
 
   return (
+    <Grid item xs={7}>
+    <Box boxShadow={0}>
+    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)' }}>
+     <CardContent>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Food For the Day</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="left">Fat&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="left">Carbs&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="left">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="left">Calories</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -65,14 +74,20 @@ export default function MealTable() {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="right">{row.protein}</StyledTableCell>
+              <StyledTableCell align="left">{row.fat}</StyledTableCell>
+              <StyledTableCell align="left">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="left">{row.protein}</StyledTableCell>
+              <StyledTableCell align="left">{row.calories}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </CardContent>
+    </Card>
+    </Box>
+    </Grid> 
   );
 }
+
+export default MealTable;
