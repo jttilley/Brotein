@@ -1,14 +1,14 @@
 import React from 'react';
 import '../App.css';
-import Cards from '../components/cards';
-import HeroSection from '../components/heroSection';
+import Cards from '../components/Cards';
+import HomeSection from '../components/homeBanner';
 import Navbar from '../components/navbar';
 
 function HomePage() {
   return (
     <>
       <Navbar />
-      <HeroSection />
+      <HomeSection />
       <Cards />
     </>
   );

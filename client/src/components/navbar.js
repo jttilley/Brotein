@@ -80,6 +80,18 @@ function Navbar() {
                                 New Workout
               </Link>
                         </li>
+
+
+                        <li className='nav-item'>
+                            <Link
+                                to='/signin'
+                                className='nav-links'
+                                onClick={closeMobileMenu}
+                            >
+                                Logout
+                                </Link>
+                        </li>
+
                     </ul>
                     {/* {button && <Button buttonStyle='btn--outline'>SIGN OUT</Button>} */}
                 </div>

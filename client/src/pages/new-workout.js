@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import API from '../utils/API';
 import exercises from '../utils/exercises';
 import Navbar from '../components/navbar';
-import WorkoutBanner from '../components/workoutBanner';
+import WorkoutBanner from '../components/WorkoutBanner';
 
 
 
 function NewWorkOutPage() {
-    let [search, setSearch] = useState ("");
+    let [search, setSearch] = useState("");
 
     const handleChange = () => {
 
