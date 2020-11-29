@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/cards.css';
+import '../css/Cards.css';
 import CardItem from './cardItem';
 import health from '../images/health.jpg';
 import history from '../images/history.jpg';
@@ -39,12 +39,7 @@ function Cards() {
                             label='New Workout'
                             path='./new-workout'
                         />
-                        {/* <CardItem
-                            src='images/images-8.jpg'
-                            text='Ride through the Sahara Desert on a guided camel tour'
-                            label='Adrenaline'
-                            path='/sign-up' 
-                         />  */}
+
                     </ul>
                 </div>
             </div>
