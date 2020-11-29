@@ -1,4 +1,3 @@
-//import React from 'react';
 import React, { useState, useEffect } from 'react';
 //import { Button } from './Button';
 import { Link } from 'react-router-dom';
@@ -41,7 +40,7 @@ function Navbar() {
                             <Link to='/Home' className='nav-links' onClick={closeMobileMenu}>
                                 Home
 
-                                </Link>
+                            </Link>
                         </li>
                         <li className='nav-item'>
                             <Link
@@ -50,7 +49,7 @@ function Navbar() {
                                 onClick={closeMobileMenu}
                             >
                                 Health
-              </Link>
+                            </Link>
                         </li>
                         <li className='nav-item'>
                             <Link
@@ -59,7 +58,7 @@ function Navbar() {
                                 onClick={closeMobileMenu}
                             >
                                 History
-              </Link>
+                            </Link>
                         </li>
                         <li className='nav-item'>
                             <Link
@@ -68,7 +67,7 @@ function Navbar() {
                                 onClick={closeMobileMenu}
                             >
                                 New Meal
-              </Link>
+                            </Link>
                         </li>
 
                         <li className='nav-item'>
@@ -78,7 +77,7 @@ function Navbar() {
                                 onClick={closeMobileMenu}
                             >
                                 New Workout
-              </Link>
+                            </Link>
                         </li>
 
 

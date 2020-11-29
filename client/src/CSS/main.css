@@ -20,7 +20,7 @@ image {
     background-position: center;
   }
   
-  .history-container, .health-container,.NewMeal-container, .Workout-container {
+  .history-container, .health-container, .NewMeal-container, .Workout-container {
     height: 40vh;
     width: 100%;
     display: flex;
