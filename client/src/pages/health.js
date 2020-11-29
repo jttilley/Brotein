@@ -4,24 +4,25 @@ import Navbar from '../components/navbar';
 import HealthBanner from '../components/HealthBanner';
 import Youtube from '../components/youtube';
 import Food from '../components/food';
-import SplitPane from 'react-split-pane';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import SplitPane from 'react-split-pane';
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const styles = {
-    background: '#000',
-    width: '2px',
-    cursor: 'col-resize',
-    margin: '0 5px',
-    height: '100%',
-};
+// const styles = {
+//     background: '#000',
+//     width: '2px',
+//     cursor: 'col-resize',
+//     margin: '0 5px',
+//     height: '100%',
+// };
 
 function HealthPage() {
     return (
         <div>
             <Navbar />
             <HealthBanner />
-
-            <Router>
+            <Youtube />
+            <Food />
+            {/* <Router>
                 <SplitPane
                     split="vertical"
                     minSize={100}
@@ -37,7 +38,7 @@ function HealthPage() {
                         <Route path="/food" component={Food} />
                     </div>
                 </SplitPane>
-            </Router>
+            </Router> */}
         </div>
     );
 };
