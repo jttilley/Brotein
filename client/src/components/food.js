@@ -3,6 +3,7 @@ import Axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Recipe from "./recipe";
 import Alert from "./alert";
+import '../css/main.css';
 
 function Food() {
   const [query, setQuery] = useState("");
