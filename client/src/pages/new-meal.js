@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 import Navbar from '../components/navbar';
-import NewMealBanner from '../components/NewMealBanner';
+import NewMealBanner from '../components/newMealBanner';
 
 
 
