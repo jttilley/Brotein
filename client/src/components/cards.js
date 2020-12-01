@@ -3,7 +3,7 @@ import '../css/cards.css';
 import CardItem from './cardItem';
 import health from '../images/health.jpg';
 import history from '../images/history.jpg';
-import newMeal from '../images/NewMeal.jpg';
+import newMeal from '../images/newMeal.jpg';
 import newWorkout from '../images/newWorkout.jpg';
 
 function Cards() {

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../App.css';
 import Navbar from '../components/navbar';
-import HistoryBanner from '../components/HistoryBanner';
-import ExcerciseTable from '../components/ExerciseTable';
-import MealTable from '../components/MealTable';
+import HistoryBanner from '../components/historyBanner';
+import ExcerciseTable from '../components/exerciseTable';
+import MealTable from '../components/mealTable';
 
 function HistoryPage() {
     return (
