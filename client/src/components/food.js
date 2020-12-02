@@ -11,7 +11,11 @@ function Food() {
   const [alert, setAlert] = useState("");
 
   const APP_ID = "48885148";
+<<<<<<< HEAD
   const APP_KEY = "5d6732968fc7606b5e264b996eaecb2c";
+=======
+  const APP_KEY = "5d6732968fc7606b5e264b996eaecb2c" //process.env.FOODAPI_KEY;
+>>>>>>> 12fd8cb1ce3f1b8c30c25edba1c8700dc46b3af0
 
   const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
