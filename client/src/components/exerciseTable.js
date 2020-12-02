@@ -56,19 +56,19 @@ function ExcerciseTable() {
   const classes = useStyles();
 
   return (
-    <Grid item xs={6}>
+    <Grid item xs={7}>
     <Box boxShadow={0}>
-    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)' }}>
+    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'20px'}}>
      <CardContent>
      <TableContainer component={Paper}> 
       <Table className={classes.table} aria-label="excercise table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Workout</StyledTableCell>
-            <StyledTableCell align="left">Sets&nbsp;</StyledTableCell>
-            <StyledTableCell align="left">Reps&nbsp;</StyledTableCell>
-            <StyledTableCell align="left">Weight&nbsp;(lbs)</StyledTableCell>
-            <StyledTableCell align="left">Times&nbsp;(minutes)</StyledTableCell>
+            <StyledTableCell align="center">Sets&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Reps&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Weight&nbsp;(lbs)</StyledTableCell>
+            <StyledTableCell align="center">Times&nbsp;(minutes)</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -77,10 +77,10 @@ function ExcerciseTable() {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="left">{row.sets}</StyledTableCell>
-              <StyledTableCell align="left">{row.reps}</StyledTableCell>
-              <StyledTableCell align="left">{row.weight}</StyledTableCell>
-              <StyledTableCell align="left">{row.time}</StyledTableCell>
+              <StyledTableCell align="center">{row.sets}</StyledTableCell>
+              <StyledTableCell align="center">{row.reps}</StyledTableCell>
+              <StyledTableCell align="center">{row.weight}</StyledTableCell>
+              <StyledTableCell align="center">{row.time}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
