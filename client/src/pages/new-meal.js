@@ -1,5 +1,6 @@
 import React from 'react';
 import '../App.css';
+import AddIngredient from '../components/addMeal';
 import Navbar from '../components/navbar';
 import NewMealBanner from '../components/newMealBanner';
 
@@ -11,6 +12,7 @@ function NewMealPage() {
         <div>
             <Navbar />
             <NewMealBanner />
+            <AddIngredient />
         </div>
 
     );
