@@ -32,7 +32,9 @@ class AuthForm extends Component {
       return (
         <Router>
           <div className="App">
-            <div className="App__Aside">Welcome to Brotein
+            <div className="App__Aside">
+   
+              Welcome to Brotein
             <p>Brotein is an one of the favorite workout app in the world</p>
             </div>
             <div className="App__Form">
