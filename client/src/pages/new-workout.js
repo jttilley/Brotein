@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import API from '../utils/API';
-import exercises from '../utils/exercises';
+import exercises from '../utils/exercises.json';
 import Navbar from '../components/navbar';
 import WorkoutBanner from '../components/WorkoutBanner';
 
