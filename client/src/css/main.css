@@ -7,7 +7,7 @@ image {
   }
   
   .home-container {
-    height: 70vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@ image {
   }
   
   .history-container, .health-container, .NewMeal-container, .Workout-container {
-    height: 25vh;
+    height: 40vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@ image {
     background-image: url("../images/health.jpg");
   }
   .NewMeal-container{
-    background-image: url(../images/newMeal.jpg);
+    background-image: url(../images/NewMeal.jpg);
   }
   .Workout-container{
     background-image: url(../images/newWorkout.jpg);
@@ -48,7 +48,7 @@ image {
   .home-container, .history-container, .health-container, .NewMeal-container, .Workout-container > h1 {
     color: #fff;
     font-size: 100px;
-    margin-top: -100px;
+    margin-top: 100px;
   }
   
   .home-container, .history-container,.health-container, .NewMeal-container, .Workout-container > p {
@@ -73,7 +73,7 @@ image {
       font-size: 50px;
       margin-top: -100px;
     }
-  }
+  
     .home-container, .history-container,.health-container, .NewMealBanner, .Workout-container > p {
       font-size: 30px;
     }
@@ -83,45 +83,18 @@ image {
       text-decoration: none;
     }
   
+.search-form {
 
-  .Resizer {
-  background: rgb(218, 3, 3);
-  opacity: 0.6;
-  z-index: 1;
-  background-clip: padding-box;
-   margin: 5px; 
+  border: 1px solid #c4c4c4;
+  width: 500px;
+  overflow-x: hidden;
+  display: flex;
+  border-radius: 30px;
+  font-size: 18px;
+  position: relative;
+  left:30%;
+  top:200px;
 }
-
-.Resizer:hover {
-  transition: all 2s ease;
-} 
-
-.Resizer.horizontal {
-  height: 20px;
-  cursor: row-resize;
-  width: 100%;
-  width: 4px;
-}
-
-.Resizer.vertical {
-  width: 4px;
-  cursor: col-resize;
-}
- .Resizer.vertical:hover, .Resizer.horizontal:hover {
-  border-left: 5px solid white;
-  border-right: 5px solid white;
-}  
-
-.Youtube-pane {
-  background: linear-gradient(to right, rgb(5, 5, 10), rgb(78, 75, 75));
-  margin-left: 6px;
-  color: #f4e9e9;
-  margin-right: 10px;
-}
-
-.Food-pane {
-  background:  linear-gradient(to left, rgb(5, 5, 10), rgb(78, 75, 75));
-  margin-right: 6px;
-   color:#f4e9e9; 
-   margin-left:10px;
-}
+    
+  }
+  
