@@ -10,7 +10,7 @@ function NewWorkOutPage() {
     let [search, setSearch] = useState("");
 
     const handleChange = () => {
-
+        
     }
 
     return (
