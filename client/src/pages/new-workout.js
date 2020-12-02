@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import API from '../utils/API';
-import exercises from '../utils/exercises.json';
 import Navbar from '../components/navbar';
 import WorkoutBanner from '../components/workoutBanner';
-import NewWorkout from '../components/newWorkout';
+import AddWorkout from '../components/addWorkout';
 
 
 
@@ -18,7 +16,7 @@ function NewWorkOutPage() {
         <div>
             <Navbar />
             <WorkoutBanner />
-            <NewWorkout />
+            <AddWorkout />
         </div>
     );
 };
