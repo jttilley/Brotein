@@ -1,10 +1,7 @@
-
 // requiring dependencies 
-const mongoose = require('mongoose'); 
 const db = require('../../models'); 
-const passport = require('../../config/passport');
 const mongojs = require("mongojs");
-
+const path = require('path');
 
 // const express = require('express');
 // const router = express.Router();
@@ -216,77 +213,8 @@ app.delete('/clearall/meals', (req, res) => {
   });
 });
 
-//////////////////////////////////////////////////////// USER SIGN-UP/LOG-IN ROUTES //////////////////////////////////////////////////////// 
-
-// Using passport.authenticate middleware with  local strategy, if user has valid login credentials, send them to the members page otherwise the user will be sent an error
-  
-// If the user already has an account send them to the home page
-
-app.get("/", (req, res) => {
-  console.log("test")
-
-  if (req.username) {
-    res.redirect('/home');
-    } else {
-      console.log("test")
-  res.redirect('https://google.com');
-  }
-}); 
-
-// route to sign in user 
-app.post('/sign-in', passport.authenticate('local'), (req, res) => {
-  res.json({
-    username: req.user.username,
-    id: req.user.id
-  });
-
-
-// route to sign up a user 
-  app.post('/sign-up', (req, res) => {
-    db.User.create({
-      fullname: req.body.fullname, 
-      username: req.body.username,
-      password: req.body.password 
-    })
-      .then(() => {
-        res.redirect(307, '/sign-in');
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      });
-});
-
-
- 
-
-// route for logging out the user 
-  app.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect("/");
-  });
-
-// route for getting data about our user to be used client side
-  app.get('/api/user_data', (req, res) => {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    } else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-    }
-  });
-
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
   });
-})}; 
+}
 
-
-// // add this in 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
