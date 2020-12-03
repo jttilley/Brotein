@@ -23,7 +23,7 @@ module.exports = function (app) {
   });
 
 // get all meals 
-  app.get('/api/allmeals', (req, res) => {
+  app.get('/api/meals/all', (req, res) => {
     db.Meals.find({}, (error, data) =>{
       if (error) {
         res.send(error); 
@@ -34,7 +34,7 @@ module.exports = function (app) {
   });
 
 // add a meal 
-  app.post('/api/meal/submit', (req, res) => {
+  app.post('/api/meal/add', (req, res) => {
     db.Meals.create({
         food: req.body.food, 
         protein: req.body.protein, 
@@ -51,7 +51,7 @@ module.exports = function (app) {
  });
 
 // update a meal 
-  app.put('/api/updatemeals/:id', (req, res) => {
+  app.put('/api/meal/update/:id', (req, res) => {
     db.Meals.update(
         {
             _id: mongojs.ObjectId(req.params.id)
@@ -76,7 +76,7 @@ module.exports = function (app) {
     );
   });
 // delete a meal 
-  app.delete('/delete/meals/:id', (req, res) => {
+  app.delete('/api/meal/delete/:id', (req, res) => {
     db.Meals.remove(
         {
             _id: mongojs.ObjectID(req.params.id)
@@ -91,7 +91,7 @@ module.exports = function (app) {
     );
   });
 // delete all meals 
-  app.delete('/clearall/meals', (req, res) => {
+  app.delete('/api/meals/deleteall', (req, res) => {
     db.Meals.remove({}, (error, response) => {
         if (error) {
             res.send(error);

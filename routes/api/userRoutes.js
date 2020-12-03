@@ -10,7 +10,7 @@ router.get('/test', (req, res) => {
 })
 
 // route to sign up user 
-router.post('/api/users/sign-up', async (req, res) => {
+router.post('/api/users/signup', async (req, res) => {
   try {
     // let { email, fullname, username, password} = req.body; 
     let { fullname, username, password} = req.body; 
@@ -44,7 +44,7 @@ router.post('/api/users/sign-up', async (req, res) => {
 
 
 
-// router.post('/login', passport.authenticate('local', {
+// router.post('/api/users/login', passport.authenticate('local', {
 //     failureRedirect: '/api/users/unauthorized',
 //     failureFlash: true,
 //   }),
@@ -57,7 +57,7 @@ router.post('/api/users/sign-up', async (req, res) => {
 //   },
 // );
 
-// router.post('/signup', (req, res, next) => {
+// router.post('/api/users/signup', (req, res, next) => {
 //   db.User.findOne({ username: req.body.username }, (err, user) => {
 //     if (err) throw err;
 //     if (user) {
@@ -90,22 +90,22 @@ router.post('/api/users/sign-up', async (req, res) => {
 //   });
 // });
 
-// router.get('/unauthorized', (req, res, next) => {
-//   res.json({
-//     error: req.flash('error'),
-//     message: 'user not authenticated',
-//   });
-// });
-
-// router.get('/home', authMiddleware.isLoggedIn, (req, res, next) => {
+// router.get('/api/users/home', authMiddleware.isLoggedIn, (req, res, next) => {
 //   res.json({
 //     user: req.user,
 //     loggedIn: true,
 //   });
 // });
 
-// router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
+// router.get('/api/users/logout', authMiddleware.logoutUser, (req, res, next) => {
 //   res.json('User logged out successfully');
+// });
+
+// router.get('/unauthorized', (req, res, next) => {
+//   res.json({
+//     error: req.flash('error'),
+//     message: 'user not authenticated',
+//   });
 // });
 
 // router.get('/admin', authMiddleware.isAdmin, (req, res, next) => {

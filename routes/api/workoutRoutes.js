@@ -23,7 +23,7 @@ module.exports = function (app) {
 
 
 // get all workouts 
-    app.get('/api/allworkouts', (req, res) => {
+    app.get('/api/workouts/all', (req, res) => {
         db.Workouts.find({}, (error, data) =>{
         if (error) {
             res.send(error); 
@@ -35,7 +35,7 @@ module.exports = function (app) {
 
 
 // add a workout 
-    app.post('/api/workout/submit', (req, res) => {
+    app.post('/api/workout/add', (req, res) => {
         db.Workouts.create({
             exercise: req.body.exercise, 
             sets: req.body.sets, 
@@ -52,7 +52,7 @@ module.exports = function (app) {
     });
 
 // update a workout 
-    app.put('/api/updateworkout/:id', (req, res) => {
+    app.put('/api/workout/update/:id', (req, res) => {
         db.Workouts.update(
         {
             _id: mongojs.ObjectId(req.params.id)
@@ -78,7 +78,7 @@ module.exports = function (app) {
     });
 
 // delete a workout 
-    app.delete('/delete/workout/:id', (req, res) => {
+    app.delete('/api/workout/delete/:id', (req, res) => {
         db.Workouts.remove(
          {
             _id: mongojs.ObjectID(req.params.id)
@@ -95,7 +95,7 @@ module.exports = function (app) {
 
 
 // delete all workouts 
-    app.delete('/clearall/workouts', (req, res) => {
+    app.delete('/api/workouts/deleteall', (req, res) => {
      db.Workouts.remove({}, (error, response) => {
         if (error) {
          res.send(error);
