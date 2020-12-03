@@ -10,7 +10,7 @@ router.get('/test', (req, res) => {
 })
 
 // route to sign up user 
-router.post('/sign-up', async (req, res) => {
+router.post('/api/users/sign-up', async (req, res) => {
   try {
     // let { email, fullname, username, password} = req.body; 
     let { fullname, username, password} = req.body; 

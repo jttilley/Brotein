@@ -9,7 +9,7 @@ const path = require('path');
 module.exports = function (app) {
 
 //////////////////////////////////////////////////////// API "GET" ROUTES  //////////////////////////////////////////////////////// 
- 
+
 
 
   // get a meal // API TESTED AND SUCCESSFULLY RETURNING KEY/VALUES
@@ -217,4 +217,3 @@ app.delete('/clearall/meals', (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
   });
 }
-
