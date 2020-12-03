@@ -1,7 +1,12 @@
 import React from "react";
 import exercises from "../utils/exercises.json";
+import axios from "axios";
 
 function AddWorkout() {
+  const handleClick = () => {
+    
+  }
+
   return (
     <div className="cards__item">
       <form>
@@ -13,7 +18,6 @@ function AddWorkout() {
               <option value={exercise.fields.name}></option>
             ))}
           </datalist>
-  
         </p>
         <p>
           <label for="sets"># Sets</label>
@@ -21,6 +25,10 @@ function AddWorkout() {
         </p>
         <p>
           <label for="reps"># Reps</label>
+          <input type="reps" class="form-control" id="reps" placeholder="12" />
+        </p>
+        <p>
+          <label for="reps">Weight </label>
           <input type="reps" class="form-control" id="reps" placeholder="12" />
         </p>
         <p>

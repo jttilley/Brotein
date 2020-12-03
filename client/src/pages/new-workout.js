@@ -6,10 +6,21 @@ import AddWorkout from '../components/addWorkout';
 
 
 function NewWorkOutPage() {
-    let [search, setSearch] = useState("");
+    let [workout, setWorkout] = useState({
+        exercise: '',
+        weight: '',
+        sets: '',
+        reps: '',
+        duration: ''
+    });
 
-    const handleChange = () => {
+    const handleInputChange = (event) {
+        const { name, value } = event.target;
+        setWorkout({...workout, [name]: value});
+    }
 
+    const handleAdd = (event) => {
+        event.preventDefault()
     }
 
     return (

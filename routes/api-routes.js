@@ -1,8 +1,8 @@
 
 // requiring dependencies 
 const mongoose = require('mongoose'); 
-const db = require('../../models'); 
-const passport = require('../../config/passport');
+const db = require('../models'); 
+const passport = require('../config/passport');
 const mongojs = require("mongojs");
 
 
@@ -135,7 +135,7 @@ app.put('/api/updateworkout/:id', (req, res) => {
 
 
 // API TESTED AND SUCCESSFULLY RETURNING UPDATED KEY/VALUES
-app.put('/api/updatemeals/:id', (req, res) => {
+app.put('/api/updatemeal/:id', (req, res) => {
   db.Meals.update(
     {
       _id: mongojs.ObjectId(req.params.id)
