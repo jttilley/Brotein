@@ -7,7 +7,11 @@
   }
   
   .home-container {
+<<<<<<< HEAD
     height:75vh;
+=======
+    height: 30vh;
+>>>>>>> efb5450576057db2c6a2d811889325de1a5a3b2a
     width: 100%;
     display: flex;
     flex-direction: column;
