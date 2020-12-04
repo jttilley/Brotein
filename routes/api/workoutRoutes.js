@@ -34,15 +34,12 @@ const router = require('express').Router();
         })
     }); 
 
+// add a workout --- WORKING 
 
-// add a workout 
     router.post('/add', (req, res) =>{
         db.Workouts.create({
-            exercise: req.body.exercise, 
-            sets: req.body.sets, 
-            reps: req.body.reps, 
-            weight: req.body.weight, 
-            duration: req.body.duration 
+            name: req.body.name, 
+            workout: req.body.workout
         })
         .then(addWorkout => {
             res.send(addWorkout);
@@ -80,8 +77,8 @@ const router = require('express').Router();
     });
 
 
-// delete a workout 
-    router.delete('/delete:id', (req, res) => {
+// delete a workout ---WORKING 
+    router.delete('/delete/:id', (req, res) => {
         db.Workouts.deleteOne(
             {
                 _id: mongojs.ObjectID(req.params.id)
@@ -96,7 +93,7 @@ const router = require('express').Router();
         )
     });
 
-// delete all workouts 
+// delete all workouts --- WORKING 
     router.delete('/deleteall', (req, res) => {
         db.Workouts.deleteMany({}, (error, response) => {
             if (error) {
