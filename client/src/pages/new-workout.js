@@ -48,9 +48,9 @@ function NewWorkOutPage() {
     }
 
     // const rows = [
-        // createData('Bicep Curls', 4, 10, 30, 7),
-        // createData('Hammer Curls', 4, 10, 35, 5),
-        // createData('Shoulder Press', 3, 10, 110, 6),
+    //     createData('Bicep Curls', 4, 10, 30, 7),
+    //     createData('Hammer Curls', 4, 10, 35, 5),
+    //     createData('Shoulder Press', 3, 10, 110, 6),
     // ];
 
     return (

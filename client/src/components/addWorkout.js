@@ -1,46 +1,53 @@
 import React, { useContext } from "react";
 import exercises from "../utils/exercises.json";
 import WorkoutContext from "../utils/workoutContext";
+import "../css/addWorkout.css"
 
 function AddWorkout() {
   const {handleInputChange, handleAdd} = useContext(WorkoutContext);
   return (
-    <div className="cards__item">
-      <form>
-        <p>
-          <label>Workout Name </label>
-          <input type="name" className="form-control" name="workout" id="name" placeholder="Monday" onChange={handleInputChange} />
-        </p>
-        <p>
-          <label>Exercise </label>
-          <input type="exercise" name="exercise" className="form-control" list="exercises" id="exercise" placeholder="Bench Press" onChange={handleInputChange} />
+    <div className="wrapper">
+    <div>
+      <h1>Fitness Tracker</h1>
+    </div>
+    <div className="exercise">
+      <div className="ui raised card m-auto">
+        <form action="POST">
+          <div className="workout-type">
+            <label for="type">Exercise Type:</label>
+            <input type="exercise" className="form-control" name= "exercise" list="exercises" id="exercise" placeholder="Bench Press" />
           <datalist id="exercises">
-            { exercises.map(exercise => (
-              <option value={exercise.fields.name} key={exercise.pk}></option>
+          { exercises.map(exercise => (
+              <option value={exercise.fields.name}></option>
             ))}
           </datalist>
-        </p>
-        <p>
-          <label># Sets </label>
-          <input type="sets" className="form-control"  name="sets" id="sets" placeholder="4" onChange={handleInputChange} />
-        </p>
-        <p>
-          <label># Reps </label>
-          <input type="reps" className="form-control"  name="reps" id="reps" placeholder="12" onChange={handleInputChange} />
-        </p>
-        <p>
-          <label>Weight </label>
-          <input type="weight" className="form-control"  name="weight" id="weight" placeholder="12" onChange={handleInputChange} />
-        </p>
-        <p>
-          <label># Minutes </label>
-          <input type="minutes" className="form-control"  name="duration" id="time" placeholder="15" onChange={handleInputChange} />
-        </p>
-        <p>
-        <button onClick={handleAdd} >Add</button>
-        </p>
-      </form>
+          </div>
+            <div className="weight">
+              <label for="weight">Weight (lbs):</label>
+              <input type="number" name="weight" id="weight" placeholder="200" />
+            </div>
+            <div className="sets">
+              <label for="sets">Sets:</label>
+              <input type="number" name="sets" id="sets" placeholder="4" />
+            </div>
+            <div className="reps">
+              <label for="reps">Reps:</label>
+              <input type="number" name="reps" id="reps" placeholder="10" />
+            </div>
+            <div className="resistance-duration">
+              <label for="resistance-duration">Duration (minutes):</label>
+              <input type="number" name="resistance-duration" id="resistance-duration" placeholder="10" />
+            
+          </div>
+          <div className="buttons">
+            <button  className="huge ui positive button add-another">
+              Add Exercise
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
   );
 }
 
