@@ -55,17 +55,17 @@ function MealTable() {
   return (
     <Grid item xs={7}>
     <Box boxShadow={0}>
-    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)' }}>
+    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'25px',}}>
      <CardContent>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Food For the Day</StyledTableCell>
-            <StyledTableCell align="left">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="left">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="left">Protein&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="left">Calories</StyledTableCell>
+            <StyledTableCell align="center">Fat&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="center">Calories</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -74,10 +74,10 @@ function MealTable() {
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
-              <StyledTableCell align="left">{row.fat}</StyledTableCell>
-              <StyledTableCell align="left">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="left">{row.protein}</StyledTableCell>
-              <StyledTableCell align="left">{row.calories}</StyledTableCell>
+              <StyledTableCell align="center">{row.fat}</StyledTableCell>
+              <StyledTableCell align="center">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="center">{row.protein}</StyledTableCell>
+              <StyledTableCell align="center">{row.calories}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

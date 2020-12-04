@@ -2,106 +2,107 @@
 const db = require('../../models'); 
 const mongojs = require("mongojs");
 const path = require('path');
+const { mongo } = require('mongoose');
 
 module.exports = function (app) {
 
 // get a workout 
-    app.get('/api/workout/:id', (req, res) => {
+    router.get('/api/workouts/:id', (req, res) => {
         db.Workouts.findOne(
-        {
-            _id: mongojs.ObjectId(req.params.id) 
-        }, 
-        (error, data) => {
-            if (error) {
-            res.send(error); 
-            } else {
-            res.send(data)
+            {
+                _id: mongojs.ObjectID(req.params.id)
+            }, 
+            (error, data) => {
+                if(error) {
+                    res.send(error); 
+                } else {
+                    res.send(data)
+                }
             }
-        }
-        );
+        )
     });
-
 
 // get all workouts 
-    app.get('/api/workouts/all', (req, res) => {
-        db.Workouts.find({}, (error, data) =>{
-        if (error) {
-            res.send(error); 
-        } else {
-            res.json(data); 
-        }
+    router.get('/api/workouts/all', (req, res) => {
+        db.Workouts.find({}, (error, data) => {
+            if (error) {
+                res.send(error); 
+            } else {
+                res.send(data)
+            }
         })
-    });
+    }); 
 
 
 // add a workout 
-    app.post('/api/workout/add', (req, res) => {
+    router.post('/api/workouts/add', (req, res) =>{
         db.Workouts.create({
             exercise: req.body.exercise, 
             sets: req.body.sets, 
             reps: req.body.reps, 
             weight: req.body.weight, 
-            duration: req.body.duration
+            duration: req.body.duration 
         })
         .then(addWorkout => {
             res.send(addWorkout);
         })
         .catch(err => {
-            res.send(err);
-        });
+            res.send(err); 
+        })
     });
+
 
 // update a workout 
-    app.put('/api/workout/update/:id', (req, res) => {
+    router.put('/api/workouts/update/:id', (req, res) => {
         db.Workouts.update(
-        {
-            _id: mongojs.ObjectId(req.params.id)
-        },
-        {
-        $set: {
-            exercise: req.body.exercise,
-            sets: req.body.sets,
-            reps: req.body.reps, 
-            weight: req.body.weight, 
-            duration: req.body.duration,
-            modified: Date.now()
-          }
-        },
-        (error, data) => {
-            if (error) {
-            res.send(error);
-            } else {
-            res.send(data);
+            {
+                _id: mongojs.ObjectID(req.params.id)
+            }, 
+            {
+                $set: {
+                    exercise: req.body.exercise, 
+                    sets: req.body.sets, 
+                    reps: req.body.reps, 
+                    weight: req.body.weight, 
+                    duration: req.body.duration,
+                    modified: Date.now()
+                }
+            }, 
+            (error, data) => {
+                if (error) {
+                    res.send(error); 
+                } else {
+                    res.send(data); 
+                }
             }
-        }
-        );
+        )
     });
+
 
 // delete a workout 
-    app.delete('/api/workout/delete/:id', (req, res) => {
+    router.delete('/api/workouts/delete:id', (req, res) => {
         db.Workouts.remove(
-         {
-            _id: mongojs.ObjectID(req.params.id)
-         },
-        (error, data) => {
-          if (error) {
-            res.send(error);
-          } else {
-            res.send(data);
-          }
-        }
-      );
+            {
+                _id: mongojs.ObjectID(req.params.id)
+            }, 
+            (error, data) => {
+                if (error) {
+                    res.send(error); 
+                } else {
+                    res.send(data); 
+                }
+            }
+        )
     });
 
-
 // delete all workouts 
-    app.delete('/api/workouts/deleteall', (req, res) => {
-     db.Workouts.remove({}, (error, response) => {
-        if (error) {
-         res.send(error);
-        } else {
-          res.send(response);
-        }
-      });
+    router.delete('/api/workouts/deleteall', (req, res) => {
+        db.Workouts.remove({}, (error, response) => {
+            if (error) {
+                res.send(error); 
+            } else {
+                res.send(response)
+            }
+        })
     });
 };

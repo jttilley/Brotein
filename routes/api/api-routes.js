@@ -1,11 +1,11 @@
 
-const db = require('../../models'); 
-const mongojs = require("mongojs");
-const path = require('path');
+// const db = require('../../models'); 
+// const mongojs = require("mongojs");
+// const path = require('path');
 
 
-module.exports = function (app) {
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
-}
+// module.exports = function (app) {
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//   });
+// }

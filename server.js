@@ -44,9 +44,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add routes, both API and view
-// app.use('/users', require('./routes/api/userRoutes')); 
-// require('./routes/api/api-routes')(app); 
-app.use(routes); 
+// app.use('/meals', require('./routes/api/mealRoutes')); 
+require('./routes/api/mealRoutes')(app); 
+// app.use(routes); 
 
 
 // Connect to the Mongo DB

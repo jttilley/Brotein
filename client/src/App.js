@@ -7,9 +7,6 @@ import HealthPage from './pages/health';
 import NewMealPage from './pages/new-meal';
 import NewWorkOutPage from './pages/new-workout';
 import HistoryPage from './pages/history';
-import SignInForm from './pages/signin';
-import UserContext from './utils/UserContext';
-// import NoMatch from './components/NoMatch';
 
 
   const App = () => {

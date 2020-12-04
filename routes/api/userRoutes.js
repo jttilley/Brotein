@@ -4,43 +4,43 @@ const db = require('../../models');
 const authMiddleware = require('../../config/middleware/authMiddleware');
 // const bcrypt = require('bcryptjs');
 
-// testing 
-router.get('/test', (req, res) => {
-  res.send('Hello, this test is working!')
-})
+// // testing 
+// router.get('/api/users/test', (req, res) => {
+//   res.send('Hello, this test is working!')
+// })
 
-// route to sign up user 
-router.post('/api/users/signup', async (req, res) => {
-  try {
-    // let { email, fullname, username, password} = req.body; 
-    let { fullname, username, password} = req.body; 
+// // route to sign up user 
+// router.post('/api/users/signup', async (req, res) => {
+//   try {
+//     // let { email, fullname, username, password} = req.body; 
+//     let { fullname, username, password} = req.body; 
 
 
-  // validation 
-  if (!fullname || !username || !password) 
-    return res.status(400).json({msg: "All fields need to be completed."}); 
+//   // validation 
+//   if (!fullname || !username || !password) 
+//     return res.status(400).json({msg: "All fields need to be completed."}); 
 
-  const existingUser = await db.User.findOne({username: username});
-    if (existingUser)
-      return res 
-        .status(400)
-        .json({msg: "An account with this username already exists."});
+//   const existingUser = await db.User.findOne({username: username});
+//     if (existingUser)
+//       return res 
+//         .status(400)
+//         .json({msg: "An account with this username already exists."});
 
-    // const salt = await bcrypt.genSalt(); 
-    // const passwordHash = await bcrypt.hash(password, salt); 
+//     // const salt = await bcrypt.genSalt(); 
+//     // const passwordHash = await bcrypt.hash(password, salt); 
 
-    const newUser = new db.User({
-      fullname, 
-      username,
-      password
-      // password: passwordHash, 
-    });
-    const savedUser = await newUser.save(); 
-    res.json(savedUser); 
-  } catch (err) {
-    res.status(500).json({ error: err.message}); 
-  }   
-});
+//     const newUser = new db.User({
+//       fullname, 
+//       username,
+//       password
+//       // password: passwordHash, 
+//     });
+//     const savedUser = await newUser.save(); 
+//     res.json(savedUser); 
+//   } catch (err) {
+//     res.status(500).json({ error: err.message}); 
+//   }   
+// });
 
 
 
@@ -57,45 +57,45 @@ router.post('/api/users/signup', async (req, res) => {
 //   },
 // );
 
-// router.post('/api/users/signup', (req, res, next) => {
-//   db.User.findOne({ username: req.body.username }, (err, user) => {
-//     if (err) throw err;
-//     if (user) {
-//       console.log('user already exists');
-//       return res.json('user already exists');
-//     }
-//     if (!user) {
-//       db.User.findOne({ user: req.body.username }, (error, userName) => {
-//         if (error) throw error;
-//         if (userName) {
-//           return res.json('username is already in use');
-//         }
-//         if (!userName) {
-//           const newUser = new db.User({
-//             fullname: req.body.fullname,
-//             username: req.body.username,
-//             password: req.body.password,
-//           });
-//           newUser.password = newUser.generateHash(req.body.password);
-//           newUser.save((error2) => {
-//             if (error2) throw error2;
-//             console.log('user saved!');
-//             res.redirect(307, '/api/users/login');
-//           });
-//         }
-//       });
-//     }
-//   }).catch((error) => {
-//     console.log('Issue searching db for user ', error);
-//   });
-// });
+router.post('/api/users/signup', (req, res, next) => {
+  db.User.findOne({ username: req.body.username }, (err, user) => {
+    if (err) throw err;
+    if (user) {
+      console.log('user already exists');
+      return res.json('user already exists');
+    }
+    if (!user) {
+      db.User.findOne({ username: req.body.username }, (error, username) => {
+        if (error) throw error;
+        if (username) {
+          return res.json('username is already in use');
+        }
+        if (!username) {
+          const newUser = new db.User({
+            fullname: req.body.fullname,
+            username: req.body.username,
+            password: req.body.password,
+          });
+          newUser.password = newUser.generateHash(req.body.password);
+          newUser.save((error2) => {
+            if (error2) throw error2;
+            console.log('user saved!');
+            res.redirect(307, '/api/users/signin');
+          });
+        }
+      });
+    }
+  }).catch((error) => {
+    console.log('Issue searching db for user ', error);
+  });
+});
 
-// router.get('/api/users/home', authMiddleware.isLoggedIn, (req, res, next) => {
-//   res.json({
-//     user: req.user,
-//     loggedIn: true,
-//   });
-// });
+router.get('/api/users/home', authMiddleware.isLoggedIn, (req, res, next) => {
+  res.json({
+    user: req.user, // do we need username here? 
+    loggedIn: true,
+  });
+});
 
 // router.get('/api/users/logout', authMiddleware.logoutUser, (req, res, next) => {
 //   res.json('User logged out successfully');

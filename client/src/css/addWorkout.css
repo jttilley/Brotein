@@ -1,0 +1,99 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav {
+  background-color: #5793fd;
+  color: #ffffff;
+  height: 80px;
+  padding: 10px;
+  line-height: 3;
+  font-size: 1.2rem;
+}
+
+h1 {
+  transform: skewX(-2deg);
+}
+
+input {
+  display: block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
+.wrapper {
+  background-color: #f2f8ff;
+  padding-top: 10px;
+}
+
+.card.m-auto,
+.m-auto {
+  margin: 0 auto;
+  width: 500px;
+}
+
+form .workout-type,
+form .cardio-form div,
+form .resistance-form div {
+  display: flex;
+  margin-top: 20px;
+}
+.exercise .ui.card {
+  width: 400px;
+  max-width: 600px;
+}
+
+.exercise .buttons {
+  margin-top: 20px;
+  display: flex;
+}
+form label {
+  width: 150px;
+  margin-top: 0.6rem;
+}
+.btn,
+button {
+  display: block;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+  padding: 10px;
+  background: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+.buttons .ui.button {
+  margin: 0;
+  width: 50%;
+  background: #4aaaa5;
+  color: white;
+}
+
+.buttons .ui.button:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.workout-type,
+.cardio-form,
+.resistance-form {
+  padding: 10px;
+}
+

@@ -11,38 +11,38 @@ export default {
     }, 
     ////////////////////// Meal routes ////////////////////// 
     getMeal: function(id) {
-      return axios.get("/api/meal/" + id);
+      return axios.get("/api/meals/" + id);
     },
     getAllMeals: function() {
       return axios.get("/api/meals/all");
     },
     postMeal: function() {
-      return axios.post("/api/meal/add");
+      return axios.post("/api/meals/add");
     },
     updateMeal: function(id) {
-      return axios.put("/api/meal/update/" + id);
+      return axios.put("/api/meals/update/" + id);
     },
     deleteMeal: function(id) {
-      return axios.delete("/api/meal/delete/" + id);
+      return axios.delete("/api/meals/delete/" + id);
     },
     deleteAllMeals: function() {
       return axios.delete("/api/meals/deleteall");
     },
     ////////////////////// Workout routes ////////////////////// 
     getWorkout: function(id) {
-      return axios.get("/api/workout/" + id);
+      return axios.get("/api/workouts/" + id);
     },
     getAllWorkouts: function() {
       return axios.get("/api/workouts/all");
     },
     postWorkout: function() {
-      return axios.post("/api/workout/add");
+      return axios.post("/api/workouts/add");
     },
     updateWorkout: function(id) {
-      return axios.put("/api/workout/update/" + id);
+      return axios.put("/api/workouts/update/" + id);
     },
     deleteWorkout: function(id) {
-      return axios.delete("/api/workout/delete/" + id);
+      return axios.delete("/api/workouts/delete/" + id);
     },
     deleteAllWorkouts: function() {
       return axios.delete("/api/workouts/deleteall");
