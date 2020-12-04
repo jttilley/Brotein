@@ -60,8 +60,8 @@ function ExcerciseTable({ rows }) {
     <Grid item xs={7}>
     <Box boxShadow={0}>
     <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'20px'}}>
-     <CardContent>
-     <TableContainer component={Paper}> 
+    <CardContent>
+    <TableContainer component={Paper}> 
       <Table className={classes.table} aria-label="excercise table">
         <TableHead>
           <TableRow>

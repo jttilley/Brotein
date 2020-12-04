@@ -7,7 +7,7 @@ import API from '../utils/API';
 import ExcerciseTable from '../components/exerciseTable';
 
 
-function NewWorkOutPage() {
+const NewWorkOutPage = () => {
     let [workout, setWorkout] = useState({
         exercise: '',
         weight: '',
@@ -15,8 +15,10 @@ function NewWorkOutPage() {
         reps: '',
         duration: ''
     });
+    
+    let [rows, setRows] = useState([]);
 
-    const rows = [];
+    const workoutRows = [];
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -28,19 +30,17 @@ function NewWorkOutPage() {
 
     const handleAdd = (event) => {
         event.preventDefault()
-        const newWorkout = {
-            exercise: workout.exercise,
-            sets: workout.sets,
-            reps: workout.reps,
-            weight: workout.weight,
-            duration: workout.duration
-        }
-        API.postWorkout(newWorkout).then(() => {
-            //add exercise to workout card
-            rows.push(createData(newWorkout));
-        }).catch((error) => {
-            console.log(error);
-        });
+        const newWorkout = createData(workout)
+
+        console.log('newWorkout: ', newWorkout);
+        workoutRows.push(newWorkout);
+        setRows(workoutRows);
+        // API.postWorkout(newWorkout).then(() => {
+        //     //add exercise to workout card
+        //     rows.push(createData(newWorkout));
+        // }).catch((error) => {
+        //     console.log(error);
+        // });
     }
 
     function createData( {name, sets, reps, weight, duration} ) {
@@ -55,13 +55,9 @@ function NewWorkOutPage() {
 
     return (
         <WorkoutContext.Provider value={{
-            exercise: '',
-            weight: '',
-            sets: '',
-            reps: '',
-            duration: '',
-            handleInputChange: () => {},
-            handleAdd: () => {}
+            workout,
+            handleInputChange,
+            handleAdd
         }}>
             <Navbar />
             <WorkoutBanner />
