@@ -6,22 +6,22 @@ const { mongo } = require('mongoose');
 const router = require('express').Router(); 
 
 
-
-// get a workout 
+// get a workout ---WORKING 
     router.get('/:id', (req, res) => {
         db.Workouts.findOne(
             {
                 _id: mongojs.ObjectID(req.params.id)
             }, 
             (error, data) => {
-                if(error) {
+                if (error) {
                     res.send(error); 
                 } else {
-                    res.send(data)
+                    res.send(data); 
                 }
             }
         )
     });
+
 
 // get all workouts 
     router.get('/all', (req, res) => {

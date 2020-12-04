@@ -22,17 +22,19 @@ const router = require('express').Router();
   }); 
 
 
-// get all meals ----NOT WORKING 
-  router.get('/all', (req, res, error) => {
-    db.Meals.findAll({}, (error, data) => {
-      console.log("data", data); 
-      if (error) {
-        res.send(error);
-      } else {
-        res.send(data); 
-      }
-    })
-  }); 
+// get all meals ----NOT WORKING --- add a promise 
+ 
+  
+  // router.get('/all', (req, res) => {
+  //   db.Meals.findAll({}, (error, data) => {
+  //     console.log("data", data); 
+  //     if (error) {
+  //       res.send(error);
+  //     } else {
+  //       res.send(data); 
+  //     }
+  //   })
+  // }); 
   
 // add a meal --- WORKING 
   router.post('/add', (req, res) => {
