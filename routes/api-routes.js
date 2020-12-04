@@ -1,8 +1,9 @@
 
+<<<<<<< HEAD:routes/api-routes.js
 // requiring dependencies 
 const mongoose = require('mongoose'); 
-const db = require('../../models'); 
-const passport = require('../../config/passport');
+const db = require('../models'); 
+const passport = require('../config/passport');
 const mongojs = require("mongojs");
 
 
@@ -135,7 +136,7 @@ app.put('/api/updateworkout/:id', (req, res) => {
 
 
 // API TESTED AND SUCCESSFULLY RETURNING UPDATED KEY/VALUES
-app.put('/api/updatemeals/:id', (req, res) => {
+app.put('/api/updatemeal/:id', (req, res) => {
   db.Meals.update(
     {
       _id: mongojs.ObjectId(req.params.id)
@@ -290,3 +291,15 @@ app.post('/sign-in', passport.authenticate('local'), (req, res) => {
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
+=======
+// const db = require('../../models'); 
+// const mongojs = require("mongojs");
+// const path = require('path');
+
+
+// module.exports = function (app) {
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//   });
+// }
+>>>>>>> 129c5d18067519da641f44cd7f23f76cb93eeb74:routes/api/api-routes.js

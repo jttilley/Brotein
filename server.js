@@ -5,14 +5,15 @@ const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const logger = require('morgan');
 const mongoose = require('mongoose');
-
+const routes = require('./routes');
 
 // Set up the express app 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Requiring our models folder for syncing 
-const db = require('./models')
+const db = require('./models');
+const { route } = require('./routes/api');
 
 
 // Define middleware that handles data parsing 
@@ -43,7 +44,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add routes, both API and view
-require('./routes/api/api-routes')(app); 
+<<<<<<< HEAD
+require('./routes/api-routes')(app); 
+=======
+// app.use('/meals', require('./routes/api/mealRoutes')); 
+require('./routes/api/mealRoutes')(app); 
+// app.use(routes); 
+
+>>>>>>> 129c5d18067519da641f44cd7f23f76cb93eeb74
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Brotein', {
