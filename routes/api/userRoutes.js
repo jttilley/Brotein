@@ -9,6 +9,13 @@ const authMiddleware = require('../../config/middleware/authMiddleware');
 //   res.send('Hello, this test is working!')
 // })
 
+// module.exports = function (app) {
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//   });
+// }
+
+
 // // route to sign up user 
 // router.post('/api/users/signup', async (req, res) => {
 //   try {
