@@ -9,8 +9,8 @@ export default {
   getAllMeals: function() {
     return axios.get("/api/allmeals");
   },
-  postMeal: function() {
-    return axios.post("/api/meal/submit");
+  postMeal: function(data) {
+    return axios.post("/api/meal/submit",data);
   },
   updateMeal: function(id) {
     return axios.put("/api/updatemeal/" + id);
@@ -29,8 +29,8 @@ export default {
   getAllWorkouts: function() {
     return axios.get("/api/allworkouts");
   },
-  postWorkout: function() {
-    return axios.post("/api/workout/submit");
+  postWorkout: function(data) {
+    return axios.post("/api/workout/submit", data);
   },
   updateWorkout: function(id) {
     return axios.put("/api/updateworkout/" + id);

@@ -36,15 +36,15 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, sets, reps, weight, time) {
-  return { name, sets, reps, weight, time };
-}
+// function createData(name, sets, reps, weight, time) {
+//   return { name, sets, reps, weight, time };
+// }
 
-const rows = [
-  createData('Bicep Curls', 4, 10, 30, 7),
-  createData('Hammer Curls', 4, 10, 35, 5),
-  createData('Shoulder Press', 3, 10, 110, 6),
-];
+// const rows = [
+//   createData('Bicep Curls', 4, 10, 30, 7),
+//   createData('Hammer Curls', 4, 10, 35, 5),
+//   createData('Shoulder Press', 3, 10, 110, 6),
+// ];
 
 const useStyles = makeStyles({
   table: {
@@ -52,8 +52,9 @@ const useStyles = makeStyles({
   },
 });
 
-function ExcerciseTable() {
+function ExcerciseTable({ rows }) {
   const classes = useStyles();
+  // console.log(rows);
 
   return (
     <Grid item xs={7}>
@@ -80,7 +81,7 @@ function ExcerciseTable() {
               <StyledTableCell align="center">{row.sets}</StyledTableCell>
               <StyledTableCell align="center">{row.reps}</StyledTableCell>
               <StyledTableCell align="center">{row.weight}</StyledTableCell>
-              <StyledTableCell align="center">{row.time}</StyledTableCell>
+              <StyledTableCell align="center">{row.duration}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

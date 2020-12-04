@@ -1,42 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import exercises from "../utils/exercises.json";
-import axios from "axios";
+import WorkoutContext from "../utils/workoutContext";
 
 function AddWorkout() {
-  const handleClick = () => {
-    
-  }
-
+  const {handleInputChange, handleAdd} = useContext(WorkoutContext);
   return (
     <div className="cards__item">
       <form>
         <p>
-          <label for="exercise">exercise</label>
-          <input type="exercise" class="form-control" list="exercises" id="exercise" placeholder="Bench Press" />
+          <label>Workout Name </label>
+          <input type="name" className="form-control" name="workout" id="name" placeholder="Monday" onChange={handleInputChange} />
+        </p>
+        <p>
+          <label>Exercise </label>
+          <input type="exercise" name="exercise" className="form-control" list="exercises" id="exercise" placeholder="Bench Press" onChange={handleInputChange} />
           <datalist id="exercises">
             { exercises.map(exercise => (
-              <option value={exercise.fields.name}></option>
+              <option value={exercise.fields.name} key={exercise.pk}></option>
             ))}
           </datalist>
         </p>
         <p>
-          <label for="sets"># Sets</label>
-          <input type="sets" class="form-control" id="sets" placeholder="4" />
+          <label># Sets </label>
+          <input type="sets" className="form-control"  name="sets" id="sets" placeholder="4" onChange={handleInputChange} />
         </p>
         <p>
-          <label for="reps"># Reps</label>
-          <input type="reps" class="form-control" id="reps" placeholder="12" />
+          <label># Reps </label>
+          <input type="reps" className="form-control"  name="reps" id="reps" placeholder="12" onChange={handleInputChange} />
         </p>
         <p>
-          <label for="reps">Weight </label>
-          <input type="reps" class="form-control" id="reps" placeholder="12" />
+          <label>Weight </label>
+          <input type="weight" className="form-control"  name="weight" id="weight" placeholder="12" onChange={handleInputChange} />
         </p>
         <p>
-          <label for="time"># Minutes</label>
-          <input type="minutes" class="form-control" id="time" placeholder="15" />
+          <label># Minutes </label>
+          <input type="minutes" className="form-control"  name="duration" id="time" placeholder="15" onChange={handleInputChange} />
         </p>
         <p>
-        <button>Add</button>
+        <button onClick={handleAdd} >Add</button>
         </p>
       </form>
     </div>
