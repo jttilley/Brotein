@@ -38,7 +38,7 @@ function AddWorkout() {
             </div>
             <div className="resistance-duration">
               <label for="resistance-duration">Duration (minutes):</label>
-              <input type="number" name="resistance-duration" id="resistance-duration" placeholder="10"  onChange={handleInputChange} />
+              <input type="number" name="duration" id="resistance-duration" placeholder="10"  onChange={handleInputChange} />
             
           </div>
           <div className="buttons">

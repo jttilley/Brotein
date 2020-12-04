@@ -35,6 +35,15 @@ const NewWorkOutPage = () => {
         console.log('newWorkout: ', newWorkout);
         workoutRows.push(newWorkout);
         setRows(workoutRows);
+        const emptyIt = {
+            exercise:"",
+            reps:"",
+            sets:"",
+            weights:"",
+            duration:""
+        }
+        setWorkout(emptyIt);
+
         // API.postWorkout(newWorkout).then(() => {
         //     //add exercise to workout card
         //     rows.push(createData(newWorkout));
@@ -43,8 +52,8 @@ const NewWorkOutPage = () => {
         // });
     }
 
-    function createData( {name, sets, reps, weight, duration} ) {
-        return { name, sets, reps, weight, duration };
+    function createData( { exercise, sets, reps, weight, duration } ) {
+        return { exercise, sets, reps, weight, duration };
     }
 
     // const rows = [
