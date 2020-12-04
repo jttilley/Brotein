@@ -15,7 +15,7 @@ function AddWorkout() {
         <form action="POST">
           <div className="workout-type">
             <label for="type">Exercise Type:</label>
-            <input type="exercise" className="form-control" name= "exercise" list="exercises" id="exercise" placeholder="Bench Press" />
+            <input type="exercise" className="form-control" name="exercise" list="exercises" id="exercise" placeholder="Bench Press" />
           <datalist id="exercises">
           { exercises.map(exercise => (
               <option value={exercise.fields.name}></option>

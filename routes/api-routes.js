@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD:routes/api-routes.js
 // requiring dependencies 
 const mongoose = require('mongoose'); 
 const db = require('../models'); 
@@ -290,3 +291,15 @@ app.post('/sign-in', passport.authenticate('local'), (req, res) => {
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
+=======
+// const db = require('../../models'); 
+// const mongojs = require("mongojs");
+// const path = require('path');
+
+
+// module.exports = function (app) {
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//   });
+// }
+>>>>>>> 129c5d18067519da641f44cd7f23f76cb93eeb74:routes/api/api-routes.js

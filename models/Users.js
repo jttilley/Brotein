@@ -9,6 +9,11 @@ const usersSchema = new Schema({
     unique: false,
     required: true,
   },
+  // email: {
+  //   type: String,
+  //   unique: true,
+  //   required: true,
+  // },
   username: {
     type: String,
     unique: true,
@@ -19,12 +24,12 @@ const usersSchema = new Schema({
     unique: false,
     required: true,
   },
-  admin: {
-    type: Boolean,
-    unique: false,
-    required: true,
-    default: false,
-  },
+  // admin: {
+  //   type: Boolean,
+  //   unique: false,
+  //   required: true,
+  //   default: false,
+  // },
   createdAt: {
     type: Date,
     default: Date.now(),
