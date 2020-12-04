@@ -40,14 +40,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add routes, both API and view
-<<<<<<< HEAD
-require('./routes/api-routes')(app); 
-=======
 // app.use('/meals', require('./routes/api/mealRoutes')); 
 // require('./routes/api/mealRoutes')(app); 
 app.use(routes); 
 
->>>>>>> 129c5d18067519da641f44cd7f23f76cb93eeb74
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Brotein', {
