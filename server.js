@@ -13,8 +13,6 @@ const PORT = process.env.PORT || 3001;
 
 // Requiring our models folder for syncing 
 const db = require('./models');
-const { route } = require('./routes/api');
-
 
 // Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
@@ -36,8 +34,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(logger('dev'));
 
-
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
@@ -45,8 +41,8 @@ if (process.env.NODE_ENV === 'production') {
 
 // Add routes, both API and view
 // app.use('/meals', require('./routes/api/mealRoutes')); 
-require('./routes/api/mealRoutes')(app); 
-// app.use(routes); 
+// require('./routes/api/mealRoutes')(app); 
+app.use(routes); 
 
 
 // Connect to the Mongo DB
