@@ -7,7 +7,7 @@ import HealthPage from './pages/health';
 import NewMealPage from './pages/new-meal';
 import NewWorkOutPage from './pages/new-workout';
 import HistoryPage from './pages/history';
-
+import UserContext from './utils/UserContext'
 
   const App = () => {
     const [userData, setUserData] = useState({

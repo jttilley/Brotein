@@ -9,6 +9,7 @@ export default {
     getIngredients: function() {
       return axios.get(initUrl + "ingredient");
     }, 
+    
     ////////////////////// Meal routes ////////////////////// 
     getMeal: function(id) {
       return axios.get("/api/meals/" + id);
@@ -28,6 +29,7 @@ export default {
     deleteAllMeals: function() {
       return axios.delete("/api/meals/deleteall");
     },
+    
     ////////////////////// Workout routes ////////////////////// 
     getWorkout: function(id) {
       return axios.get("/api/workouts/" + id);
@@ -47,6 +49,7 @@ export default {
     deleteAllWorkouts: function() {
       return axios.delete("/api/workouts/deleteall");
     },
+    
     ////////////////////// User routes ////////////////////////
     login: function (loginInfo) {
       return axios.post('/api/users/login', loginInfo);
