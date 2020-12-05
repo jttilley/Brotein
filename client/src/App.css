@@ -94,7 +94,7 @@
     width: 85%;
     background-color: transparent;
     border: none;
-    color: white;
+    color:black;
     outline: none;
     border-bottom: 1px solid #445366;
     font-size: 1em;
@@ -109,7 +109,7 @@
   
   .FormField__Button {
     background-color: #52C4B9;
-    color: white;
+    color: black;
     border: none;
     outline: none;
     border-radius: 25px;
@@ -144,11 +144,14 @@
     padding-bottom: 2px;
     margin-left: 5px;
   }
-  
-.HomePage{
+
+ .FormField__Button .mr-20{
+    
+    background: #199087; }
+/* .HomePage{
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-}
+} */
