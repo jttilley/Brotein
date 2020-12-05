@@ -2,26 +2,17 @@ const router = require('express').Router();
 const passport = require('../../config/passport');
 const db = require('../../models');
 const authMiddleware = require('../../config/middleware/authMiddleware');
+
 // const bcrypt = require('bcryptjs');
 
-// // testing 
-// router.get('/api/users/test', (req, res) => {
-//   res.send('Hello, this test is working!')
-// })
-
-// module.exports = function (app) {
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./client/build/index.html"));
-//   });
-// }
 
 
-// // route to sign up user 
-// router.post('/api/users/signup', async (req, res) => {
+
+// route to sign up user 
+// router.post('/signup', async (req, res) => {
 //   try {
-//     // let { email, fullname, username, password} = req.body; 
-//     let { fullname, username, password} = req.body; 
 
+//     let { fullname, username, password} = req.body; 
 
 //   // validation 
 //   if (!fullname || !username || !password) 
@@ -51,20 +42,22 @@ const authMiddleware = require('../../config/middleware/authMiddleware');
 
 
 
-// router.post('/api/users/login', passport.authenticate('local', {
-//     failureRedirect: '/api/users/unauthorized',
-//     failureFlash: true,
-//   }),
-//   (req, res, next) => {
-//     console.log('sign in successful');
-//     res.json({
-//       username: req.username,
-//       loggedIn: true,
-//     });
-//   },
-// );
+router.post(
+  '/login',
+  passport.authenticate('local', {
+    failureRedirect: '/api/users/unauthorized',
+    failureFlash: true,
+  }),
+  (req, res, next) => {
+    console.log('sign in successful');
+    res.json({
+      user: req.user,
+      loggedIn: true,
+    });
+  },
+);
 
-router.post('/api/users/signup', (req, res, next) => {
+router.post('/signup', (req, res, next) => {
   db.User.findOne({ username: req.body.username }, (err, user) => {
     if (err) throw err;
     if (user) {
@@ -72,14 +65,16 @@ router.post('/api/users/signup', (req, res, next) => {
       return res.json('user already exists');
     }
     if (!user) {
-      db.User.findOne({ username: req.body.username }, (error, username) => {
+      db.User.findOne({ email: req.body.email }, (error, useremail) => {
         if (error) throw error;
-        if (username) {
-          return res.json('username is already in use');
+        if (useremail) {
+          return res.json('email is already in use');
         }
-        if (!username) {
+        if (!useremail) {
           const newUser = new db.User({
-            fullname: req.body.fullname,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            email: req.body.email,
             username: req.body.username,
             password: req.body.password,
           });
@@ -87,7 +82,7 @@ router.post('/api/users/signup', (req, res, next) => {
           newUser.save((error2) => {
             if (error2) throw error2;
             console.log('user saved!');
-            res.redirect(307, '/api/users/signin');
+            res.redirect(307, '/api/users/login');
           });
         }
       });
@@ -97,22 +92,22 @@ router.post('/api/users/signup', (req, res, next) => {
   });
 });
 
-router.get('/api/users/home', authMiddleware.isLoggedIn, (req, res, next) => {
+router.get('/unauthorized', (req, res, next) => {
   res.json({
-    user: req.user, // do we need username here? 
+    error: req.flash('error'),
+    message: 'user not authenticated',
+  });
+});
+
+router.get('/profile', authMiddleware.isLoggedIn, (req, res, next) => {
+  res.json({
+    user: req.user,
     loggedIn: true,
   });
 });
 
-// router.get('/api/users/logout', authMiddleware.logoutUser, (req, res, next) => {
+// router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
 //   res.json('User logged out successfully');
-// });
-
-// router.get('/unauthorized', (req, res, next) => {
-//   res.json({
-//     error: req.flash('error'),
-//     message: 'user not authenticated',
-//   });
 // });
 
 // router.get('/admin', authMiddleware.isAdmin, (req, res, next) => {
