@@ -34,8 +34,9 @@ import UserContext from './utils/UserContext'
       const data = {
         username: userData.username,
         password: userData.password,
+        // email: userData.email, // added this here 
       };
-      if (userData.username && userData.password) {
+      if (userData.username && userData.password ) {//userData.email) { // added userData.email here as well 
         API.login(data)
           .then((user) => {
             if (user.data.loggedIn) {
@@ -76,7 +77,7 @@ import UserContext from './utils/UserContext'
                   setLoggedin(true);
                   setUser(user.data.user);
                   console.log('log in successful');
-                  window.location.href = '/profile';
+                  window.location.href = '/home';
                 } else {
                   console.log('something went wrong :(');
                   console.log(user.data);
