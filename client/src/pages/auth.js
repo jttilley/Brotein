@@ -1,36 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpForm from './signup';
 import SignInForm from './signin';
+import UserContext from '../utils/UserContext'; 
+// import App from '../App'; 
 
-class AuthForm extends Component {
+const AuthForm = () => {
     
-    state = {
-      username: "",
-      password: ""
-    };
-  
-    handleChange = event => {
-      let { name, value } = event.target;
-      this.setState({ [name]: value });
-    };
-  
-    handleSubmit = event => {
-      event.preventDefault();
-      // auth
-      //   .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      //   .then(user => {
-      //     // make call to the server sending in that unique id from firebase
-      //     this.setState({
-      //       toForm: true
-      //     });
-      //   })
-        // .catch(error => console.log(error));
-    };
-
-    render() {
+    // let [state, setState] = useState ({ 
+    //   username: "",
+    //   password: ""
+    // });
+    
       return (
-        <Router>
+         <Router>
           <div className="App">
             <form className="App__Aside">
 
@@ -56,11 +39,9 @@ class AuthForm extends Component {
                 <Route path="/signup" component={SignUpForm}>
                 </Route>
             </div>
-
           </div>
         </Router>
       );
-    };
   }
 
   export default AuthForm;
