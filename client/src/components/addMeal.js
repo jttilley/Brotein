@@ -7,7 +7,7 @@ function AddIngredient() {
       <form>
         <p>
           <label for="ingredient">Ingredient: </label>
-          <input type="ingredient" class="form-control" list="ingredients" id="ingredient" placeholder="chicken breast" />
+          <input type="ingredient" class="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" />
           <datalist id="ingredients">
             { ingredients.map(ingredient => (
               <option value={ingredient.fields.name}></option>
