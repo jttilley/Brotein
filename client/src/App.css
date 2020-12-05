@@ -6,13 +6,13 @@
   
   .App__Aside {
     width: 50%;
-    background-color: #66DAC7;
+    background-color: #cad3dd;
     text-align: center;
     padding-top: 20px;
     color: #445366;
     font-size: larger;
   }
-  
+
   .App__Form {
     width: 50%;
     background-color: #2E4158;
