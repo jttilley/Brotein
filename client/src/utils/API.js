@@ -15,7 +15,7 @@ export default {
     
     ////////////////////// Meal routes ////////////////////// 
     getMeal: function(id) {
-      return axios.get("/api/meals/" + id);
+      return axios.get("/api/meals/meal/" + id);
     },
     getAllMeals: function() {
       return axios.get("/api/meals/all");
