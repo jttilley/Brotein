@@ -42,9 +42,7 @@ const authMiddleware = require('../../config/middleware/authMiddleware');
 
 
 
-router.post(
-  '/login',
-  passport.authenticate('local', {
+router.post('/login', passport.authenticate('local', {
     failureRedirect: '/api/users/unauthorized',
     failureFlash: true,
   }),
@@ -72,8 +70,7 @@ router.post('/signup', (req, res, next) => {
         }
         if (!useremail) {
           const newUser = new db.User({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
+            fullname: req.body.fullname,
             email: req.body.email,
             username: req.body.username,
             password: req.body.password,
@@ -99,16 +96,16 @@ router.get('/unauthorized', (req, res, next) => {
   });
 });
 
-router.get('/profile', authMiddleware.isLoggedIn, (req, res, next) => {
+router.get('/home', authMiddleware.isLoggedIn, (req, res, next) => {
   res.json({
     user: req.user,
     loggedIn: true,
   });
 });
 
-// router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
-//   res.json('User logged out successfully');
-// });
+router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
+  res.json('User logged out successfully');
+});
 
 // router.get('/admin', authMiddleware.isAdmin, (req, res, next) => {
 //   res.json({
