@@ -9,9 +9,9 @@ import NewWorkOutPage from './pages/new-workout';
 import HistoryPage from './pages/history';
 import UserContext from './utils/UserContext'
 
-<<<<<<< HEAD
 const App = () => {
   const [userData, setUserData] = useState({
+    email: '',
     fullname: '',
     username: '',
     password: '',
@@ -34,28 +34,9 @@ const App = () => {
     const data = {
       username: userData.username,
       password: userData.password,
-=======
-  const App = () => {
-    const [userData, setUserData] = useState({
-      email: '',
-      fullname: '',
-      username: '',
-      password: '',
-    });
-    const [loggedIn, setLoggedin] = useState(false);
-    const [user, setUser] = useState(null);
-    const [failureMessage, setFailureMessage] = useState(null);
-
-    useEffect(() => {
-      isLoggedIn();
-    }, []);
-
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setUserData({ ...userData, [name]: value });
->>>>>>> e887b3a20dad760090f78a8b7df57d69307b8fb2
+      // email: userData.email, // added this here 
     };
-    if (userData.username && userData.password) {
+    if (userData.username && userData.password) {//userData.email) { // added userData.email here as well 
       API.login(data)
         .then((user) => {
           if (user.data.loggedIn) {
@@ -79,19 +60,14 @@ const App = () => {
     event.preventDefault();
     try {
       const data = {
+        email: userData.email,
         fullname: userData.firstname,
         username: userData.username,
         password: userData.password,
-        // email: userData.email, // added this here 
       };
-<<<<<<< HEAD
 
       if (userData.username && userData.password) {
         API.signup(data)
-=======
-      if (userData.username && userData.password ) {//userData.email) { // added userData.email here as well 
-        API.login(data)
->>>>>>> e887b3a20dad760090f78a8b7df57d69307b8fb2
           .then((user) => {
             if (user.data === 'email is already in use') {
               alert('Email already in use.');
@@ -101,7 +77,7 @@ const App = () => {
                 setLoggedin(true);
                 setUser(user.data.user);
                 console.log('log in successful');
-                window.location.href = '/profile';
+                window.location.href = '/home';
               } else {
                 console.log('something went wrong :(');
                 console.log(user.data);
@@ -113,7 +89,6 @@ const App = () => {
             console.log(error);
           });
       }
-<<<<<<< HEAD
     } catch (error) {
       console.log('App -> error', error);
     }
@@ -127,42 +102,6 @@ const App = () => {
           setUser(user.data.user);
         } else {
           console.log(user.data.message);
-=======
-    };
-
-    const handleSignup = (event) => {
-      event.preventDefault();
-      try {
-        const data = {
-          email: userData.email,
-          fullname: userData.firstname,
-          username: userData.username,
-          password: userData.password,
-        };
-
-        if (userData.username && userData.password) {
-          API.signup(data)
-            .then((user) => {
-              if (user.data === 'email is already in use') {
-                alert('Email already in use.');
-              }
-              if (user.data.loggedIn) {
-                if (user.data.loggedIn) {
-                  setLoggedin(true);
-                  setUser(user.data.user);
-                  console.log('log in successful');
-                  window.location.href = '/home';
-                } else {
-                  console.log('something went wrong :(');
-                  console.log(user.data);
-                  setFailureMessage(user.data);
-                }
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
->>>>>>> e887b3a20dad760090f78a8b7df57d69307b8fb2
         }
       });
     }
@@ -204,9 +143,6 @@ const App = () => {
 };
 
 export default App;
-
-
-
 
 
 
