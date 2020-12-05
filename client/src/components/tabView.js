@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Youtube from '../components/youtube';
+import Food from '../components/food';
+
 
 
 const useStyles = makeStyles({
@@ -28,10 +31,10 @@ export default function CenteredTabs() {
         textColor="primary"
         centered
       >
-        <Tab label="Fitness" value= "1" />
-        <Tab label="Meals" value="2"/>
-        <Tab label="YouTube" value= "3"/>
-        <Tab label="Recipes" value="4"/>
+        <Tab label="Fitness" value="1" />
+        <Tab label="Meals" value="2" />
+        <Tab label="YouTube" value="3" />
+        <Tab label="Recipes" value="4" />
 
       </Tabs>
     </Paper>
