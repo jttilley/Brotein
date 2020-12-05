@@ -21,7 +21,7 @@ router.post('/login', passport.authenticate('local', {
 );
 
 
-// user sign up route ---- WORKING 
+// user sign up route ---- WORKING, BUT NOT GETTING CORRECT RESPONSE WHEN ERROR ENTERED 
 router.post('/signup', (req, res, next) => {
   db.User.findOne({ username: req.body.username }, (err, user) => {
     if (err) throw err;

@@ -60,14 +60,30 @@ db.Workouts.deleteMany({})
     process.exit(1);
   });
 
-const meal1 = [{
+const meal1 = [
+  {
     food: 'fish', 
     protein: 20,
+    carbohydrates: 5,
+    fats: 2,
+    calories: 100, 
+    // body: 'Meal1'
+  }, 
+  {
+    food: 'steak', 
+    protein: 30,
+    carbohydrates: 10,
+    fats: 10,
+    calories: 200
+  }, 
+  {
+    food: 'chicken', 
+    protein: 10,
     carbohydrates: 10,
     fats: 2,
-    calories: 15, 
-    // body: 'Meal1'
-}]
+    calories: 150
+  }
+]
 console.log(meal1); 
 
 db.Meals.deleteMany({})
@@ -81,13 +97,29 @@ db.Meals.deleteMany({})
     process.exit(1);
   });
 
-const user1 = [{
+const user1 = [
+  {
   email: "test@test.com",
   fullname: 'test', 
   username: 'test', 
   password: 'test', 
   admin: 0,
-}]
+  }, 
+  {
+  email: "test@test2.com",
+  fullname: 'test2name', 
+  username: 'test2username', 
+  password: 'test2password', 
+  admin: 0
+  }, 
+  {
+  email: "test@test3.com",
+  fullname: 'test3name', 
+  username: 'test3username', 
+  password: 'test3password', 
+  admin: 0
+  }
+]
 console.log(user1); 
 
 db.User.deleteMany({})
