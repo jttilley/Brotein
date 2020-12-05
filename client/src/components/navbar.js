@@ -16,23 +16,22 @@ function classToggle() {
 function Navbar() {
 
     return (
-        <>
-            <nav className='navbar'>
-                <div className='navbar-container'>
-                    {/* //<Link to='' className='navbar-logo' onClick={closeMobileMenu}>
+        <nav className='navbar'>
+            <div className='navbar-container'>
+                {/* //<Link to='' className='navbar-logo' onClick={closeMobileMenu}>
 
                         <i className='fab fa-typo3' />
                     </Link> */}
-                    {/* // <div className='menu-icon' onClick={handleClick}>
+                {/* // <div className='menu-icon' onClick={handleClick}>
                         <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
                     </div> */}
-                    {/* <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                {/* <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                         <li className='nav-item'> */}
-                    {/* <Link to='/Home' className='nav-links' onClick={closeMobileMenu}>
+                {/* <Link to='/Home' className='nav-links' onClick={closeMobileMenu}>
                                 Home
 
                             </Link> */}
-                        </li>
+                {/* </li> */}
                 <li className='nav-item'>
                     <Link
                         to='/health'
@@ -76,17 +75,17 @@ function Navbar() {
                     <Link
                         to='/signin'
                         className='nav-links'
-                    //onClick={closeMobileMenu}
+
                     >
                         Logout
                                 </Link>
                 </li>
 
-                    </ul>
-            {/* {button && <Button buttonStyle='btn--outline'>SIGN OUT</Button>} */}
-        </div>
-            </nav >
-        </>
+            </div>
+        </nav>
+
+
+
     );
 }
 
