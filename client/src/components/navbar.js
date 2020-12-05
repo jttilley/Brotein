@@ -18,25 +18,20 @@ function Navbar() {
     return (
         <nav className='navbar'>
             <div className='navbar-container'>
-                {/* //<Link to='' className='navbar-logo' onClick={closeMobileMenu}>
+                <li className='nav-item'>
+                    <Link
+                        to='/home'
+                        className='nav-links'
 
-                        <i className='fab fa-typo3' />
-                    </Link> */}
-                {/* // <div className='menu-icon' onClick={handleClick}>
-                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-                    </div> */}
-                {/* <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className='nav-item'> */}
-                {/* <Link to='/Home' className='nav-links' onClick={closeMobileMenu}>
-                                Home
-
-                            </Link> */}
-                {/* </li> */}
+                    >
+                        Home
+                            </Link>
+                </li>
                 <li className='nav-item'>
                     <Link
                         to='/health'
                         className='nav-links'
-                    // onClick={closeMobileMenu}
+
                     >
                         Health
                             </Link>
@@ -45,7 +40,7 @@ function Navbar() {
                     <Link
                         to='/history'
                         className='nav-links'
-                    // onClick={closeMobileMenu}
+
                     >
                         History
                             </Link>
@@ -54,7 +49,7 @@ function Navbar() {
                     <Link
                         to='/new-meal'
                         className='nav-links'
-                    // onClick={closeMobileMenu}
+
                     >
                         New Meal
                             </Link>
@@ -64,7 +59,7 @@ function Navbar() {
                     <Link
                         to='/new-workout'
                         className='nav-links'
-                    // onClick={closeMobileMenu}
+
                     >
                         New Workout
                             </Link>
@@ -82,7 +77,7 @@ function Navbar() {
                 </li>
 
             </div>
-        </nav>
+        </nav >
 
 
 

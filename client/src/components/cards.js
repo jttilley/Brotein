@@ -9,7 +9,15 @@ import newWorkout from '../images/newWorkout.jpg';
 function Cards() {
     return (
         <div className='cards'>
-            <h1>Lets Get Started!</h1>
+            <h1>
+                <span> B </span>
+                <span> R </span>
+                <span> O </span>
+                <span> T </span>
+                <span> E </span>
+                <span> I </span>
+                <span> N </span>
+            </h1>
             <div className='cards__container'>
                 <div className='cards__wrapper'>
                     <ul className='cards__items'>

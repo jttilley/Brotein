@@ -6,7 +6,6 @@ import WorkoutContext from '../utils/workoutContext';
 import API from '../utils/API';
 import ExcerciseTable from '../components/exerciseTable';
 
-
 const NewWorkOutPage = () => {
     let [workout, setWorkout] = useState({
         exercise: '',
@@ -15,7 +14,7 @@ const NewWorkOutPage = () => {
         reps: '',
         duration: ''
     });
-    
+
     let [rows, setRows] = useState([]);
 
     const workoutRows = [];
@@ -24,7 +23,7 @@ const NewWorkOutPage = () => {
         const { name, value } = event.target;
         console.log('value: ', value);
         console.log('name: ', name);
-        setWorkout({...workout, [name]: value});
+        setWorkout({ ...workout, [name]: value });
         console.log('workout: ', workout);
     }
 
@@ -36,11 +35,11 @@ const NewWorkOutPage = () => {
         workoutRows.push(newWorkout);
         setRows(workoutRows);
         const emptyIt = {
-            exercise:"",
-            reps:"",
-            sets:"",
-            weights:"",
-            duration:""
+            exercise: "",
+            reps: "",
+            sets: "",
+            weights: "",
+            duration: ""
         }
         setWorkout(emptyIt);
 
@@ -52,7 +51,7 @@ const NewWorkOutPage = () => {
         // });
     }
 
-    function createData( { exercise, sets, reps, weight, duration } ) {
+    function createData({ exercise, sets, reps, weight, duration }) {
         return { exercise, sets, reps, weight, duration };
     }
 
@@ -71,7 +70,7 @@ const NewWorkOutPage = () => {
             <Navbar />
             <WorkoutBanner />
             <AddWorkout />
-            <ExcerciseTable rows={rows}/>
+            <ExcerciseTable rows={rows} />
         </WorkoutContext.Provider>
     );
 };
