@@ -61,7 +61,7 @@ function MealTable() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Food For the Day</StyledTableCell>
+            <StyledTableCell>Ingredients</StyledTableCell>
             <StyledTableCell align="center">Fat&nbsp;(g)</StyledTableCell>
             <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
             <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
