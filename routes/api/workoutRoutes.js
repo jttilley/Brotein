@@ -3,6 +3,7 @@ const db = require('../../models');
 const mongojs = require("mongojs");
 const path = require('path');
 const { mongo } = require('mongoose');
+const { read } = require('fs');
 const router = require('express').Router(); 
 
 
@@ -58,12 +59,8 @@ const router = require('express').Router();
             }, 
             {
                 $set: {
-                    exercise: req.body.exercise, 
-                    sets: req.body.sets, 
-                    reps: req.body.reps, 
-                    weight: req.body.weight, 
-                    duration: req.body.duration,
-                    modified: Date.now()
+                    name: req.body.name, 
+                    workout: req.body.name, 
                 }
             }, 
             (error, data) => {
@@ -75,6 +72,33 @@ const router = require('express').Router();
             }
         )
     });
+
+    // router.put('/update/:id', (req, res) => {
+    //     db.Workouts.update(
+    //         {
+    //             _id: mongojs.ObjectID(req.params.id)
+    //         }, 
+    //         {
+    //             $set: {
+    //                 name: req.body.name, 
+    //                 workout: req.body.name, 
+    //                 exercise: req.body.exercise, 
+    //                 sets: req.body.sets, 
+    //                 reps: req.body.reps, 
+    //                 weight: req.body.weight, 
+    //                 duration: req.body.duration,
+    //                 modified: Date.now()
+    //             }
+    //         }, 
+    //         (error, data) => {
+    //             if (error) {
+    //                 res.send(error); 
+    //             } else {
+    //                 res.send(data); 
+    //             }
+    //         }
+    //     )
+    // });
 
 
 // delete a workout ---WORKING 
