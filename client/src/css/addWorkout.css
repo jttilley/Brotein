@@ -6,8 +6,6 @@
   padding: 0;
 }
 
-
-
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -47,6 +45,9 @@ input {
 .m-auto {
   margin: 0 auto;
   width: 500px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 25px;
 }
 
 form .workout-type,
@@ -97,3 +98,6 @@ button {
   padding: 10px;
 }
 
+.MuiBox-root {
+	margin-left: 560px;
+}

@@ -45,10 +45,18 @@ const SignUpForm = () => {
 //     hasAgreed: false
 //   };
 
+<<<<<<< HEAD
 //   handleChange = event => {
 //     let { name, value } = event.target;
 //     this.setState({ [name]: value });
 //   };
+=======
+          {/* <div className="FormField">
+            <label className="FormField__CheckboxLabel">
+                <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
+            </label>
+          </div> */}
+>>>>>>> 30584ad812d8287b32dd54bcd9b837bf452b6380
 
 //   handleSubmit = event => {
 //     event.preventDefault();

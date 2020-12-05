@@ -6,25 +6,28 @@ import WorkoutContext from '../utils/workoutContext';
 import API from '../utils/API';
 import ExcerciseTable from '../components/exerciseTable';
 
+const exerciseForm = document.getElementsByClassName("exercise");
+const workoutRows = [];
 
 const NewWorkOutPage = () => {
     let [workout, setWorkout] = useState({
+        name: '',
         exercise: '',
         weight: '',
         sets: '',
         reps: '',
         duration: ''
     });
-    
+
     let [rows, setRows] = useState([]);
 
-    const workoutRows = [];
+
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         console.log('value: ', value);
         console.log('name: ', name);
-        setWorkout({...workout, [name]: value});
+        setWorkout({ ...workout, [name]: value });
         console.log('workout: ', workout);
     }
 
@@ -34,15 +37,17 @@ const NewWorkOutPage = () => {
 
         console.log('newWorkout: ', newWorkout);
         workoutRows.push(newWorkout);
+        console.log('workoutRows: ', workoutRows);
         setRows(workoutRows);
-        const emptyIt = {
-            exercise:"",
-            reps:"",
-            sets:"",
-            weights:"",
-            duration:""
-        }
-        setWorkout(emptyIt);
+        setWorkout(...workout, {
+            exercise: "",
+            reps: "",
+            sets: "",
+            weights: "",
+            duration: ""
+        });
+
+
 
         // API.postWorkout(newWorkout).then(() => {
         //     //add exercise to workout card
@@ -52,8 +57,8 @@ const NewWorkOutPage = () => {
         // });
     }
 
-    function createData( { exercise, sets, reps, weight, duration } ) {
-        return { exercise, sets, reps, weight, duration };
+    function createData({ name, exercise, sets, reps, weight, duration }) {
+        return { name, exercise, sets, reps, weight, duration };
     }
 
     // const rows = [
@@ -65,13 +70,14 @@ const NewWorkOutPage = () => {
     return (
         <WorkoutContext.Provider value={{
             workout,
+            rows,
             handleInputChange,
             handleAdd
         }}>
             <Navbar />
             <WorkoutBanner />
             <AddWorkout />
-            <ExcerciseTable rows={rows}/>
+            <ExcerciseTable rows={rows} />
         </WorkoutContext.Provider>
     );
 };
