@@ -1,7 +1,21 @@
-body {
-  background:gray;
-}
 
 .MuiBox-root {
-  margin-left: 600px;
+  margin-left: 560px;
+  margin-right:150px;
 }
+
+.exercise .ui.card {
+  width: 33%;
+  max-width: 560px;
+  left: 50px;
+}
+
+.card.m-auto, .m-auto {
+  margin: 20px auto;
+}
+
+.ui.raised .card.m-auto{ 
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
