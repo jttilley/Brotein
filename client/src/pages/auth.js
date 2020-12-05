@@ -36,9 +36,9 @@ class AuthForm extends Component {
 
             <h1>Welcome to Brotein</h1>
             <br></br>
-            <p>"It's never too early or too late to work towards being the healthiest you." </p>
+            <p>"It's never too early or late to work towards being the healthiest you." </p>
             <br></br>
-            <p>We believe that when our bodies are in good working order, and are healthy - every aspect of our life feels the benefit - We feel good and look good. Having good health contributes greatly to a better and happier life. At Brotien, we are here to help you and your health journey. Wether you are just getting started, or your a seasoned vet this app is meant for you.</p>
+            <p>We believe that when our bodies are in good working order and are healthy, every aspect of our life feels the benefit - We feel and look good. Having good health contributes greatly to a better and happier life. At Brotien, we are here to help you and your health journey. Whether you are just getting started or you're a seasoned vet, this app is meant for you!</p>
             </div>
             <div className="App__Form">
               <div className="PageSwitcher">
