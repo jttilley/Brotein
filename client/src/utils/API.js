@@ -2,12 +2,13 @@ import axios from "axios";
 const initUrl = "https://wger.de/api/v2/";
 
 export default {
-    //////// get exercise and ingredient API routes//////////
+  //////// get exercise and ingredient API routes//////////
+
     getExercises: function() {
       return axios.get(initUrl + "exerciseinfo/?language=2&limit=224");
     },
-    getIngredients: function() {
-      return axios.get(initUrl + "ingredient");
+    getIngredientData: function(ingredient) {
+      return axios.get(initUrl + "ingredient/?name=" + ingredient);
     }, 
     
     ////////////////////// Meal routes ////////////////////// 

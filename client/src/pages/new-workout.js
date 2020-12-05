@@ -47,8 +47,6 @@ const NewWorkOutPage = () => {
             duration:""
         });
         
-
-
         // API.postWorkout(newWorkout).then(() => {
         //     //add exercise to workout card
         //     rows.push(createData(newWorkout));
@@ -77,7 +75,7 @@ const NewWorkOutPage = () => {
             <Navbar />
             <WorkoutBanner />
             <AddWorkout />
-            <ExcerciseTable rows={rows}/>
+            <ExcerciseTable />
         </WorkoutContext.Provider>
     );
 };
