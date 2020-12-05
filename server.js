@@ -6,6 +6,7 @@ const MemoryStore = require('memorystore')(session);
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const flash = require('connect-flash');
 
 // Set up the express app 
 const app = express();
@@ -17,6 +18,7 @@ const db = require('./models');
 // Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(flash());
 
 // We need to use sessions to keep track of our user's login status
 app.use(
