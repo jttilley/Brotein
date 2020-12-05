@@ -3,6 +3,7 @@ import Navbar from '../components/navbar';
 import WorkoutBanner from '../components/workoutBanner';
 import AddWorkout from '../components/addWorkout';
 import WorkoutContext from '../utils/workoutContext';
+import API from '../utils/API';
 import ExcerciseTable from '../components/exerciseTable';
 
 const workoutRows = [];
@@ -37,17 +38,18 @@ const NewWorkOutPage = () => {
         workoutRows.push(newWorkout);
         console.log('workoutRows: ', workoutRows);
         setRows(workoutRows);
-        setWorkout(...workout, {
-            exercise: "",
-            reps: "",
-            sets: "",
-            weights: "",
-            duration: ""
-        });
         
         API.postWorkout(newWorkout).then(() => {
             //add exercise to workout card
             rows.push(createData(newWorkout));
+
+            setWorkout(...workout, {
+                exercise: "",
+                reps: "",
+                sets: "",
+                weights: "",
+                duration: ""
+            });
         }).catch((error) => {
             console.log(error);
         });

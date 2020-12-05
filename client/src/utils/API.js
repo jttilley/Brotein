@@ -8,6 +8,8 @@ export default {
       return axios.get(initUrl + "exerciseinfo/?language=2&limit=224");
     },
     getIngredientData: function(ingredient) {
+      console.log('ingredient: ', ingredient);
+
       return axios.get(initUrl + "ingredient/?name=" + ingredient);
     }, 
     

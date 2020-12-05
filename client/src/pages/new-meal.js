@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { json } from 'sequelize/types';
 import '../App.css';
 import AddIngredient from '../components/addMeal';
 import MealTable from '../components/mealTable';
@@ -24,7 +23,7 @@ function NewMealPage() {
 
     const getIngredientDetails = (ingredient) => {
         API.getIngredientData(ingredient).then(data => {
-            return json(data);
+            // return json(data);
         });
     }
 
@@ -41,11 +40,11 @@ function NewMealPage() {
     }
 
     const handleAdd = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         // curRows.push(newWorkout);
-        console.log('curRows: ', curRows);
-        setMealRows(curRows);
-        setMeal();
+        // console.log('curRows: ', curRows);
+        // setMealRows(curRows);
+        // setMeal();
         
         // API.postWorkout(newWorkout).then(() => {
         //     //add exercise to workout card
