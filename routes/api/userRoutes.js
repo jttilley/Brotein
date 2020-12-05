@@ -6,7 +6,7 @@ const authMiddleware = require('../../config/middleware/authMiddleware');
 // const bcrypt = require('bcryptjs');
 
 
-// user login route 
+// user login route --- WORKING
 router.post('/login', passport.authenticate('local', {
     failureRedirect: '/api/users/unauthorized',
     failureFlash: true,
@@ -20,8 +20,7 @@ router.post('/login', passport.authenticate('local', {
   },
 );
 
-
-// user sign up route ---- WORKING, BUT NOT GETTING CORRECT RESPONSE WHEN ERROR ENTERED 
+// user sign-up ---- WORKING 
 router.post('/signup', (req, res, next) => {
   db.User.findOne({ username: req.body.username }, (err, user) => {
     if (err) throw err;
@@ -57,13 +56,13 @@ router.post('/signup', (req, res, next) => {
 });
 
 
-// user logout route 
+// user logout route ---- WORKING 
 router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
   res.json('User logged out successfully');
 });
 
 
-
+// route unauthorized ---- CHECK ON THIS ONE 
 router.get('/unauthorized', (req, res, next) => {
   res.json({
     error: req.flash('error'),
@@ -71,6 +70,7 @@ router.get('/unauthorized', (req, res, next) => {
   });
 });
 
+// user is logged-in --- CONFIRM ON THIS ONE 
 router.get('/home', authMiddleware.isLoggedIn, (req, res, next) => {
   res.json({
     user: req.user,
@@ -78,11 +78,12 @@ router.get('/home', authMiddleware.isLoggedIn, (req, res, next) => {
   });
 });
 
-// router.get('/admin', authMiddleware.isAdmin, (req, res, next) => {
-//   res.json({
-//     user: req.user,
-//     loggedIn: true,
-//   });
-// });
+// admin check route ---- CONFIRM ON THIS ONE 
+router.get('/admin', authMiddleware.isAdmin, (req, res, next) => {
+  res.json({
+    user: req.user,
+    loggedIn: true,
+  });
+});
 
 module.exports = router;
