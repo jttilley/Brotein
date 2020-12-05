@@ -11,14 +11,14 @@ const workoutRows = [];
 
 const NewWorkOutPage = () => {
     let [workout, setWorkout] = useState({
-        name:'',
+        name: '',
         exercise: '',
         weight: '',
         sets: '',
         reps: '',
         duration: ''
     });
-    
+
     let [rows, setRows] = useState([]);
 
 
@@ -27,7 +27,7 @@ const NewWorkOutPage = () => {
         const { name, value } = event.target;
         console.log('value: ', value);
         console.log('name: ', name);
-        setWorkout({...workout, [name]: value});
+        setWorkout({ ...workout, [name]: value });
         console.log('workout: ', workout);
     }
 
@@ -40,13 +40,13 @@ const NewWorkOutPage = () => {
         console.log('workoutRows: ', workoutRows);
         setRows(workoutRows);
         setWorkout(...workout, {
-            exercise:"",
-            reps:"",
-            sets:"",
-            weights:"",
-            duration:""
+            exercise: "",
+            reps: "",
+            sets: "",
+            weights: "",
+            duration: ""
         });
-        
+
 
 
         // API.postWorkout(newWorkout).then(() => {
@@ -57,7 +57,7 @@ const NewWorkOutPage = () => {
         // });
     }
 
-    function createData( { name, exercise, sets, reps, weight, duration } ) {
+    function createData({ name, exercise, sets, reps, weight, duration }) {
         return { name, exercise, sets, reps, weight, duration };
     }
 
@@ -77,7 +77,7 @@ const NewWorkOutPage = () => {
             <Navbar />
             <WorkoutBanner />
             <AddWorkout />
-            <ExcerciseTable rows={rows}/>
+            <ExcerciseTable rows={rows} />
         </WorkoutContext.Provider>
     );
 };

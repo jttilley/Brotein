@@ -26,14 +26,29 @@ const router = require('express').Router();
 
 // get all workouts 
     router.get('/all', (req, res) => {
-        db.Workouts.find({}, (error, data) => {
-            if (error) {
-                res.send(error); 
-            } else {
-                res.send(data)
+        db.Workouts.findAll({
+            where: {
+                name: req.params.name
             }
         })
-    }); 
+        .then(findAll => {
+            res.send(findAll); 
+        })
+        .catch(err => {
+            console.log(err); 
+        })
+    })
+// // get all workouts 
+// router.get('/all', (req, res) => {
+//     db.Workouts.find({}, (error, data) => {
+//         if (error) {
+//             res.send(error); 
+//         } else {
+//             res.json(data)
+//         }
+//     })
+// }); 
+
 
 // add a workout --- WORKING 
 
@@ -53,7 +68,7 @@ const router = require('express').Router();
 
 // update a workout 
     router.put('/update/:id', (req, res) => {
-        db.Workouts.update(
+        db.Workouts.findOneAndUpdate(
             {
                 _id: mongojs.ObjectID(req.params.id)
             }, 
