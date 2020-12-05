@@ -24,9 +24,10 @@ const router = require('express').Router();
 
 // get all meals ----NOT WORKING --- add a promise 
  
-  
+
+
   // router.get('/all', (req, res) => {
-  //   db.Meals.findAll({}, (error, data) => {
+  //   db.Meals.find({}, (error, data) => {
   //     console.log("data", data); 
   //     if (error) {
   //       res.send(error);
@@ -35,6 +36,24 @@ const router = require('express').Router();
   //     }
   //   })
   // }); 
+
+  router.get('/all', (req, res) => {
+    db.Meals.find({}).then(allMeals => {
+      res.json(allMeals); 
+    }).catch(err => {
+      res.status(400).json(err); 
+    }); 
+  }); 
+
+
+
+  // router.get("/api/workouts/range",(req,res) => {
+  //   Workouts.find({}).then(workouts => {
+  //     res.json(workouts);
+  //   }).catch(err => {
+  //     res.status(400).json(err);
+  //   });
+  // });
   
 // add a meal --- WORKING 
   router.post('/add', (req, res) => {

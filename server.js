@@ -6,6 +6,7 @@ const MemoryStore = require('memorystore')(session);
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const flash = require('connect-flash');
 
 // Set up the express app 
 const app = express();
@@ -17,6 +18,7 @@ const db = require('./models');
 // Define middleware that handles data parsing 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(flash());
 
 // We need to use sessions to keep track of our user's login status
 app.use(
@@ -40,14 +42,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Add routes, both API and view
-<<<<<<< HEAD
-require('./routes/api-routes')(app); 
-=======
 // app.use('/meals', require('./routes/api/mealRoutes')); 
 // require('./routes/api/mealRoutes')(app); 
 app.use(routes); 
 
->>>>>>> 129c5d18067519da641f44cd7f23f76cb93eeb74
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Brotein', {
