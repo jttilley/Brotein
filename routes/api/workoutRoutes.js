@@ -3,6 +3,7 @@ const db = require('../../models');
 const mongojs = require("mongojs");
 const path = require('path');
 const { mongo } = require('mongoose');
+const { read } = require('fs');
 const router = require('express').Router(); 
 
 
@@ -34,15 +35,12 @@ const router = require('express').Router();
         })
     }); 
 
+// add a workout --- WORKING 
 
-// add a workout 
     router.post('/add', (req, res) =>{
         db.Workouts.create({
-            exercise: req.body.exercise, 
-            sets: req.body.sets, 
-            reps: req.body.reps, 
-            weight: req.body.weight, 
-            duration: req.body.duration 
+            name: req.body.name, 
+            workout: req.body.workout
         })
         .then(addWorkout => {
             res.send(addWorkout);
@@ -61,12 +59,8 @@ const router = require('express').Router();
             }, 
             {
                 $set: {
-                    exercise: req.body.exercise, 
-                    sets: req.body.sets, 
-                    reps: req.body.reps, 
-                    weight: req.body.weight, 
-                    duration: req.body.duration,
-                    modified: Date.now()
+                    name: req.body.name, 
+                    workout: req.body.name, 
                 }
             }, 
             (error, data) => {
@@ -79,9 +73,36 @@ const router = require('express').Router();
         )
     });
 
+    // router.put('/update/:id', (req, res) => {
+    //     db.Workouts.update(
+    //         {
+    //             _id: mongojs.ObjectID(req.params.id)
+    //         }, 
+    //         {
+    //             $set: {
+    //                 name: req.body.name, 
+    //                 workout: req.body.name, 
+    //                 exercise: req.body.exercise, 
+    //                 sets: req.body.sets, 
+    //                 reps: req.body.reps, 
+    //                 weight: req.body.weight, 
+    //                 duration: req.body.duration,
+    //                 modified: Date.now()
+    //             }
+    //         }, 
+    //         (error, data) => {
+    //             if (error) {
+    //                 res.send(error); 
+    //             } else {
+    //                 res.send(data); 
+    //             }
+    //         }
+    //     )
+    // });
 
-// delete a workout 
-    router.delete('/delete:id', (req, res) => {
+
+// delete a workout ---WORKING 
+    router.delete('/delete/:id', (req, res) => {
         db.Workouts.deleteOne(
             {
                 _id: mongojs.ObjectID(req.params.id)
@@ -96,7 +117,7 @@ const router = require('express').Router();
         )
     });
 
-// delete all workouts 
+// delete all workouts --- WORKING 
     router.delete('/deleteall', (req, res) => {
         db.Workouts.deleteMany({}, (error, response) => {
             if (error) {

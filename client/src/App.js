@@ -11,6 +11,7 @@ import UserContext from './utils/UserContext'
 
   const App = () => {
     const [userData, setUserData] = useState({
+      email: '',
       fullname: '',
       username: '',
       password: '',
@@ -58,6 +59,7 @@ import UserContext from './utils/UserContext'
       event.preventDefault();
       try {
         const data = {
+          email: userData.email,
           fullname: userData.firstname,
           username: userData.username,
           password: userData.password,
