@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,7 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import "../css/exerciseTable.css"
 import Box from '@material-ui/core/Box';
-
+import WorkoutContext from '../utils/workoutContext';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -52,9 +52,10 @@ const useStyles = makeStyles({
   },
 });
 
-function ExcerciseTable({ rows }) {
+function ExcerciseTable() {
   const classes = useStyles();
-  // console.log(rows);
+  const {rows, workout} = useContext(WorkoutContext);
+  console.log('rows: ', rows);
 
   return (
     <Grid item xs={10}>
@@ -65,22 +66,22 @@ function ExcerciseTable({ rows }) {
       <Table className={classes.table} aria-label="excercise table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>Workout</StyledTableCell>
-            <StyledTableCell align="center">Sets&nbsp;</StyledTableCell>
-            <StyledTableCell align="center">Reps&nbsp;</StyledTableCell>
+            <StyledTableCell>{workout.name} Exercises</StyledTableCell>
             <StyledTableCell align="center">Weight&nbsp;(lbs)</StyledTableCell>
+            <StyledTableCell align="center">Reps&nbsp;</StyledTableCell>
+            <StyledTableCell align="center">Sets&nbsp;</StyledTableCell>
             <StyledTableCell align="center">Times&nbsp;(minutes)</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.exercise}>
               <StyledTableCell component="th" scope="row">
                 {row.exercise}
               </StyledTableCell>
-              <StyledTableCell align="center">{row.sets}</StyledTableCell>
-              <StyledTableCell align="center">{row.reps}</StyledTableCell>
               <StyledTableCell align="center">{row.weight}</StyledTableCell>
+              <StyledTableCell align="center">{row.reps}</StyledTableCell>
+              <StyledTableCell align="center">{row.sets}</StyledTableCell>
               <StyledTableCell align="center">{row.duration}</StyledTableCell>
             </StyledTableRow>
           ))}
