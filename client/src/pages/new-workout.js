@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import WorkoutBanner from '../components/workoutBanner';
 import AddWorkout from '../components/addWorkout';
 import WorkoutContext from '../utils/workoutContext';
-import API from '../utils/API';
 import ExcerciseTable from '../components/exerciseTable';
 
-const exerciseForm = document.getElementsByClassName("exercise");
 const workoutRows = [];
 
 const NewWorkOutPage = () => {
@@ -47,12 +45,12 @@ const NewWorkOutPage = () => {
             duration: ""
         });
         
-        // API.postWorkout(newWorkout).then(() => {
-        //     //add exercise to workout card
-        //     rows.push(createData(newWorkout));
-        // }).catch((error) => {
-        //     console.log(error);
-        // });
+        API.postWorkout(newWorkout).then(() => {
+            //add exercise to workout card
+            rows.push(createData(newWorkout));
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     function createData({ name, exercise, sets, reps, weight, duration }) {
@@ -75,11 +73,7 @@ const NewWorkOutPage = () => {
             <Navbar />
             <WorkoutBanner />
             <AddWorkout />
-<<<<<<< HEAD
             <ExcerciseTable />
-=======
-            <ExcerciseTable rows={rows} />
->>>>>>> d238c58d4ae3381ea287012d9b817646a94c0d19
         </WorkoutContext.Provider>
     );
 };

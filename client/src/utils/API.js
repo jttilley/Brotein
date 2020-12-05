@@ -38,8 +38,8 @@ export default {
     getAllWorkouts: function() {
       return axios.get("/api/workouts/all");
     },
-    postWorkout: function() {
-      return axios.post("/api/workouts/add");
+    postWorkout: function(name, workout) {
+      return axios.post("/api/workouts/add",name,workout);
     },
     updateWorkout: function(id) {
       return axios.put("/api/workouts/update/" + id);
