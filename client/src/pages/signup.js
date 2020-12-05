@@ -11,11 +11,11 @@ const SignUpForm = () => {
     <form onSubmit={handleSignup} className="FormFields">
       <div className="FormField">
         <label className="FormField__Label" htmlFor="name">Full Name</label>
-        <input type="text" id="name" className="FormField__Input" placeholder="Enter your full name" name="name" value={userData.name} onChange={handleInputChange} />
+        <input type="text" id="name" className="FormField__Input" placeholder="Enter your full name" name="fullname" value={userData.name} onChange={handleInputChange} />
       </div>
       <div className="FormField">
-        <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-        <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={userData.email} onChange={handleInputChange} />
+        <label className="FormField__Label" htmlFor="username">User Name</label>
+        <input type="username" id="username" className="FormField__Input" placeholder="Enter your username" name="username" value={userData.username} onChange={handleInputChange} />
       </div>
       <div className="FormField">
         <label className="FormField__Label" htmlFor="password">Password</label>
@@ -29,7 +29,7 @@ const SignUpForm = () => {
       </div> */}
 
       <div className="FormField">
-          <button className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+          <button type="submit" className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
       </div>
     </form>
   </div>

@@ -59,8 +59,7 @@ const App = () => {
     event.preventDefault();
     try {
       const data = {
-        email: userData.email,
-        fullname: userData.firstname,
+        fullname: userData.fullname,
         username: userData.username,
         password: userData.password,
       };
