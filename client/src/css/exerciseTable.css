@@ -1,3 +1,7 @@
 body {
   background:gray;
 }
+
+.MuiBox-root {
+  margin-left: 600px;
+}

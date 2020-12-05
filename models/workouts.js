@@ -9,7 +9,7 @@
       reps: {type: Number},
       weight: {type: Number}, 
       duration: {type: Number}, 
-      body: {type: String}
+      // body: {type: String}
     }]
   });
     

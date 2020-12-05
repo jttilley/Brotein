@@ -57,11 +57,11 @@ function ExcerciseTable({ rows }) {
   // console.log(rows);
 
   return (
-    <Grid item xs={7}>
+    <Grid item xs={10}>
     <Box boxShadow={0}>
     <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'20px'}}>
-     <CardContent>
-     <TableContainer component={Paper}> 
+    <CardContent>
+    <TableContainer component={Paper}> 
       <Table className={classes.table} aria-label="excercise table">
         <TableHead>
           <TableRow>
@@ -76,7 +76,7 @@ function ExcerciseTable({ rows }) {
           {rows.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.exercise}
               </StyledTableCell>
               <StyledTableCell align="center">{row.sets}</StyledTableCell>
               <StyledTableCell align="center">{row.reps}</StyledTableCell>

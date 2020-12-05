@@ -3,27 +3,29 @@ const db = require('../../models');
 const mongojs = require("mongojs");
 const path = require('path');
 const { mongo } = require('mongoose');
+const { read } = require('fs');
+const router = require('express').Router(); 
 
-module.exports = function (app) {
 
-// get a workout 
-    router.get('/api/workouts/:id', (req, res) => {
+// get a workout ---WORKING 
+    router.get('/:id', (req, res) => {
         db.Workouts.findOne(
             {
                 _id: mongojs.ObjectID(req.params.id)
             }, 
             (error, data) => {
-                if(error) {
+                if (error) {
                     res.send(error); 
                 } else {
-                    res.send(data)
+                    res.send(data); 
                 }
             }
         )
     });
 
+
 // get all workouts 
-    router.get('/api/workouts/all', (req, res) => {
+    router.get('/all', (req, res) => {
         db.Workouts.find({}, (error, data) => {
             if (error) {
                 res.send(error); 
@@ -33,15 +35,12 @@ module.exports = function (app) {
         })
     }); 
 
+// add a workout --- WORKING 
 
-// add a workout 
-    router.post('/api/workouts/add', (req, res) =>{
+    router.post('/add', (req, res) =>{
         db.Workouts.create({
-            exercise: req.body.exercise, 
-            sets: req.body.sets, 
-            reps: req.body.reps, 
-            weight: req.body.weight, 
-            duration: req.body.duration 
+            name: req.body.name, 
+            workout: req.body.workout
         })
         .then(addWorkout => {
             res.send(addWorkout);
@@ -53,19 +52,15 @@ module.exports = function (app) {
 
 
 // update a workout 
-    router.put('/api/workouts/update/:id', (req, res) => {
+    router.put('/update/:id', (req, res) => {
         db.Workouts.update(
             {
                 _id: mongojs.ObjectID(req.params.id)
             }, 
             {
                 $set: {
-                    exercise: req.body.exercise, 
-                    sets: req.body.sets, 
-                    reps: req.body.reps, 
-                    weight: req.body.weight, 
-                    duration: req.body.duration,
-                    modified: Date.now()
+                    name: req.body.name, 
+                    workout: req.body.name, 
                 }
             }, 
             (error, data) => {
@@ -78,10 +73,37 @@ module.exports = function (app) {
         )
     });
 
+    // router.put('/update/:id', (req, res) => {
+    //     db.Workouts.update(
+    //         {
+    //             _id: mongojs.ObjectID(req.params.id)
+    //         }, 
+    //         {
+    //             $set: {
+    //                 name: req.body.name, 
+    //                 workout: req.body.name, 
+    //                 exercise: req.body.exercise, 
+    //                 sets: req.body.sets, 
+    //                 reps: req.body.reps, 
+    //                 weight: req.body.weight, 
+    //                 duration: req.body.duration,
+    //                 modified: Date.now()
+    //             }
+    //         }, 
+    //         (error, data) => {
+    //             if (error) {
+    //                 res.send(error); 
+    //             } else {
+    //                 res.send(data); 
+    //             }
+    //         }
+    //     )
+    // });
 
-// delete a workout 
-    router.delete('/api/workouts/delete:id', (req, res) => {
-        db.Workouts.remove(
+
+// delete a workout ---WORKING 
+    router.delete('/delete/:id', (req, res) => {
+        db.Workouts.deleteOne(
             {
                 _id: mongojs.ObjectID(req.params.id)
             }, 
@@ -95,9 +117,9 @@ module.exports = function (app) {
         )
     });
 
-// delete all workouts 
-    router.delete('/api/workouts/deleteall', (req, res) => {
-        db.Workouts.remove({}, (error, response) => {
+// delete all workouts --- WORKING 
+    router.delete('/deleteall', (req, res) => {
+        db.Workouts.deleteMany({}, (error, response) => {
             if (error) {
                 res.send(error); 
             } else {
@@ -105,4 +127,4 @@ module.exports = function (app) {
             }
         })
     });
-};
+module.exports = router; 
