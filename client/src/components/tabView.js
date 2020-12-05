@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 
+
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -30,8 +31,8 @@ export default function CenteredTabs() {
       >
         <Tab label="Fitness" value= "1" />
         <Tab label="Meals" value="2"/>
-        <Tab label="YouTube" value= "3"/>
-        <Tab label="Recipes" value="4"/>
+        
+      
 
       </Tabs>
     </Paper>
