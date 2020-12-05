@@ -62,7 +62,7 @@ router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
 });
 
 
-// route unauthorized ---- CHECK ON THIS ONE 
+// route unauthorized ---- CONFIRM ON THIS ONE 
 router.get('/unauthorized', (req, res, next) => {
   res.json({
     error: req.flash('error'),
