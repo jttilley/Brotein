@@ -7,6 +7,8 @@ import MealTable from '../components/mealTable';
 import CenteredTabs from '../components/tabView';
 
 function HistoryPage() {
+    
+    
     return (
         <>
             <Navbar />
@@ -15,6 +17,8 @@ function HistoryPage() {
             
         </>
     );
-}
+
+
+} 
 
 export default HistoryPage;

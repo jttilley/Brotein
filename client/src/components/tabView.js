@@ -3,9 +3,27 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+//import TabContext from '@material-ui/lab/TabContext';
+import TabList from '@material-ui/lab/TabList';
+import {TabPanel} from '@material-ui/lab'
+//import React, { useEffect } from "react";
+//import { Link } from "react-router-dom";
+import ExcerciseTable from './exerciseTable';
+import API from '../utils/API';
 
+function loadWorkout() {
+  API.getAllWorkouts()
+    .then(res => 
+      setWorkout(res.data)
+    )
+    .catch(err => console.log(err));
+};
 
-
+function deleteWorkout(id) {
+  API.deleteWorkout(id)
+    .then(res => loadWorkout())
+    .catch(err => console.log(err));
+}
 
 
 const useStyles = makeStyles({
@@ -31,10 +49,14 @@ export default function CenteredTabs() {
         textColor="primary"
         centered
       >
-        <Tab label="Fitness" value="1" />
-        <Tab label="Meals" value="2" />
-
+        <TabList onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="Fitness" value="1" />
+          <Tab label="Meals" value="2" />
+        </TabList>
       </Tabs>
+      <TabPanel value="1" ><ExcerciseTable /> </TabPanel>
+      <TabPanel value="2" > </TabPanel>
+
     </Paper>
   );
 }
