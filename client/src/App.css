@@ -7,9 +7,6 @@
   .App__Aside {
     background-image: url("./images/background.jpg");
     width: 50%;
-<<<<<<< HEAD
-    background-color: #cad3dd;
-=======
     /* background-color: #66DAC7; */
     text-align: left;
     padding-top: 50px;
@@ -23,7 +20,6 @@
     background-position: center;
   }
   h3 {
->>>>>>> 0e8bcf3be9964b0405cb431b1f9a019a83be6f96
     text-align: center;
     font-size: 2rem;
     font-weight: bolder;
