@@ -10,7 +10,7 @@ function AddIngredient() {
     <div className="cards__item">
       <form>
       <div className="workout-name">
-        <input type="text" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange}/> 
+        <input type="name" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange}/> 
         
       </div>
         <p>

@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
 function MealTable() {
   const classes = useStyles();
-  const { meal, mealRows} = useContext(MealContext);
+  const { meal, mealRows } = useContext(MealContext);
 
   return (
     <Grid item xs={12}>

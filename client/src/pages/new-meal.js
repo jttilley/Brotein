@@ -25,12 +25,20 @@ function NewMealPage() {
 
     },[])
 
-    const getIngredientDetails = (ingredient) => {
+    const getIngredientDetails = (ingredient, cb) => {
         API.getIngredientData(ingredient).then(({ data }) => {
             console.log('data.results: ', data.results[0]);
             if (data.results[0]) {
                 const { protein, carbohydrates, fat, energy } = data.results[0];
-                
+                setMeal = {
+                    name: meal.name,
+                    ingredient: ingredient,
+                    protein: protein,
+                    carbohydrates: carbohydrates,
+                    fats: fat,
+                    calories: energy
+                }
+                cb();
             }
             // return json(data);
         });
@@ -45,16 +53,13 @@ function NewMealPage() {
         console.log('meal: ', meal);
     }
 
+    // const updateTable
+
     const handleAddMeal = (event) => {
         event.preventDefault()
         console.log('in handleAdd for new-meal page'); 
         if (meal.ingredient != "") {
             const food = getIngredientDetails(meal.ingredient);
-            setMeal({
-                name: meal.name,
-                ingredient: meal.ingredient,
-
-            })
         }
         const newMeal = createData(meal);
         curRows.push(newMeal);
