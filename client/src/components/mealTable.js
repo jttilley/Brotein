@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid';
 import "../css/exerciseTable.css"
 import Box from '@material-ui/core/Box';
+import MealContext from '../utils/mealContext';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -31,17 +32,13 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(name, fat, carbs, protein, calories) {
-  return { name, fat, carbs, protein, calories };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 6.0, 24, 4.0, 159),
-  createData('Ice cream sandwich', 9.0, 37, 4.3, 237),
-  createData('Eclair', 16.0, 24, 6.0, 262),
-  createData('Cupcake', 3.7, 67, 4.3, 305),
-  createData('Gingerbread', 16.0, 49, 3.9, 356),
-];
+// const rows = [
+//   createData('Frozen yoghurt', 6.0, 24, 4.0, 159),
+//   createData('Ice cream sandwich', 9.0, 37, 4.3, 237),
+//   createData('Eclair', 16.0, 24, 6.0, 262),
+//   createData('Cupcake', 3.7, 67, 4.3, 305),
+//   createData('Gingerbread', 16.0, 49, 3.9, 356),
+// ];
 
 const useStyles = makeStyles({
   table: {
@@ -51,41 +48,42 @@ const useStyles = makeStyles({
 
 function MealTable() {
   const classes = useStyles();
+  const { meal, mealRows} = useContext(MealContext);
 
   return (
-    <Grid item xs={10}>
-    <Box boxShadow={0}>
-    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'25px',}}>
-     <CardContent>
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Ingredients</StyledTableCell>
-            <StyledTableCell align="center">Calories</StyledTableCell>
-            <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="center">Fat&nbsp;(g)</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.calories}</StyledTableCell>
-              <StyledTableCell align="center">{row.protein}</StyledTableCell>
-              <StyledTableCell align="center">{row.carbs}</StyledTableCell>
-              <StyledTableCell align="center">{row.fat}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    </CardContent>
-    </Card>
-    </Box>
+    <Grid item xs={12}>
+      <Box boxShadow={0}>
+        <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'25px',}}>
+          <CardContent>
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="customized table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>{meal.name} Ingredients</StyledTableCell>
+                    <StyledTableCell align="center">Calories</StyledTableCell>
+                    <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
+                    <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
+                    <StyledTableCell align="center">Fat&nbsp;(g)</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {mealRows.map((row) => (
+                    <StyledTableRow key={row.name}>
+                      <StyledTableCell component="th" scope="row">
+                        {row.ingredient}
+                      </StyledTableCell>
+                      <StyledTableCell align="center">{row.calories}</StyledTableCell>
+                      <StyledTableCell align="center">{row.protein}</StyledTableCell>
+                      <StyledTableCell align="center">{row.carbs}</StyledTableCell>
+                      <StyledTableCell align="center">{row.fat}</StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </CardContent>
+        </Card>
+      </Box>
     </Grid> 
   );
 }

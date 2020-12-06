@@ -3,9 +3,9 @@ import ingredients from "../utils/ingredients.json";
 import MealContext from "../utils/mealContext";
 
 function AddIngredient() {
-  const { meal, mealRows, handleInputChange, handleAdd } = useContext(MealContext)
+  const { meal, mealRows, handleInputChange, handleAddMeal } = useContext(MealContext)
   // console.log('ingredients: ', ingredients);
-  console.log('ingredient.fields.name: ', ingredients[1].fields.name);
+  // console.log('ingredient.fields.name: ', ingredients[1].fields.name);
   return (
     <div className="cards__item">
       <form>
@@ -14,13 +14,13 @@ function AddIngredient() {
         
       </div>
         <p>
-          <input type="ingredient" className="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" name="ingredient" />
+          <input type="ingredient" className="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" name="ingredient" onChange={handleInputChange}/>
           <datalist id="ingredients">
             { ingredients.map(ingredient => (
               <option value={ingredient.fields.name} key={ingredient.pk} ></option>
             ))}
           </datalist>
-          <button >Add Ingredient</button>
+          <button onClick={handleAddMeal} >Add Ingredient</button>
         </p>
       </form>
     </div>

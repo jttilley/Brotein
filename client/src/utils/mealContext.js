@@ -4,7 +4,7 @@ const MealContext = createContext({
   meal: {},
   mealRows: [],
   handleInputChange: () => {},
-  handleAdd: () => {}
+  handleAddMeal: () => {}
 })
 
 export default MealContext;
