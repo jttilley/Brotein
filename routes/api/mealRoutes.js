@@ -1,6 +1,6 @@
 // requiring dependencies 
 const db = require('../../models'); 
-// const mongojs = require("mongojs");
+const mongojs = require("mongojs");
 const path = require('path');
 const { mongo } = require('mongoose');
 const router = require('express').Router(); 
@@ -9,7 +9,8 @@ const router = require('express').Router();
 // get all meals ----NOT WORKING --- add a promise 
  
 router.get('/all', (req, res) => {
-  db.Meals.find({}).then(allMeals => {
+  db.Meals.find({})
+  .then(allMeals => {
     res.json(allMeals); 
   }).catch(err => {
     res.status(400).json(err); 
@@ -17,22 +18,17 @@ router.get('/all', (req, res) => {
 }); 
 
 // get a meal -- WORKING 
-  router.get('/meal/:id', (req, res) => {
-    db.Meals.findOne(
-      
-       { 
-         _id: req.params.id
-       },
-      
-      (error, data) => {
-        if (error) {
+router.get('/:id', (req, res) => {
+  db.Meals.findOne({
+      _id: mongojs.ObjectID(req.params.id)
+  }, (error, data) => {
+      if (error) {
           res.send(error); 
-        } else {
-          res.json(data);
-        }
+      } else {
+          res.send(data); 
       }
-    )
-  }); 
+  })
+});
 
 
   // router.get("/api/workouts/range",(req,res) => {

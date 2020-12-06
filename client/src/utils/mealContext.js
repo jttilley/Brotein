@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 
 const MealContext = createContext({
   meal: {},
-  rows: [],
+  mealRows: [],
   handleInputChange: () => {},
   handleAdd: () => {}
 })

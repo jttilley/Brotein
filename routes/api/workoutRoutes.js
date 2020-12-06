@@ -6,38 +6,32 @@ const { mongo } = require('mongoose');
 const { read } = require('fs');
 const router = require('express').Router(); 
 
+// get all workouts 
+router.get('/all', (req, res) => {
+    db.Workouts.find({})
+    .then(findAll => {
+        res.send(findAll); 
+    })
+    .catch(err => {
+        console.log(err); 
+    })
+});
 
 // get a workout ---WORKING 
-    router.get('/:id', (req, res) => {
-        db.Workouts.findOne(
-            {
-                _id: mongojs.ObjectID(req.params.id)
-            }, 
-            (error, data) => {
-                if (error) {
-                    res.send(error); 
-                } else {
-                    res.send(data); 
-                }
-            }
-        )
-    });
-
-
-// get all workouts 
-    router.get('/all', (req, res) => {
-        db.Workouts.findAll({
-            where: {
-                name: req.params.name
-            }
-        })
-        .then(findAll => {
-            res.send(findAll); 
-        })
-        .catch(err => {
-            console.log(err); 
-        })
+router.get('/:id', (req, res) => {
+    db.Workouts.findOne({
+        _id: mongojs.ObjectID(req.params.id)
+    }, (error, data) => {
+        if (error) {
+            res.send(error); 
+        } else {
+            res.send(data); 
+        }
     })
+});
+
+
+
 // // get all workouts 
 // router.get('/all', (req, res) => {
 //     db.Workouts.find({}, (error, data) => {

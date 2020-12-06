@@ -4,7 +4,7 @@ import WorkoutContext from "../utils/workoutContext";
 import "../css/addWorkout.css"
 
 function AddWorkout() {
-  const { workout, handleInputChange, handleAdd } = useContext(WorkoutContext);
+  const { workout, handleInputChange, handleAddWorkout } = useContext(WorkoutContext);
   console.log('workout: ', workout);
 
   return (
@@ -20,7 +20,7 @@ function AddWorkout() {
             <input type="exercise" className="form-control" name="exercise" list="exercises" id="exercise" value={workout.exercise} placeholder="Add an Exercise" onChange={handleInputChange} />
             <datalist id="exercises">
               {exercises.map(exercise => (
-                <option value={exercise.fields.name}></option>
+                <option value={exercise.fields.name} key={exercise.pk}></option>
               ))}
             </datalist>
           </div>
@@ -42,7 +42,7 @@ function AddWorkout() {
 
           </div>
           <div className="buttons">
-            <button className="huge ui positive button add-another" onClick={handleAdd} >
+            <button className="huge ui positive button add-another" onClick={handleAddWorkout} >
               Add Exercise
             </button>
           </div>
