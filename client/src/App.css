@@ -5,12 +5,32 @@
   }
   
   .App__Aside {
+    background-image: url("./images/background.jpg");
     width: 50%;
+<<<<<<< HEAD
     background-color: #cad3dd;
+=======
+    /* background-color: #66DAC7; */
+    text-align: left;
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
+    /* color: #445366; */
+    color: rgb(14, 13, 13);
+    font-size:larger;
+    font-weight: 300px;
+    background-size: cover;
+    background-position: center;
+  }
+  h3 {
+>>>>>>> 0e8bcf3be9964b0405cb431b1f9a019a83be6f96
     text-align: center;
-    padding-top: 20px;
-    color: #445366;
-    font-size: larger;
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+  p {
+    font-weight: bolder;
+    font-size: 1.7rem;
   }
 
   .App__Form {
@@ -91,10 +111,10 @@
     color: white;
   }
   .FormField__Input {
-    width: 85%;
+    width: 75%;
     background-color: transparent;
     border: none;
-    color: white;
+    color:black;
     outline: none;
     border-bottom: 1px solid #445366;
     font-size: 1em;
@@ -108,7 +128,7 @@
   }
   
   .FormField__Button {
-    background-color: #52C4B9;
+    background: #52C4B9;
     color: white;
     border: none;
     outline: none;
@@ -116,6 +136,8 @@
     padding: 15px 70px;
     font-size: .8em;
     font-weight: 500;
+    display: inline;
+    margin-right: 20px;
   }
   
   .FormField__Link {
@@ -134,6 +156,8 @@
   .FormField__Checkbox {
     position: relative;
     top: 1.5px;
+    width: 2%;
+    color: black;
   }
   
   .FormField__TermsLink {
@@ -144,6 +168,9 @@
     padding-bottom: 2px;
     margin-left: 5px;
   }
+  /* .btn, button {
+    background-color:#199087; 
+  } */
   
 .HomePage{
   display: flex;

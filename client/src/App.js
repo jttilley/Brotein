@@ -34,9 +34,8 @@ const App = () => {
     const data = {
       username: userData.username,
       password: userData.password,
-      // email: userData.email, // added this here 
     };
-    if (userData.username && userData.password) {//userData.email) { // added userData.email here as well 
+    if (userData.username && userData.password) { 
       API.login(data)
         .then((user) => {
           if (user.data.loggedIn) {
@@ -44,7 +43,7 @@ const App = () => {
             setUser(user.data.user);
 
             console.log('log in successful');
-            window.location.href = '/profile';
+            window.location.href = '/home';
           } else {
             console.log('Something went wrong :(');
             alert('Login failed, Please try again.');
@@ -60,8 +59,7 @@ const App = () => {
     event.preventDefault();
     try {
       const data = {
-        email: userData.email,
-        fullname: userData.firstname,
+        fullname: userData.fullname,
         username: userData.username,
         password: userData.password,
       };

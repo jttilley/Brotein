@@ -29,7 +29,7 @@ router.post('/signup', (req, res, next) => {
       return res.json('user already exists');
     }
     if (!user) {
-      db.User.findOne({ email: req.body.email }, (error, useremail) => {
+      db.User.findOne({ username: req.body.username }, (error, useremail) => {
         if (error) throw error;
         if (useremail) {
           return res.json('email is already in use');
@@ -37,7 +37,6 @@ router.post('/signup', (req, res, next) => {
         if (!useremail) {
           const newUser = new db.User({
             fullname: req.body.fullname,
-            email: req.body.email,
             username: req.body.username,
             password: req.body.password,
           });
@@ -62,7 +61,7 @@ router.get('/logout', authMiddleware.logoutUser, (req, res, next) => {
 });
 
 
-// route unauthorized ---- CHECK ON THIS ONE 
+// route unauthorized ---- CONFIRM ON THIS ONE 
 router.get('/unauthorized', (req, res, next) => {
   res.json({
     error: req.flash('error'),
