@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+<<<<<<< HEAD
 //import TabContext from '@material-ui/lab/TabContext';
 import TabList from '@material-ui/lab/TabList';
 import {TabPanel} from '@material-ui/lab'
@@ -24,6 +25,11 @@ function deleteWorkout(id) {
     .then(res => loadWorkout())
     .catch(err => console.log(err));
 }
+=======
+import Youtube from '../components/youtube';
+import Food from '../components/food';
+import "../css/main.css"
+>>>>>>> f228e3eae19bf44c245b1a5c30bace3a8633a63e
 
 
 const useStyles = makeStyles({

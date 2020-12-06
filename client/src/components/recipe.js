@@ -8,9 +8,7 @@ const Recipe = ({ recipe }) => {
 
 
   return (
-    // <div class='card'>
-    //   <div class='card-container'>
-    // <div class='card u-clearfix'>
+
     <div class='card-body'>
       <div className="recipe">
         <h2 class="card-read">{label}</h2>
@@ -19,16 +17,12 @@ const Recipe = ({ recipe }) => {
         <a href={url} target="_blank" rel="noopener noreferrer">
           URL
       </a>
-        {/* <div class="card-read">Ingredients */}
+
         <button class="collapsible" onClick={() => setShow(!show)}>Ingredients</button>
         {show && <RecipeDetails ingredients={ingredients} />}
         <div class="card-shadow"></div>
       </div>
     </div>
-    // </div>
-    //   </div>
-    // </div>
-    //  </div >
   );
 };
 

@@ -39,23 +39,23 @@ function Food() {
 
   return (
     <div className="Search">
-      <h1>Find a Recipe</h1>
+      {/* <h1>Find a Recipe</h1> */}
       <form onSubmit={onSubmit} className="search-form">
         {alert !== "" && <Alert alert={alert} />}
-        <input
+        <input id="search-box"
           type="text"
           name="query"
           onChange={onChange}
           value={query}
           autoComplete="off"
-          placeholder="Search Food"
-        />
-        <input type="submit" value="Search" />
+          placeholder="Search Food" />
+        <form method="get" action="">
+        </form>
+        <div className="recipes">
+          {recipes !== [] &&
+            recipes.map(recipe => <Recipe key={uuidv4()} recipe={recipe} />)}
+        </div>
       </form>
-      <div className="recipes">
-        {recipes !== [] &&
-          recipes.map(recipe => <Recipe key={uuidv4()} recipe={recipe} />)}
-      </div>
     </div>
   );
 }
