@@ -29,7 +29,7 @@ const SignUpForm = () => {
       </div> */}
 
       <div className="FormField">
-          <button type="submit" className="FormField__Button mr-20">Sign Up</button> <Link to="/sign-in" className="FormField__Link">I'm already member</Link>
+          <button type="submit" className="FormField__Button mr-20">Sign Up</button> <Link to="/" className="FormField__Link">I'm already member</Link>
       </div>
     </form>
   </div>
