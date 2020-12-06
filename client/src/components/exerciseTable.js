@@ -58,7 +58,7 @@ function ExcerciseTable() {
   console.log('rows: ', rows);
 
   return (
-    <Grid item xs={10}>
+    <Grid item xs={12}>
     <Box boxShadow={0}>
     <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'20px'}}>
     <CardContent>
@@ -67,10 +67,10 @@ function ExcerciseTable() {
         <TableHead>
           <TableRow>
             <StyledTableCell>{workout.name} Exercises</StyledTableCell>
-            <StyledTableCell align="center">Weight&nbsp;(lbs)</StyledTableCell>
-            <StyledTableCell align="center">Reps&nbsp;</StyledTableCell>
-            <StyledTableCell align="center">Sets&nbsp;</StyledTableCell>
-            <StyledTableCell align="center">Times&nbsp;(minutes)</StyledTableCell>
+            <StyledTableCell align="center">Weight (lbs)</StyledTableCell>
+            <StyledTableCell align="center">Reps</StyledTableCell>
+            <StyledTableCell align="center">Sets</StyledTableCell>
+            <StyledTableCell align="center">Duration (minutes)</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

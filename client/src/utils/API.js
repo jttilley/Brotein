@@ -2,17 +2,20 @@ import axios from "axios";
 const initUrl = "https://wger.de/api/v2/";
 
 export default {
-    //////// get exercise and ingredient API routes//////////
+  //////// get exercise and ingredient API routes//////////
+
     getExercises: function() {
       return axios.get(initUrl + "exerciseinfo/?language=2&limit=224");
     },
-    getIngredients: function() {
-      return axios.get(initUrl + "ingredient");
+    getIngredientData: function(ingredient) {
+      console.log('ingredient: ', ingredient);
+
+      return axios.get(initUrl + "ingredient/?name=" + ingredient);
     }, 
     
     ////////////////////// Meal routes ////////////////////// 
     getMeal: function(id) {
-      return axios.get("/api/meals/" + id);
+      return axios.get("/api/meals/meal/" + id);
     },
     getAllMeals: function() {
       return axios.get("/api/meals/all");
@@ -37,8 +40,8 @@ export default {
     getAllWorkouts: function() {
       return axios.get("/api/workouts/all");
     },
-    postWorkout: function() {
-      return axios.post("/api/workouts/add");
+    postWorkout: function(name, workout) {
+      return axios.post("/api/workouts/add",name,workout);
     },
     updateWorkout: function(id) {
       return axios.put("/api/workouts/update/" + id);

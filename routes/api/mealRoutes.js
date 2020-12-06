@@ -5,46 +5,30 @@ const path = require('path');
 const { mongo } = require('mongoose');
 const router = require('express').Router(); 
 
-// get a meal -- WORKING 
-  router.get('/:id', (req, res) => {
-    db.Meals.findOne(
-      {
-        _id: mongojs.ObjectID(req.params.id)
-      }, 
-      (error, data) => {
-        if (error) {
-          res.send(error); 
-        } else {
-          res.send(data);
-        }
-      }
-    )
-  }); 
-
 
 // get all meals ----NOT WORKING --- add a promise 
  
-
-
-  // router.get('/all', (req, res) => {
-  //   db.Meals.find({}, (error, data) => {
-  //     console.log("data", data); 
-  //     if (error) {
-  //       res.send(error);
-  //     } else {
-  //       res.send(data); 
-  //     }
-  //   })
-  // }); 
-
-  router.get('/all', (req, res) => {
-    db.Meals.find({}).then(allMeals => {
-      res.json(allMeals); 
-    }).catch(err => {
-      res.status(400).json(err); 
-    }); 
+router.get('/all', (req, res) => {
+  db.Meals.find({})
+  .then(allMeals => {
+    res.json(allMeals); 
+  }).catch(err => {
+    res.status(400).json(err); 
   }); 
+}); 
 
+// get a meal -- WORKING 
+router.get('/:id', (req, res) => {
+  db.Meals.findOne({
+      _id: mongojs.ObjectID(req.params.id)
+  }, (error, data) => {
+      if (error) {
+          res.send(error); 
+      } else {
+          res.send(data); 
+      }
+  })
+});
 
 
   // router.get("/api/workouts/range",(req,res) => {

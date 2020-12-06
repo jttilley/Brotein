@@ -99,5 +99,6 @@ button {
 }
 
 .MuiBox-root {
-	margin-left: 560px;
+  display: block;
+	margin-left: 480px;
 }
