@@ -1,9 +1,20 @@
 const mongoose = require('mongoose'); 
 const db = require('../models'); 
-
+const ingredients = require('../client/src/utils/ingredients.json');
 
 // This file empties the collection and inserts the books below
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Brotein");
+
+db.Ingredients.deleteMany({})
+  .then(() => db.Workouts.collection.insertMany(ingredients))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
 const workout1 = [
   {
@@ -97,33 +108,7 @@ db.Meals.deleteMany({})
     process.exit(1);
   });
 
-const user1 = [
-  {
-  email: "test@test.com",
-  fullname: 'test', 
-  username: 'test', 
-  password: 'test', 
-  admin: 0,
-  }, 
-  {
-  email: "test@test2.com",
-  fullname: 'test2name', 
-  username: 'test2username', 
-  password: 'test2password', 
-  admin: 0
-  }, 
-  {
-  email: "test@test3.com",
-  fullname: 'test3name', 
-  username: 'test3username', 
-  password: 'test3password', 
-  admin: 0
-  }
-]
-console.log(user1); 
-
 db.User.deleteMany({})
-  .then(() => db.User.collection.insertMany(user1))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
