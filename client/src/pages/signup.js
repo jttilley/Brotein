@@ -11,7 +11,7 @@ const SignUpForm = () => {
     <form onSubmit={handleSignup} className="FormFields">
       <div className="FormField">
         <label className="FormField__Label" htmlFor="name">Full Name</label>
-        <input type="text" id="name" className="FormField__Input" placeholder="Enter your full name" name="fullname" value={userData.name} onChange={handleInputChange} />
+        <input type="fullName" id="name" className="FormField__Input" placeholder="Enter your full name" name="fullname" value={userData.name} onChange={handleInputChange} />
       </div>
       <div className="FormField">
         <label className="FormField__Label" htmlFor="username">User Name</label>

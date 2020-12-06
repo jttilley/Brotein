@@ -45,7 +45,7 @@ const rows = [
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
+    minWidth: 340,
   },
 });
 
@@ -54,7 +54,7 @@ function MealTable() {
 
   return (
     <Grid item xs={12}>
-    <Box boxShadow={0}>
+    {/* <Box boxShadow={0}> */}
     <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'25px',}}>
      <CardContent>
     <TableContainer component={Paper}>
@@ -85,7 +85,7 @@ function MealTable() {
     </TableContainer>
     </CardContent>
     </Card>
-    </Box>
+    {/* </Box> */}
     </Grid> 
   );
 }

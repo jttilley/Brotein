@@ -21,7 +21,7 @@ const AuthForm = () => {
             <br></br>
             <h3>"It's never too early or late to work towards being the healthiest you." </h3>
             <br></br>
-            <p>We believe that when our bodies are in good working order and are healthy every aspect of our life feels the benefit - we feel and look good! Having good health contributes greatly to a better and happier life. At Brotien, we are here to help you and your health journey. Whether you are just getting started or you're a seasoned vet, this app is meant for you!</p>
+            <h4>We believe that when our bodies are in good working order and are healthy every aspect of our life feels the benefit - we feel and look good! Having good health contributes greatly to a better and happier life. At Brotien, we are here to help you and your health journey. Whether you are just getting started or you're a seasoned vet, this app is meant for you!</h4>
             </form>
             <br></br>
             <div className="App__Form">
