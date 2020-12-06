@@ -13,7 +13,7 @@ function AddWorkout() {
       <div className="ui raised card m-auto">
         <form action="POST">
           <div className="workout-name">
-            <input type="text" className="form-control" name="name" placeholder="Name this workout" onChange={handleInputChange} />
+            <input type="full_name" className="form-control" name="name" placeholder="Name this workout" onChange={handleInputChange} />
           </div>
           <div className="workout-type">
             {/* <label for="exercise">Exercise Type:</label> */}
