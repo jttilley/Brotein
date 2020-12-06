@@ -33,9 +33,9 @@
       "license_author": "wger.de",
       "status": "2",
       "category": "Arms",
-      "description": "<p>Hold the SZ-bar shoulder-wide, the back is straight, the shoulders slightly back, the arms are streched. Bend the arms, bringing the weight up, with a fast movement. Without pausing, let down the bar with a slow and controlled movement.</p>\n<p>Don't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).</p>",
-      "name": "Biceps Curls With SZ-bar",
-      "name_original": "Biceps curls with SZ-bar",
+      "description": "<p>Hold the EZ-bar shoulder-wide, the back is straight, the shoulders slightly back, the arms are streched. Bend the arms, bringing the weight up, with a fast movement. Without pausing, let down the bar with a slow and controlled movement.</p>\n<p>Don't allow your body to swing during the exercise, all work is done by the biceps, which are the only mucles that should move (pay attention to the elbows).</p>",
+      "name": "Biceps Curls With EZ-bar",
+      "name_original": "Biceps curls with EZ-bar",
       "creation_date": "2013-05-05",
       "language": 2,
       "uuid": "38919515-ce04-4383-9c3f-5846edd0e844",
@@ -46,7 +46,7 @@
         "Brachialis"
       ],
       "equipment": [
-        "SZ-Bar"
+        "EZ-bar"
       ],
       "comment": "Fluid movements with no pauses at the top or the bottom"
     }
@@ -134,9 +134,9 @@
       "license_author": "wger.de",
       "status": "2",
       "category": "Arms",
-      "description": "<p>Hold the SZ-bar and lay down on a flat bench in such a way that around 1/4 of your head is over the edge. Stretch your arms with the bar and bend them so that the bar is lowered. Just before it touches your forehead, push it up.</p>\n<p>Pay attention to your elbows and arms: only the triceps are doing the work, the rest of the arms should not move.</p>",
-      "name": "French Press (skullcrusher) SZ-bar",
-      "name_original": "French press (skullcrusher) SZ-bar",
+      "description": "<p>Hold the EZ-bar and lay down on a flat bench in such a way that around 1/4 of your head is over the edge. Stretch your arms with the bar and bend them so that the bar is lowered. Just before it touches your forehead, push it up.</p>\n<p>Pay attention to your elbows and arms: only the triceps are doing the work, the rest of the arms should not move.</p>",
+      "name": "French Press (skullcrusher) EZ-bar",
+      "name_original": "French press (skullcrusher) EZ-bar",
       "creation_date": "2013-05-05",
       "language": 2,
       "uuid": "ee4a350b-c681-407f-a414-6ec243809ec7",
@@ -146,7 +146,7 @@
       "muscles_secondary": [],
       "equipment": [
         "Bench",
-        "SZ-Bar"
+        "EZ-bar"
       ],
       "comment": "Don't move the elbows during the exercise"
     }
@@ -1102,9 +1102,9 @@
       "license_author": "wger.de",
       "status": "2",
       "category": "Shoulders",
-      "description": "<p>Stand straight, your feet are shoulder-width apart. Hold the SZ-bar with an overhand grip on your thighs, the arms are stretched. Lift the bar close to the body till your chin. The elbows point out so that at the highest point they form a V. Make here a short pause before going slowly down and repeating the movement.</p>",
-      "name": "Upright Row, SZ-bar",
-      "name_original": "Upright row, SZ-bar",
+      "description": "<p>Stand straight, your feet are shoulder-width apart. Hold the EZ-bar with an overhand grip on your thighs, the arms are stretched. Lift the bar close to the body till your chin. The elbows point out so that at the highest point they form a V. Make here a short pause before going slowly down and repeating the movement.</p>",
+      "name": "Upright Row, EZ-bar",
+      "name_original": "Upright row, EZ-bar",
       "creation_date": "2013-05-05",
       "language": 2,
       "uuid": "61271a8e-6a00-4898-8dc3-ea9ef913f25e",
@@ -1116,7 +1116,7 @@
         "Biceps brachii"
       ],
       "equipment": [
-        "SZ-Bar"
+        "EZ-bar"
       ],
       "comment": "Pull the weight till your chin"
     }
@@ -1409,7 +1409,7 @@
       "license_author": "wger.de",
       "status": "2",
       "category": "Shoulders",
-      "description": "<p>The movements are basically the same as with an SZ-bar, but you use the bar on the multi press:</p>\n<p>Stand straight, your feet are shoulder-width apart. Hold the bar with an overhand grip on your thighs, the arms are stretched. Lift the bar close to the body till your chin. The elbows point out so that at the highest point they form a V. Make here a short pause before going slowly down and repeating the movement.</p>",
+      "description": "<p>The movements are basically the same as with an EZ-bar, but you use the bar on the multi press:</p>\n<p>Stand straight, your feet are shoulder-width apart. Hold the bar with an overhand grip on your thighs, the arms are stretched. Lift the bar close to the body till your chin. The elbows point out so that at the highest point they form a V. Make here a short pause before going slowly down and repeating the movement.</p>",
       "name": "Upright Row, on Multi Press",
       "name_original": "Upright row, on multi press",
       "creation_date": "2013-05-05",
@@ -2380,7 +2380,7 @@
       ],
       "muscles_secondary": [],
       "equipment": [
-        "SZ-Bar"
+        "EZ-bar"
       ],
       "comment": ""
     }
@@ -2780,7 +2780,7 @@
       "license_author": "mbozi1",
       "status": "2",
       "category": "Arms",
-      "description": "<p>On an SZ-bar grip your hands on the outside of each bend and stand with your arms straight down, palms facing your legs. Pull the bar (bending your arms at the elbow) to your chest, and the push the bar above your head (arms as straight as possible). Return the bar to your chest by dropping your arms at the elbows. Return the bar to it's origional position (stand with your arms straight down, palms facing your legs.)</p>",
+      "description": "<p>On an EZ-bar grip your hands on the outside of each bend and stand with your arms straight down, palms facing your legs. Pull the bar (bending your arms at the elbow) to your chest, and the push the bar above your head (arms as straight as possible). Return the bar to your chest by dropping your arms at the elbows. Return the bar to it's origional position (stand with your arms straight down, palms facing your legs.)</p>",
       "name": "Military Press",
       "name_original": "Military Press",
       "creation_date": "2014-06-12",
@@ -2789,7 +2789,7 @@
       "muscles": [],
       "muscles_secondary": [],
       "equipment": [
-        "SZ-Bar"
+        "EZ-bar"
       ],
       "comment": ""
     }

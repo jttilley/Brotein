@@ -4,7 +4,7 @@ const WorkoutContext = createContext({
   workout: {},
   rows: [],
   handleInputChange: () => {},
-  handleAdd: () => {}
+  handleAddWorkout: () => {}
 })
 
 export default WorkoutContext;

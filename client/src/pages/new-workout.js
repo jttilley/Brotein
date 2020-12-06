@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Navbar from '../components/navbar';
 import WorkoutBanner from '../components/workoutBanner';
 import AddWorkout from '../components/addWorkout';
@@ -6,7 +6,6 @@ import WorkoutContext from '../utils/workoutContext';
 import API from '../utils/API';
 import ExcerciseTable from '../components/exerciseTable';
 
-const exerciseForm = document.getElementsByClassName("exercise");
 const workoutRows = [];
 
 const NewWorkOutPage = () => {
@@ -21,8 +20,6 @@ const NewWorkOutPage = () => {
 
     let [rows, setRows] = useState([]);
 
-
-
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         console.log('value: ', value);
@@ -31,7 +28,7 @@ const NewWorkOutPage = () => {
         console.log('workout: ', workout);
     }
 
-    const handleAdd = (event) => {
+    const handleAddWorkout = (event) => {
         event.preventDefault()
         const newWorkout = createData(workout)
 
@@ -39,26 +36,34 @@ const NewWorkOutPage = () => {
         workoutRows.push(newWorkout);
         console.log('workoutRows: ', workoutRows);
         setRows(workoutRows);
-        setWorkout(...workout, {
-            exercise: "",
-            reps: "",
-            sets: "",
-            weights: "",
-            duration: ""
+
+        const body = {
+            name: workout.name,
+            workout: newWorkout
+        }
+
+        API.postWorkout(body).then((response) => {
+            console.log('response: ', response);
+            //add exercise to workout card
+            
+            // rows.push();
+
+            //reset form for next exercise
+            setWorkout({
+                name: workout.name,
+                exercise:"",
+                reps:"",
+                sets:"",
+                weight:"",
+                duration:""
+            });
+        }).catch((error) => {
+            console.log(error);
         });
-
-
-
-        // API.postWorkout(newWorkout).then(() => {
-        //     //add exercise to workout card
-        //     rows.push(createData(newWorkout));
-        // }).catch((error) => {
-        //     console.log(error);
-        // });
     }
 
-    function createData({ name, exercise, sets, reps, weight, duration }) {
-        return { name, exercise, sets, reps, weight, duration };
+    function createData({ exercise, sets, reps, weight, duration }) {
+        return { exercise, sets, reps, weight, duration };
     }
 
     // const rows = [
@@ -72,12 +77,12 @@ const NewWorkOutPage = () => {
             workout,
             rows,
             handleInputChange,
-            handleAdd
+            handleAddWorkout
         }}>
             <Navbar />
             <WorkoutBanner />
             <AddWorkout />
-            <ExcerciseTable rows={rows} />
+            <ExcerciseTable />
         </WorkoutContext.Provider>
     );
 };
