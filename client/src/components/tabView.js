@@ -5,7 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Youtube from '../components/youtube';
 import Food from '../components/food';
-
+import "../css/main.css"
 
 
 const useStyles = makeStyles({
