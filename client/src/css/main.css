@@ -292,3 +292,9 @@ p {
   font-weight: bolder;
   font-size: .5px;
 }
+.MuiGrid-grid-xs-12 {
+  flex-grow: 0;
+  max-width: 100%;
+  flex-basis: 100%;
+  background-color: gray;
+}
