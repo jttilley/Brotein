@@ -135,6 +135,7 @@ function NewMealPage() {
                 <NewMealBanner />
                 <AddIngredient />
                 <MealTable />
+                
             </div>
         </MealContext.Provider>
 
