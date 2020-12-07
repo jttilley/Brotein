@@ -31,6 +31,20 @@ router.get('/:id', (req, res) => {
 });
 
 
+// get a workout ---WORKING 
+router.get('/name/:name', (req, res) => {
+    db.Workouts.findOne({
+        name: req.params.name
+    }, (error, data) => {
+        if (error) {
+            res.send(error); 
+        } else {
+            res.send(data); 
+        }
+    })
+});
+
+
 
 // // get all workouts 
 // router.get('/all', (req, res) => {
@@ -59,6 +73,26 @@ router.get('/:id', (req, res) => {
         })
     });
 
+//Db.tableName.update ( {continent : “Africa”}, {$push: {cities: ”city4”} } ) - update an array
+// update a workout 
+    router.put('/add/exercise/:name', (req, res) => {
+        console.log('req.body.workout: ', req.body.workout);
+        db.Workouts.update(
+            {
+                name: req.params.name
+            }, 
+            {
+                $push: {workout: req.body.workout}
+            }, 
+            (error, data) => {
+                if (error) {
+                    res.send(error); 
+                } else {
+                    res.send(data); 
+                }
+            }
+        )
+    });
 
 // update a workout 
     router.put('/update/:id', (req, res) => {
@@ -69,7 +103,7 @@ router.get('/:id', (req, res) => {
             {
                 $set: {
                     name: req.body.name, 
-                    workout: req.body.name, 
+                    workout: req.body.workout, 
                 }
             }, 
             (error, data) => {

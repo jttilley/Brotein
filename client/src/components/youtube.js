@@ -47,7 +47,9 @@ function YouTube() {
                     <li>Duration: {item.duration}</li>
                     <li>Uploaded: {item.uploaded_at}</li>
                   </ul>
-                  <img className="yt-img" alt="" src={item.thumbnail} />
+                    <a href={item.link}>
+                      <img className="yt-img" alt="" src={item.thumbnail} />
+                    </a>
                 </li>
               ))}
             </ul>
