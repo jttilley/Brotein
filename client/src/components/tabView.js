@@ -3,9 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Youtube from '../components/youtube';
-import Food from '../components/food';
-import "../css/main.css"
+//import TabContext from '@material-ui/lab/TabContext';
+import TabList from '@material-ui/lab/TabList';
+//import { TabPanel } from '@material-ui/lab'
+//import HistoryWorkout from './historyWorkout';
+//import HistoryMeal from './historyMeal';
+
+
 
 
 const useStyles = makeStyles({
@@ -23,6 +27,7 @@ export default function CenteredTabs() {
   };
 
   return (
+   
     <Paper className={classes.root}>
       <Tabs
         value={value}
@@ -31,13 +36,14 @@ export default function CenteredTabs() {
         textColor="primary"
         centered
       >
-        <Tab label="Fitness" value="1" />
-        <Tab label="Meals" value="2" />
-        <Tab label="YouTube" value="3" />
-        <Tab label="Recipes" value="4" />
+        <TabList onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="Fitness" value="1" />
+          <Tab label="Meals" value="2" />
+        </TabList>
+      </Tabs> 
 
-      </Tabs>
     </Paper>
+    
   );
 }
 

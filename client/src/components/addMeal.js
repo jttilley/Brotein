@@ -4,24 +4,24 @@ import MealContext from "../utils/mealContext";
 import "../css/main.css"
 
 function AddIngredient() {
-  const { meal, mealRows, handleInputChange, handleAdd } = useContext(MealContext)
+  const { meal, mealRows, handleInputChange, handleAddMeal } = useContext(MealContext)
   // console.log('ingredients: ', ingredients);
-  console.log('ingredient.fields.name: ', ingredients[1].fields.name);
+  // console.log('ingredient.fields.name: ', ingredients[1].fields.name);
   return (
     <div className="cards__item">
       <form>
         <div className="workout-name">
-          <input type="text" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange} />
+          <input type="name" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange} />
 
         </div>
         <p>
-          <input type="ingredient" className="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" name="ingredient" />
+          <input type="ingredient" className="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" name="ingredient" value={meal.ingredient} onChange={handleInputChange} />
           <datalist id="ingredients">
             {ingredients.map(ingredient => (
               <option value={ingredient.fields.name} key={ingredient.pk} ></option>
             ))}
           </datalist>
-          <button >Add Ingredient</button>
+          <button onClick={handleAddMeal} >Add Ingredient</button>
         </p>
       </form>
     </div>

@@ -14,7 +14,7 @@ class BarGraph extends Component {
 			axisX: {
 				title: "Calories",
 				reversed: true,
-			},
+			}, 
 			axisY: {
 				title: "Days",
 				includeZero: true,

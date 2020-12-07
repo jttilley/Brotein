@@ -1,20 +1,10 @@
 const mongoose = require('mongoose'); 
 const db = require('../models'); 
-const ingredients = require('../client/src/utils/ingredients.json');
+// const ingList = require('../client/src/utils/ingredients.json');
 
+// console.log('ingList: ', ingList);
 // This file empties the collection and inserts the books below
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Brotein");
-
-db.Ingredients.deleteMany({})
-  .then(() => db.Workouts.collection.insertMany(ingredients))
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
 
 const workout1 = [
   {
@@ -26,7 +16,6 @@ const workout1 = [
         reps: 2, 
         weight: 50, 
         duration: 20, 
-        // body: 'Workout1'
       }
     ]
   }, 
@@ -40,7 +29,6 @@ const workout1 = [
         reps: 4, 
         weight: 25, 
         duration: 20, 
-        // body: 'Workout2'
       }
     ]
   }, 
@@ -53,7 +41,6 @@ const workout1 = [
         reps: 4, 
         weight: 20, 
         duration: 20, 
-        // body: 'Workout3'
       }
     ]
   },
@@ -77,8 +64,7 @@ const meal1 = [
     protein: 20,
     carbohydrates: 5,
     fats: 2,
-    calories: 100, 
-    // body: 'Meal1'
+    calories: 100
   }, 
   {
     food: 'steak', 
@@ -108,12 +94,24 @@ db.Meals.deleteMany({})
     process.exit(1);
   });
 
-db.User.deleteMany({})
-  .then(data => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.User.deleteMany({})
+//   .then(data => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
+
+
+// db.Ingredients.collection.insertMany(ingList)
+//   .then(data => {
+//     console.log('data: ', data);
+//     // console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch(err => {
+//     console.error(err);
+//     process.exit(1);
+//   });
