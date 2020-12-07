@@ -25,7 +25,7 @@ export default {
     },
     addFood: function(name) {
       return axios.put("/api/meals/add/food/" + name)
-    }
+    },
     updateMeal: function(id) {
       return axios.put("/api/meals/update/" + id);
     },
@@ -51,7 +51,7 @@ export default {
     },
     addExercise: function(name, workout) {
       return axios.put("api/workouts/add/exercise/" + name, workout)
-    }
+    },
 
     updateWorkout: function(id) {
       return axios.put("/api/workouts/update/" + id);

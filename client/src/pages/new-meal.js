@@ -66,21 +66,22 @@ function NewMealPage() {
 
             setMealRows(curRows);
          //clear out meal data except for meal name
-         setMeal({
-            name: meal.name,
-            food: '',
-            protein: 0,
-            carbohydrates: 0,
-            fats: 0,
-            calories: 0
-        });
+            setMeal({
+                name: meal.name,
+                food: '',
+                protein: 0,
+                carbohydrates: 0,
+                fats: 0,
+                calories: 0
+            });
         
                
         // }).catch((error) => {
         //     console.log(error);
         // });
+        })
     }
-
+    
     const getFoodDetails = (food) => {
         API.getFoodData(food).then(({ data }) => {
             // console.log('data.results: ', data.results[0]);

@@ -1,7 +1,8 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import foods from "../utils/ingredients.json";
 
 import MealContext from "../utils/mealContext";
+import "../css/main.css"
 
 function AddFood() {
   const { meal, mealRows, handleInputChange, handleAddMeal } = useContext(MealContext)
@@ -11,10 +12,10 @@ function AddFood() {
   return (
     <div className="cards__item">
       <form>
-      <div className="workout-name">
-        <input type="name" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange}/> 
-        
-      </div>
+        <div className="workout-name">
+          <input type="name" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange} />
+
+        </div>
         <p>
           <input type="food" className="form-control" list="ingredients" id="food" placeholder="Select a food" name="food" value={meal.food} onChange={handleInputChange}/>
           <datalist id="ingredients">

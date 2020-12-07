@@ -23,9 +23,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredTabs() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(2);
 
     const handleChange = (event, newValue) => {
+        console.log('newValue: ', newValue);
         setValue(newValue);
     };
 
@@ -40,14 +41,14 @@ export default function CenteredTabs() {
                     centered
                 >
 
-                    <TabList onChange={handleChange} aria-label="simple tabs example">
-                        <Tab label="Youtube" value="1" />
-                        <Tab label="Recipes" value="2" />
+                    <TabList value="1" onChange={handleChange} aria-label="simple tabs example">
+                        <Tab label="Youtube" value="1" index="0" />
+                        <Tab label="Recipes" value="2" index="1"/>
                     </TabList>
                 </Tabs>
 
-                <TabPanel value="1" > <span> <YouTube /> </span> </TabPanel>
-                <TabPanel value="2" ><Food /> </TabPanel>
+                <TabPanel value="1" index="0"> <span> <YouTube /> </span> </TabPanel>
+                <TabPanel value="2" index="1"><span><Food /> </span></TabPanel>
 
 
             </TabContext>

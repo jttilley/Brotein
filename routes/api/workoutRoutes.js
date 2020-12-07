@@ -17,7 +17,7 @@ router.get('/all', (req, res) => {
     })
 });
 
-// get a workout ---WORKING 
+// get a workout ---WORKING  
 router.get('/:id', (req, res) => {
     db.Workouts.findOne({
         _id: mongojs.ObjectID(req.params.id)
