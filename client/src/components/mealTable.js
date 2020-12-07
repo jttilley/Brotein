@@ -42,48 +42,60 @@ const StyledTableRow = withStyles((theme) => ({
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
+    minWidth: 340,
   },
 });
 
 function MealTable() {
   const classes = useStyles();
-  const { meal, mealRows } = useContext(MealContext);
+  const { meal, mealRows, mealTotals } = useContext(MealContext);
+  console.log('mealRows: ', mealRows);
+  console.log('meal: ', meal);
+  console.log('mealTotals: ', mealTotals);
 
   return (
     <Grid item xs={12}>
-      <Box boxShadow={0}>
-        <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'25px',}}>
-          <CardContent>
-            <TableContainer component={Paper}>
-              <Table className={classes.table} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>{meal.name} Ingredients</StyledTableCell>
-                    <StyledTableCell align="center">Calories</StyledTableCell>
-                    <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
-                    <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
-                    <StyledTableCell align="center">Fat&nbsp;(g)</StyledTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {mealRows.map((row) => (
-                    <StyledTableRow key={row.name}>
-                      <StyledTableCell component="th" scope="row">
-                        {row.ingredient}
-                      </StyledTableCell>
-                      <StyledTableCell align="center">{row.calories}</StyledTableCell>
-                      <StyledTableCell align="center">{row.protein}</StyledTableCell>
-                      <StyledTableCell align="center">{row.carbs}</StyledTableCell>
-                      <StyledTableCell align="center">{row.fat}</StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </CardContent>
-        </Card>
-      </Box>
+    {/* <Box boxShadow={0}> */}
+    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'25px',}}>
+    <CardContent>
+    <TableContainer component={Paper}>
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>{meal.name} Ingredients</StyledTableCell>
+            <StyledTableCell align="center">Calories</StyledTableCell>
+            <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
+            <StyledTableCell align="center">Fat&nbsp;(g)</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          { mealTotals ? (
+            <StyledTableRow key="totals">
+              <StyledTableCell component="th" scope="row">Totals</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.calories}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.protein}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.carbohydrates}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.fats}</StyledTableCell>
+            </StyledTableRow>
+          ) : null}
+        {mealRows.map((row) => (
+            <StyledTableRow key={row.ingredient}>
+              <StyledTableCell component="th" scope="row">
+                {row.ingredient}
+              </StyledTableCell>
+              <StyledTableCell align="center">{row.calories}</StyledTableCell>
+              <StyledTableCell align="center">{row.protein}</StyledTableCell>
+              <StyledTableCell align="center">{row.carbohydrates}</StyledTableCell>
+              <StyledTableCell align="center">{row.fats}</StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </CardContent>
+    </Card>
+    {/* </Box> */}
     </Grid> 
   );
 }

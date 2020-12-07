@@ -14,7 +14,7 @@ function AddIngredient() {
         
       </div>
         <p>
-          <input type="ingredient" className="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" name="ingredient" onChange={handleInputChange}/>
+          <input type="ingredient" className="form-control" list="ingredients" id="ingredient" placeholder="Add an Ingredient for your meal" name="ingredient" value={meal.ingredient} onChange={handleInputChange}/>
           <datalist id="ingredients">
             { ingredients.map(ingredient => (
               <option value={ingredient.fields.name} key={ingredient.pk} ></option>
