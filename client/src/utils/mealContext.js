@@ -2,9 +2,10 @@ import React, { createContext } from 'react';
 
 const MealContext = createContext({
   meal: {},
+  mealTotals: {},
   mealRows: [],
   handleInputChange: () => {},
-  handleAdd: () => {}
+  handleAddMeal: () => {}
 })
 
 export default MealContext;

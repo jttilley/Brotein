@@ -32,9 +32,9 @@ const NewWorkOutPage = () => {
         event.preventDefault()
         const newWorkout = createData(workout)
 
-        console.log('newWorkout: ', newWorkout);
+        // console.log('newWorkout: ', newWorkout);
         workoutRows.push(newWorkout);
-        console.log('workoutRows: ', workoutRows);
+        // console.log('workoutRows: ', workoutRows);
         setRows(workoutRows);
 
         const body = {

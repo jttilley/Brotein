@@ -2,29 +2,28 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const ingredientsSchema = new Schema({
+const IngredientsSchema = new Schema({
   model: {type: String},
   pk: {type: Number},
   fields: {
-    license: {type: String},
+    license: {type: Number},
     license_author: {type: String},
-    status: {type: Number},
+    status: {type: String},
     language: {type: Number},
     creation_date: {type: String},
     update_date: {type: String},
     name: {type: String},
     energy: {type: Number},
-    protein: {type: Number},
-    carbohydrates: {type: Number},
-    carbohydrates_sugar: {type: Number},
-    fat: {type: Number},
-    fat_saturated: {type: Number},
-    fibres: {type: Number},
-    sodium: {type: Number}
+    protein: {type: String},
+    carbohydrates: {type: String},
+    carbohydrates_sugar: {type: String},
+    fat: {type: String},
+    fat_saturated: {type: String},
+    fibres: {type: String},
+    sodium: {type: String}
   }
-  
 });
 
-const Ingredients = mongoose.model('Ingredients', ingredientsSchema);
+const Ingredients = mongoose.model('Ingredients', IngredientsSchema);
 
 module.exports = Ingredients;

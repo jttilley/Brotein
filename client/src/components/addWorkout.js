@@ -13,11 +13,11 @@ function AddWorkout() {
       <div className="ui raised card m-auto">
         <form action="POST">
           <div className="workout-name">
-            <input type="full_name" className="form-control" name="name" placeholder="Name this workout" onChange={handleInputChange} />
+            <input type="name" className="name" name="name" placeholder="Name this workout" onChange={handleInputChange} />
           </div>
           <div className="workout-type">
             {/* <label for="exercise">Exercise Type:</label> */}
-            <input type="exercise" className="form-control" name="exercise" list="exercises" id="exercise" value={workout.exercise} placeholder="Add an Exercise" onChange={handleInputChange} />
+            <input type="exercise" className="exercise" name="exercise" list="exercises" id="exercise" value={workout.exercise} placeholder="Add an Exercise" onChange={handleInputChange} />
             <datalist id="exercises">
               {exercises.map(exercise => (
                 <option value={exercise.fields.name} key={exercise.pk}></option>
