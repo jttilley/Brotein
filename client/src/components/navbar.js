@@ -16,6 +16,8 @@ function classToggle() {
 function Navbar() {
 
     return (
+
+
         <nav className='navbar'>
             <div className='navbar-container'>
                 <li className='nav-item'>
