@@ -30,6 +30,19 @@ router.get('/:id', (req, res) => {
   })
 });
 
+// get a meal by name
+router.get('/name/:name', (req, res) => {
+  db.Meals.findOne({
+      name: req.params.name
+  }, (error, data) => {
+      if (error) {
+          res.send(error); 
+      } else {
+          res.send(data); 
+      }
+  })
+});
+
 
   // router.get("/api/workouts/range",(req,res) => {
   //   Workouts.find({}).then(workouts => {
@@ -41,12 +54,10 @@ router.get('/:id', (req, res) => {
   
 // add a meal --- WORKING 
   router.post('/add', (req, res) => {
+    console.log('req.body: ', req.body);
     db.Meals.create({
-        food: req.body.food, 
-        protein: req.body.protein, 
-        carbohydrates: req.body.carbohydrates, 
-        fats: req.body.fats, 
-        calories: req.body.calories
+      name: req.body.name,
+      meal: req.body.meal,
     })
     .then(addMeal => {
         res.send(addMeal);
@@ -54,6 +65,23 @@ router.get('/:id', (req, res) => {
     .catch(err => {
         res.send(err);
     });
+ });
+  
+// add a meal --- WORKING 
+  router.put('/add/food/:name', (req, res) => {
+    console.log('req: ', req.body);
+    db.Meals.update({
+      name: req.params.name
+    },{
+        $push: {meal: req.body.meal}
+    }, 
+    (error, data) => {
+        if (error) {
+            res.send(error); 
+        } else {
+            res.send(data); 
+        }
+    })
  });
 
 // update a meal --WORKING 
