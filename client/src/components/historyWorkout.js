@@ -1,9 +1,11 @@
 import { useState } from "react";
 import React from 'react';
-import ExcerciseTable from './exerciseTable';
 import API from '../utils/API';
 import HealthContex from '../utils/healthContex';
 import DeleteBtn from './deleteBtn';
+import Container from './grid';
+import { List, ListItem } from './listItem';
+import { Link } from "react-router-dom";
 
 function HistoryWorkout () {
 
@@ -33,22 +35,32 @@ function HistoryWorkout () {
     return (
         <HealthContex.Provider value = {{
         workout,
-        rows,
         getAllWorkouts,
         deleteWorkout,
         }}>
+        <Container fluid>
         <h1>Previous Workouts</h1>
         {workouts.length ? (
-              <ExcerciseTable>
-                {workouts.map(workout => (
-                  
-                
-                <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
-               ))}
-              </ExcerciseTable>
+                <List>
+                  {workouts.map(workout => (
+                    <ListItem key={workout._id}>
+                      <Link to={"/history" + workout._id}>
+                        <strong>
+                          {workout.excercise} 
+                          {workout.sets} 
+                          {workout.reps} 
+                          {workout.weight} 
+                          {workout.duration} 
+                        </strong>
+                      </Link>
+                      <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
+                    </ListItem>
+                  ))}
+                </List>
             ) : (
               <h3>No Results to Display</h3>
             )}     
+        </Container>    
         </HealthContex.Provider>
 
     )
