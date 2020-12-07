@@ -60,25 +60,34 @@ db.Workouts.deleteMany({})
 
 const meal1 = [
   {
-    food: 'fish', 
-    protein: 20,
-    carbohydrates: 5,
-    fats: 2,
-    calories: 100
+    name: "breakfast",
+    meal: [{
+      food: 'fish', 
+      protein: 20,
+      carbohydrates: 5,
+      fats: 2,
+      calories: 100
+    }]
   }, 
   {
-    food: 'steak', 
-    protein: 30,
-    carbohydrates: 10,
-    fats: 10,
-    calories: 200
+    name: "lunch",
+    meal: [{
+      food: 'steak', 
+      protein: 30,
+      carbohydrates: 10,
+      fats: 10,
+      calories: 200
+    }]
   }, 
   {
-    food: 'chicken', 
-    protein: 10,
-    carbohydrates: 10,
-    fats: 2,
-    calories: 150
+    name: "dinner",
+    meal: [{
+      food: 'chicken', 
+      protein: 10,
+      carbohydrates: 10,
+      fats: 2,
+      calories: 150
+    }]
   }
 ]
 console.log(meal1); 
@@ -96,7 +105,7 @@ db.Meals.deleteMany({})
 
 // db.User.deleteMany({})
 //   .then(data => {
-//     console.log(data.result.n + " records inserted!");
+//     console.log("Cleared users!");
 //     process.exit(0);
 //   })
 //   .catch(err => {

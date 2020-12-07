@@ -3,12 +3,14 @@
   const Schema = mongoose.Schema;
   
   const mealSchema = new Schema({
-    food: {type: String},
-    protein: {type: Number},
-    carbohydrates: {type: Number},
-    fats: {type: Number}, 
-    calories: {type: Number}, 
-    body: {type:String}
+    name: {type: String},
+    meal: [{
+      food: {type: String},
+      protein: {type: Number},
+      carbohydrates: {type: Number},
+      fats: {type: Number}, 
+      calories: {type: Number}
+    }]
   });
   
   const Meals = mongoose.model('Meals', mealSchema);
