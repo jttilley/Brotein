@@ -29,11 +29,7 @@ function HistoryMeal () {
 
 
     return (
-        <MealContex.Provider value = {{
-        meal,
-        getAllMeals,
-        deleteMeal,
-        }}>
+        
         <Container fluid>
         <h1>Previous meals</h1>
         {meals.length ? (
@@ -57,7 +53,7 @@ function HistoryMeal () {
               <h3>No Results to Display</h3>
             )}     
         </Container>    
-        </MealContex.Provider>
+        
 
     )
 }
