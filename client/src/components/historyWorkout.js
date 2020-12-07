@@ -3,13 +3,12 @@ import React from 'react';
 import API from '../utils/API';
 import HealthContex from '../utils/healthContex';
 import DeleteBtn from './deleteBtn';
-import Container from './grid';
 import { List, ListItem } from './listItem';
 import { Link } from "react-router-dom";
 
 function HistoryWorkout () {
 
-    const [ workouts ,setWorkout] = useState([])
+    const [ workouts, setWorkout] = useState([])
 
     function getAllWorkouts() {
     API.getAllWorkouts()
@@ -33,18 +32,14 @@ function HistoryWorkout () {
 
 
     return (
-        <HealthContex.Provider value = {{
-        workout,
-        getAllWorkouts,
-        deleteWorkout,
-        }}>
-        <Container fluid>
+        
+       <div>
         <h1>Previous Workouts</h1>
         {workouts.length ? (
                 <List>
                   {workouts.map(workout => (
                     <ListItem key={workout._id}>
-                      <Link to={"/history" + workout._id}>
+                      <Link to={"/api/meals/all" + workout._id}>
                         <strong>
                           {workout.excercise} 
                           {workout.sets} 
@@ -60,8 +55,8 @@ function HistoryWorkout () {
             ) : (
               <h3>No Results to Display</h3>
             )}     
-        </Container>    
-        </HealthContex.Provider>
+           
+        </div>
 
     )
 }
