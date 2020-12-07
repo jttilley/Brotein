@@ -13,7 +13,9 @@ const Recipe = ({ recipe }) => {
       <div className="recipe">
         <h2 class="card-read">{label}</h2>
         <span class="card-description subtle"></span>
-        <img src={image} alt={label} class="card-media" />
+        <a href={url}>
+          <img src={image} alt={label} class="card-media" />
+        </a>
         <a href={url} target="_blank" rel="noopener noreferrer">
           URL
       </a>
