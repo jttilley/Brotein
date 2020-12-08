@@ -173,10 +173,18 @@ function NewMealPage() {
     
 
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+        let { name, value } = event.target;
         // console.log('value: ', value);
         // console.log('name: ', name);
-
+        if (name === "name") {
+            value = value.split(' ')
+            .map(w => {
+                if (w !== "") {
+                    return w[0].toUpperCase() + w.substr(1).toLowerCase();
+                }
+            })
+            .join(' ')
+        }
         //title case the meal name 
         setMeal({...meal, [name]: value});
         // console.log('meal: ', meal);
