@@ -191,14 +191,14 @@ background-color: white;
   font-weight: 300;
   text-align:right;
   line-height: 60px; 
-   margin: 10px 0;
+  margin: 10px 0;
 }
 .yt-contents {
   font-family: 'Cormorant Garamond', serif;
   font-size: 30px;
   font-weight: 300;
   line-height: 60px; 
-   margin: 10px 0;
+  margin: 10px 0;
 }
 
 .card-description {
@@ -243,7 +243,7 @@ background-color: white;
   widows: 200px;
   box-shadow: 0 2px 25px 2px rgb(77, 74, 74), 0 2px 50px 2px rgb(80, 78, 78), 0 0 100px 3px rgba(70, 68, 68, 0.25);
   height: 1px;
-  margin: -1px auto 0;
+  margin: 20px auto 0;
   width: 80%;
 }
 img.card-media {
@@ -264,12 +264,12 @@ img.card-media {
 
 input[type="text"], .yt-search
 {
-    width: 30%;
+    width: 400px;
     padding-right: 100px;
-    margin-left: 500px;
+    margin-left: 30%;
     margin-top: 1px;
     margin-right: 400px;
-    position:center;
+    /* position:center; */
 }
 
 .MuiTabPanel-root {
@@ -291,4 +291,10 @@ input[type="text"], .yt-search
 p {
   font-weight: bolder;
   font-size: .5px;
+}
+.MuiGrid-grid-xs-12 {
+  flex-grow: 0;
+  max-width: 100%;
+  flex-basis: 100%;
+  background-color: gray;
 }

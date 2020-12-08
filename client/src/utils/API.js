@@ -7,7 +7,7 @@ export default {
     getExercises: function() {
       return axios.get(initUrl + "exerciseinfo/?language=2&limit=224");
     },
-    getIngredientData: function(ingredient) {
+    getFoodData: function(ingredient) {
       console.log('ingredient: ', ingredient);
 
       return axios.get(initUrl + "ingredient/?name=" + ingredient);
@@ -17,11 +17,17 @@ export default {
     getMeal: function(id) {
       return axios.get("/api/meals/meal/" + id);
     },
+    getMealByName: function(name) {
+      return axios.get("/api/meals/name/" + name);
+    },
     getAllMeals: function() {
       return axios.get("/api/meals/all");
     },
-    postMeal: function() {
-      return axios.post("/api/meals/add");
+    postMeal: function(meal) {
+      return axios.post("/api/meals/add", meal);
+    },
+    addFood: function(name, meal) {
+      return axios.put("/api/meals/add/food/" + name, meal)
     },
     updateMeal: function(id) {
       return axios.put("/api/meals/update/" + id);
@@ -37,12 +43,19 @@ export default {
     getWorkout: function(id) {
       return axios.get("/api/workouts/" + id);
     },
+    getWorkoutByName: function(name) {
+      return axios.get("/api/workouts/name/" + name);
+    },
     getAllWorkouts: function() {
       return axios.get("/api/workouts/all");
     },
     postWorkout: function(name, workout) {
       return axios.post("/api/workouts/add",name,workout);
     },
+    addExercise: function(name, workout) {
+      return axios.put("api/workouts/add/exercise/" + name, workout)
+    },
+
     updateWorkout: function(id) {
       return axios.put("/api/workouts/update/" + id);
     },

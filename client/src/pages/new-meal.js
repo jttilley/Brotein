@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import AddIngredient from '../components/addMeal';
+import AddFood from '../components/addMeal';
 import MealTable from '../components/mealTable';
 import Navbar from '../components/navbar';
 import NewMealBanner from '../components/newMealBanner';
@@ -12,7 +12,7 @@ const curRows = [];
 function NewMealPage() {
     let [meal, setMeal] = useState({
         name:'',
-        ingredient: '',
+        food: '',
         protein: 0,
         carbohydrates: 0,
         fats: 0,
@@ -34,26 +34,32 @@ function NewMealPage() {
         }
     },[meal])
 
-
-    const updateTable = () => {
-        console.log('meal: ', meal);
-        curRows.push(meal);
-        console.log('curRows: ', curRows);
+    const cleanUpStates = (curRows) => {
         setMealRows(curRows);
+
+        //clear out meal data except for meal name
         setMeal({
             name: meal.name,
-            ingredient: '',
+            food: '',
             protein: 0,
             carbohydrates: 0,
             fats: 0,
             calories: 0
         });
-        
+    }
+
+    const updateTable = () => {
+        // update local rows array and update mealRows with it
+        curRows.push(meal);
+        const {name, food, calories, protein, carbohydrates, fats} = meal;
+
+        //initialize totals
         let proTotal = 0;
         let carbTotal = 0;
         let fatTotal = 0;
         let calTotal = 0;
 
+        //calculate totals
         curRows.forEach(row => {
             proTotal += parseFloat(row.protein);
             carbTotal += parseFloat(row.carbohydrates);
@@ -61,36 +67,77 @@ function NewMealPage() {
             calTotal += parseFloat(row.calories);
         });
 
+        //set totals
         setMealTotals({
-            protein: proTotal,
-            carbohydrates: carbTotal,
-            fats: fatTotal,
-            calories: calTotal
+            protein: Math.round(proTotal*1000)/1000,
+            carbohydrates: Math.round(carbTotal*1000)/1000,
+            fats: Math.round(fatTotal*1000)/1000,
+            calories: Math.round(calTotal*1000)/1000
         })
-        console.log('mealTotals: ', mealTotals);
 
+        // console.log('mealTotals: ', mealTotals);
+        //check if meal name already exists
+        API.getMealByName(name).then((res) => {
+            console.log('res: ', res);
+            if (res.data) {
+                //name was found so just add the food
+                console.log('name was found: ', name);
+                
+                const body = {
+                    meal: {
+                        food: food,
+                        calories: calories,
+                        protein: protein,
+                        fats: fats,
+                        carbohydrates: carbohydrates
+                    }
+                }
+                
+                API.addFood(name, body).then(() => {
+                    cleanUpStates(curRows);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                // name is not found so create new meal
+                console.log('name is not found so create new meal: ', name);
+                
+                const body = {
+                    name: name,
+                    meal: [{
+                        food: food,
+                        calories: calories,
+                        protein: protein,
+                        fats: fats,
+                        carbohydrates: carbohydrates
+                    }]
+                }
 
-        // API.postWorkout(newWorkout).then(() => {
-        //     //add exercise to workout card
-        //     rows.push(createData(newWorkout));
-        // }).catch((error) => {
-        //     console.log(error);
-        // });
+                console.log('body: ', body);
+                API.postMeal(body).then(() => {
+                    cleanUpStates(curRows);
+                }).catch((err) => {
+                    console.log('err: ', err);
+                });
+            }
+        }).catch((err) => {
+            console.log('err: ', err);
+        });
     }
 
-    const getIngredientDetails = (ingredient) => {
-        API.getIngredientData(ingredient).then(({ data }) => {
-            console.log('data.results: ', data.results[0]);
+    const getFoodDetails = (food) => {
+        API.getFoodData(food).then(({ data }) => {
+            // console.log('data.results: ', data.results[0]);
             if (data.results[0]) {
                 const { protein, carbohydrates, fat, energy } = data.results[0];
-                console.log('energy: ', energy);
-                console.log('fat: ', fat);
-                console.log('carbohydrates: ', carbohydrates);
-                console.log('protein: ', protein);
+                // console.log('energy: ', energy);
+                // console.log('fat: ', fat);
+                // console.log('carbohydrates: ', carbohydrates);
+                // console.log('protein: ', protein);
 
                 setMeal({
                     name: meal.name,
-                    ingredient: ingredient,
+                    food: food,
                     protein: protein,
                     carbohydrates: carbohydrates,
                     fats: fat,
@@ -102,24 +149,20 @@ function NewMealPage() {
 
     const handleAddMeal = (event) => {
         event.preventDefault()
-        console.log('in handleAdd for new-meal page'); 
-        if (meal.ingredient != "") {
-            getIngredientDetails(meal.ingredient);
+        // console.log('in handleAdd for new-meal page'); 
+        if (meal.food != "") {
+            getFoodDetails(meal.food);
         }
         
     }
     
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        console.log('value: ', value);
-        console.log('name: ', name);
+        // console.log('value: ', value);
+        // console.log('name: ', name);
 
         setMeal({...meal, [name]: value});
-        console.log('meal: ', meal);
-    }
-
-    function createData( { name, ingredient, calories, protien, carbohydrates, fats } ) {
-        return { name, ingredient, calories, protien, carbohydrates, fats };
+        // console.log('meal: ', meal);
     }
 
     return (
@@ -133,12 +176,13 @@ function NewMealPage() {
             <div>
                 <Navbar />
                 <NewMealBanner />
-                <AddIngredient />
+                <AddFood />
                 <MealTable />
                 
             </div>
         </MealContext.Provider>
 
     );
-};
+}
+
 export default NewMealPage;

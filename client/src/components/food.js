@@ -40,17 +40,17 @@ function Food() {
   return (
     <div className="Search">
       {/* <h1>Find a Recipe</h1> */}
-      <form onSubmit={onSubmit} className="search-form">
+      <form onSubmit={onSubmit} className="yt-search">
         {alert !== "" && <Alert alert={alert} />}
         <input id="search-box"
-          type="text"
           name="query"
           onChange={onChange}
           value={query}
-          autoComplete="off"
+          
           placeholder="Search Food" />
-        <form method="get" action="">
+          <button>Search for Recipies</button>
         </form>
+        <form method="get" action="">
         <div className="recipes">
           {recipes !== [] &&
             recipes.map(recipe => <Recipe key={uuidv4()} recipe={recipe} />)}
