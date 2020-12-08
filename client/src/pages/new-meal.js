@@ -34,7 +34,7 @@ function NewMealPage() {
         }
     },[meal])
 
-    const cleanUpStates = (curRows) => {
+    const cleanUpStates = () => {
         setMealRows(curRows);
 
         //clear out meal data except for meal name
@@ -68,10 +68,10 @@ function NewMealPage() {
 
         //set totals
         setMealTotals({
-            protein: Math.round(proTotal*1000)/1000,
-            carbohydrates: Math.round(carbTotal*1000)/1000,
-            fats: Math.round(fatTotal*1000)/1000,
-            calories: Math.round(calTotal*1000)/1000
+            proTotal: Math.round(proTotal*1000)/1000,
+            carbTotal: Math.round(carbTotal*1000)/1000,
+            fatTotal: Math.round(fatTotal*1000)/1000,
+            calTotal: Math.round(calTotal*1000)/1000
         })
     }
 
@@ -106,7 +106,7 @@ function NewMealPage() {
                 }
                 
                 API.addFood(name, body).then(() => {
-                    cleanUpStates(curRows);
+                    cleanUpStates();
                 }).catch((error) => {
                     console.log(error);
                 });
@@ -129,7 +129,7 @@ function NewMealPage() {
 
                 console.log('body: ', body);
                 API.postMeal(body).then(() => {
-                    cleanUpStates(curRows);
+                    cleanUpStates();
                 }).catch((err) => {
                     console.log('err: ', err);
                 });

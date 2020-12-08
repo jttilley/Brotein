@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 
 function ExcerciseTable() {
   const classes = useStyles();
-  const {rows, workout} = useContext(WorkoutContext);
+  const {rows, workout, workoutTotals} = useContext(WorkoutContext);
   console.log('rows: ', rows);
 
   return (
@@ -76,6 +76,15 @@ function ExcerciseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
+        { workoutTotals ? (
+            <StyledTableRow key="totals">
+              <StyledTableCell component="th" scope="row">Totals</StyledTableCell>
+              <StyledTableCell align="center">{workoutTotals.wtTotal}</StyledTableCell>
+              <StyledTableCell align="center">{workoutTotals.repTotal}</StyledTableCell>
+              <StyledTableCell align="center">{workoutTotals.setTotal}</StyledTableCell>
+              <StyledTableCell align="center">{workoutTotals.durTotal}</StyledTableCell>
+            </StyledTableRow>
+          ) : null}
           {rows.map((row) => (
             <StyledTableRow key={row.exercise}>
               <StyledTableCell component="th" scope="row">
