@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import API from '../utils/API';
 import DeleteBtn from './deleteBtn';
 import { List, ListItem } from './listItem';
@@ -11,9 +10,10 @@ function HistoryMeal () {
 
     function getAllMeals() {
     API.getAllMeals()
-        .then(res => 
-        setMeal(res.data)
-        )
+        .then(res => {
+          console.log('res.data: ', res.data);
+          setMeal(res.data)
+        })
         .catch(err => console.log(err));
     };
 
@@ -23,8 +23,9 @@ function HistoryMeal () {
         .catch(err => console.log(err));
     }
     
-
-
+    useEffect(() => {
+      getAllMeals();
+    }, [])
 
     return (
         
@@ -34,16 +35,20 @@ function HistoryMeal () {
                 <List>
                   {meals.map(meal => (
                     <ListItem key={meal._id}>
-                      <Link to={"/history" + meal._id}>
-                        <strong>
-                          {meal.food} 
-                          {meal.protien} 
-                          {meal.carbohydrates} 
-                          {meal.fats} 
-                          {meal.calories} 
-                        </strong>
-                      </Link>
+                      {/* <Link to={"/history" + meal._id}> */}
+                        {meal.meal.map(data => (
+                          <div>
+                            <strong>
+                                {data.food} 
+                                {data.protein} 
+                                {data.carbohydrates} 
+                                {data.fats} 
+                                {data.calories} 
+                            </strong>
                       <DeleteBtn onClick={() => deleteMeal(meal._id)} />
+                      {/* </Link> */}
+                          </div>
+                        ))}
                     </ListItem>
                   ))}
                 </List>
