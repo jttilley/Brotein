@@ -169,11 +169,11 @@ li {
 }  */
 
 *{text-decoration:none;
-   list-style:none;
+    list-style:none;
     margin:0px;
-     padding:0px;
-      outline:none;
-    }
+    padding:0px;
+    outline:none;
+  }
 
 section{width:100%;
    max-width:1200px;

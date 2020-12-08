@@ -7,7 +7,7 @@ import NewMealBanner from '../components/newMealBanner';
 import API from '../utils/API';
 import MealContext from '../utils/mealContext';
 
-const curRows = [];
+let curRows = [];
 
 function NewMealPage() {
     let [meal, setMeal] = useState({
@@ -30,7 +30,7 @@ function NewMealPage() {
 
     useEffect(() => {
         if (meal.calories > 0) {
-            updateTable();
+            updateDB();
         }
     },[meal])
 
@@ -51,7 +51,6 @@ function NewMealPage() {
     const updateTable = () => {
         // update local rows array and update mealRows with it
         curRows.push(meal);
-        const {name, food, calories, protein, carbohydrates, fats} = meal;
 
         //initialize totals
         let proTotal = 0;
@@ -74,15 +73,28 @@ function NewMealPage() {
             fats: Math.round(fatTotal*1000)/1000,
             calories: Math.round(calTotal*1000)/1000
         })
+    }
 
+    const updateDB = () => {
+        const {name, food, calories, protein, carbohydrates, fats} = meal;
+
+        curRows = [];
         // console.log('mealTotals: ', mealTotals);
         //check if meal name already exists
         API.getMealByName(name).then((res) => {
             console.log('res: ', res);
             if (res.data) {
+                console.log('res.data: ', res.data);
                 //name was found so just add the food
+                // setMeal({...meal, id: res.data._id})
                 console.log('name was found: ', name);
-                
+
+                res.data.meal.forEach(item => {
+                    curRows.push(item);
+                });
+
+                updateTable();
+
                 const body = {
                     meal: {
                         food: food,
@@ -99,6 +111,8 @@ function NewMealPage() {
                     console.log(error);
                 });
             } else {
+                updateTable();
+
                 // name is not found so create new meal
                 console.log('name is not found so create new meal: ', name);
                 
@@ -156,11 +170,14 @@ function NewMealPage() {
         
     }
     
+    
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         // console.log('value: ', value);
         // console.log('name: ', name);
 
+        //title case the meal name 
         setMeal({...meal, [name]: value});
         // console.log('meal: ', meal);
     }

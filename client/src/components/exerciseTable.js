@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import "../css/exerciseTable.css"
 import Box from '@material-ui/core/Box';
 import WorkoutContext from '../utils/workoutContext';
+import DeleteBtn from './deleteBtn';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -22,7 +23,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-    
+    width: 20,
   },
 }))(TableCell);
 

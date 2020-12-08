@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import WorkoutBanner from '../components/workoutBanner';
 import AddWorkout from '../components/addWorkout';
@@ -18,19 +18,22 @@ const NewWorkOutPage = () => {
         duration: ''
     });
 
+    let [workoutTotals, setWorkoutTotals] = useState({
+        wtTotal: 0,
+        setTotal: 0,
+        repTotal: 0,
+        durTotal: 0
+    });
+
     let [rows, setRows] = useState([]);
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        console.log('value: ', value);
-        console.log('name: ', name);
-        setWorkout({ ...workout, [name]: value });
-        console.log('workout: ', workout);
-    }
+    useEffect(() => {
+        
+    },[])
 
     const handleAddWorkout = (event) => {
-        event.preventDefault()
-        const newWorkout = createData(workout)
+        event.preventDefault();
+        const newWorkout = createData(workout);
 
         // console.log('newWorkout: ', newWorkout);
         workoutRows.push(newWorkout);
@@ -65,6 +68,16 @@ const NewWorkOutPage = () => {
     function createData({ exercise, sets, reps, weight, duration }) {
         return { exercise, sets, reps, weight, duration };
     }
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        // console.log('value: ', value);
+        // console.log('name: ', name);
+        setWorkout({ ...workout, [name]: value });
+        // console.log('workout: ', workout);
+    }
+
+
 
     // const rows = [
     //     createData('Bicep Curls', 4, 10, 30, 7),
