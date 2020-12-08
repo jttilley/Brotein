@@ -7,10 +7,12 @@ const router = require('express').Router();
 
 
 // get all meals ----NOT WORKING --- add a promise 
- 
+
 router.get('/all', (req, res) => {
   db.Meals.find({})
   .then(allMeals => {
+    console.log('allMeals: ', allMeals);
+
     res.json(allMeals); 
   }).catch(err => {
     res.status(400).json(err); 
