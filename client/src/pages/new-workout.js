@@ -45,17 +45,17 @@ const NewWorkOutPage = () => {
         API.postWorkout(body).then((response) => {
             console.log('response: ', response);
             //add exercise to workout card
-            
+
             // rows.push();
 
             //reset form for next exercise
             setWorkout({
                 name: workout.name,
-                exercise:"",
-                reps:"",
-                sets:"",
-                weight:"",
-                duration:""
+                exercise: "",
+                reps: "",
+                sets: "",
+                weight: "",
+                duration: ""
             });
         }).catch((error) => {
             console.log(error);

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -22,7 +22,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-    
+
   },
 }))(TableCell);
 
@@ -31,7 +31,7 @@ const StyledTableRow = withStyles((theme) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
       // minWidth: 100,
-    
+
     },
   },
 }))(TableRow);
@@ -54,46 +54,47 @@ const useStyles = makeStyles({
 
 function ExcerciseTable() {
   const classes = useStyles();
-  const {rows, workout} = useContext(WorkoutContext);
+  const { rows, workout } = useContext(WorkoutContext);
   console.log('rows: ', rows);
 
   return (
-    <Grid item xs={12}>
-      
-    {/* <Box boxShadow={0}> */}
-    <Card className={classes.card} style={{borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop:'20px', marginLeft: '450px'}}>
-    <CardContent>
-    <TableContainer component={Paper}> 
-      <Table className={classes.table} aria-label="excercise table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>{workout.name} Exercises</StyledTableCell>
-            <StyledTableCell align="center">Weight (lbs)</StyledTableCell>
-            <StyledTableCell align="center">Reps</StyledTableCell>
-            <StyledTableCell align="center">Sets</StyledTableCell>
-            <StyledTableCell align="center">Duration (minutes)</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.exercise}>
-              <StyledTableCell component="th" scope="row">
-                {row.exercise}
-              </StyledTableCell>
-              <StyledTableCell align="center">{row.weight}</StyledTableCell>
-              <StyledTableCell align="center">{row.reps}</StyledTableCell>
-              <StyledTableCell align="center">{row.sets}</StyledTableCell>
-              <StyledTableCell align="center">{row.duration}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-      </TableContainer>
-    </CardContent>
-    </Card>
-    {/* </Grid> */}
-    {/* // </Box> */}
-    </Grid> 
+
+    <Grid item xs={6}>
+
+      {/* <Box boxShadow={0}> */}
+      <Card className={classes.card} style={{ borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop: '20px', marginLeft: '450px' }}>
+        <CardContent>
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="excercise table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>{workout.name} Exercises</StyledTableCell>
+                  <StyledTableCell align="center">Weight (lbs)</StyledTableCell>
+                  <StyledTableCell align="center">Reps</StyledTableCell>
+                  <StyledTableCell align="center">Sets</StyledTableCell>
+                  <StyledTableCell align="center">Duration (minutes)</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <StyledTableRow key={row.exercise}>
+                    <StyledTableCell component="th" scope="row">
+                      {row.exercise}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{row.weight}</StyledTableCell>
+                    <StyledTableCell align="center">{row.reps}</StyledTableCell>
+                    <StyledTableCell align="center">{row.sets}</StyledTableCell>
+                    <StyledTableCell align="center">{row.duration}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </CardContent>
+      </Card>
+      {/* </Grid> */}
+      {/* // </Box> */}
+    </Grid>
 
   );
 }

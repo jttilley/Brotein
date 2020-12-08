@@ -14,78 +14,78 @@ function Navbar() {
     return (
 
         <header>
-            <section>
-                <label for="toggle-1" className="toggle-menu"><ul><li></li> <li></li> <li></li></ul></label>
-                <input type="checkbox" id="toggle-1" />
+            {/* <section> */}
+            <label for="toggle-1" className="toggle-menu"><ul><li></li> <li></li> <li></li></ul></label>
+            <input type="checkbox" id="toggle-1" />
 
-                <nav>
+            <nav>
 
-                    <ul>
-                        <li>
+                <ul>
+                    <li>
 
-                            <Link
-                                to='/home'
-                                className='nav-links'
+                        <Link
+                            to='/home'
+                            className='nav-links'
 
-                            >
-                                Home
+                        >
+                            Home
                             </Link>
-                        </li>
-                        <li >
-                            <Link
-                                to='/health'
-                                className='nav-links'
+                    </li>
+                    <li >
+                        <Link
+                            to='/health'
+                            className='nav-links'
 
-                            >
-                                Health
+                        >
+                            Health
                             </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to='/history'
-                                className='nav-links'
+                    </li>
+                    <li>
+                        <Link
+                            to='/history'
+                            className='nav-links'
 
-                            // label="History"
-                            >
-                                History
+                        // label="History"
+                        >
+                            History
                             </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to='/new-meal'
-                                className='nav-links'
+                    </li>
+                    <li>
+                        <Link
+                            to='/new-meal'
+                            className='nav-links'
 
-                            // label="New Meal"
-                            >
-                                New Meal
+                        // label="New Meal"
+                        >
+                            New Meal
                             </Link>
-                        </li>
+                    </li>
 
-                        <li>
-                            <Link
-                                to='/new-workout'
-                                className='nav-links'
+                    <li>
+                        <Link
+                            to='/new-workout'
+                            className='nav-links'
 
-                            // label="New Workout"
-                            >
-                                New Workout
+                        // label="New Workout"
+                        >
+                            New Workout
                             </Link>
-                        </li>
+                    </li>
 
 
-                        <li>
-                            <Link
-                                to='/'
-                                className='nav-links'
-                                label="Logout"
-                            >
-                                Logout
+                    <li>
+                        <Link
+                            to='/'
+                            className='nav-links'
+                            label="Logout"
+                        >
+                            Logout
                                 </Link>
-                        </li>
-                    </ul>
+                    </li>
+                </ul>
 
-                </nav >
-            </section>
+            </nav >
+            {/* </section> */}
         </header>
 
 

@@ -168,17 +168,17 @@ li {
   list-style-type: none;
 }  */
 
-*{text-decoration:none;
+* {text-decoration:none;
    list-style:none;
     margin:0px;
      padding:0px;
       outline:none;
-
     }
 
-section{width:100%;
+section{
+  width:100%;
    max-width:1200px;
-    margin:0px auto; 
+    margin:auto; 
     display:table;
      position:relative;
 }
@@ -188,14 +188,13 @@ header{
   width:100%; 
   display:table;
    background-color:grey;
-    margin-bottom:50px;}
+    }
 
 
 nav{
   width:auto; 
   float:right;
   background-color:grey !important;
-  color: white !important;
 }
 
  ul{
@@ -211,46 +210,57 @@ nav{
   padding-right:0px;
 }
 
- ul li {
-
-  font-size:18px;
-   padding: 25px 20px;
+ ul li a{
+  transition: cubic-bezier(.29, 1.01, 1, -0.68);
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 0 10px;
+  margin: 0 10px;
+   font-size:20px;
+   padding: 5px 20px;
     display:inline-block;
-     transition: all 0.5s ease 0s;
+     transition: all 10s ease ; 
     }
 
- ul li :hover{
-  /* background-color:#002e5b;
-   color:#fde428;
-    transition: all 0.5s ease 0s; */
-    /* background-color: #fff; */
-      /* color: #242424; */
-      border-radius: 0;
-  }
+  ul li a :hover{
+  
+    padding: 24px 10px;
+    transition: all 2s;
 
- ul li :hover{
-  color:rgba(128, 128, 128, 0.5);
-   transition: all 0.5s ease 0s;
-  }
+     transition: all 5s ease; 
+      border-radius: 0; } 
+  
 
- ul li {
-  padding-right:10px; 
-  color: !important white; 
-  transition: all 0.5s ease 0s;
-  /* background-color:rgba(128, 128, 128, 0.8); */
+ ul li a :hover{
+
+  background-color: #58bcd4;
+  color: black;
+  padding: 24px 10px;
+  transition: all 5s;  
+   transition: all 20s ease; 
+   width:100px;
+   height:100px;
+      }
+
+ ul li a {
+   padding-bottom:2px;  
+   
+   transition: all 5s ease; 
+
 }
 
 .toggle-menu ul{
   display:table; 
   width:25px;
-  color:white;
+  
 }
 
 .toggle-menu ul li{
-  width:100%; 
+  width:90%; 
   height:3px; 
   background-color:rgb(240, 241, 241); 
-  margin-bottom:4px;
+  margin-bottom:1px;
   color:white;
 }
 
@@ -267,7 +277,7 @@ section{max-width:95%;}
 
 @media only screen and (max-width: 980px) {
 header{
-  padding:20px 0px;
+  padding:20px 44px;
 }
 
 input[type=checkbox] {
@@ -281,10 +291,11 @@ input[type=checkbox]:fous{background:none;
 }
 
 label {
-  float:right; 
+  float: right; 
   padding:8px 0px; 
   display:inline-block; 
-  cursor:pointer; }
+  cursor:pointer;
+}
 
  input[type=checkbox]:checked ~ nav {display:block;
 } 
@@ -294,12 +305,12 @@ display:none;
 position:absolute;
 right:0px; top:53px; 
   padding:0px; 
-  /* z-index:99; */
-  /* background-color: none; */
+  z-index:99;
+  
 }
 
  ul{
-  width:auto;
+  width:100%;
 }
 
  ul li{
@@ -310,7 +321,6 @@ right:0px; top:53px;
   }
 
  ul li {
-  /* color:#FFF; */
   font-size:15px;
   padding:10px 20px; 
   display:block;
@@ -321,16 +331,21 @@ right:0px; top:53px;
    padding-right:13px;
    background-color:#000000b3;
 }
-}
+  }
 
 
 @media only screen and (max-width: 980px) {
-.content{width:90%;}
+.content{
+  width:90%;
+  margin:0px;
+}
+
 }
 
 
 @media only screen and (max-width: 480px) {
-section {max-width: 90%;
+section {
+  max-width: 90%;
 }
 }
 
@@ -341,5 +356,21 @@ label{padding:5px 0px;
 
 nav{top:47px;}
 }
+
+
+@media only screen and (max-width: 980px) {
+ul li {
+    float: none;
+    padding: 1px;
+    width: 100%;
+    display: table;
+    background-color: #202126de;
+    margin: 2px;
+    font-size: 22px;
+    
+}
+}
+
+
 
 
