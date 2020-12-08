@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import React from 'react';
 import API from '../utils/API';
 import DeleteBtn from './deleteBtn';
@@ -23,7 +23,9 @@ function HistoryMeal () {
         .catch(err => console.log(err));
     }
     
-
+    useEffect(() => {
+        getAllMeals()
+      }, [])
 
 
     return (
@@ -36,11 +38,11 @@ function HistoryMeal () {
                     <ListItem key={meal._id}>
                       <Link to={"/history" + meal._id}>
                         <strong>
-                          {meal.food} 
-                          {meal.protien} 
-                          {meal.carbohydrates} 
-                          {meal.fats} 
-                          {meal.calories} 
+                          {meal.meal.food} 
+                          {meal.meal.protien} 
+                          {meal.meal.carbohydrates} 
+                          {meal.meal.fats} 
+                          {meal.meal.calories} 
                         </strong>
                       </Link>
                       <DeleteBtn onClick={() => deleteMeal(meal._id)} />
