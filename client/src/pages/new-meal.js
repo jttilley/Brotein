@@ -178,6 +178,7 @@ function NewMealPage() {
                 <NewMealBanner />
                 <AddFood />
                 <MealTable />
+                
             </div>
         </MealContext.Provider>
 
