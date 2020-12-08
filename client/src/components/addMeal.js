@@ -13,7 +13,7 @@ function AddFood() {
     <div className="cards__item">
       <form>
         <div className="workout-name">
-          <input type="name" className="form-control" name="name" placeholder="Name this Meal" onChange={handleInputChange} />
+          <input type="name" className="form-control" name="name" value={meal.name} placeholder="Name this Meal" onChange={handleInputChange} />
 
         </div>
         <p>

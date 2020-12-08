@@ -52,6 +52,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/Brotein', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+  useFindAndModify: false
 });     
 
 // test that we connect successfully or if a connection error occurs 
