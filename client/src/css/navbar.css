@@ -173,7 +173,7 @@ li {
     margin:0px;
      padding:0px;
       outline:none;
-      color:white;
+
     }
 
 section{width:100%;
@@ -195,6 +195,7 @@ nav{
   width:auto; 
   float:right;
   background-color:grey !important;
+  color: white !important;
 }
 
  ul{
@@ -234,7 +235,7 @@ nav{
 
  ul li {
   padding-right:10px; 
-  color:white; 
+  color: !important white; 
   transition: all 0.5s ease 0s;
   /* background-color:rgba(128, 128, 128, 0.8); */
 }
