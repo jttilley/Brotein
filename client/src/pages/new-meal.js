@@ -34,17 +34,32 @@ function NewMealPage() {
         }
     },[meal])
 
+    const cleanUpStates = (curRows) => {
+        setMealRows(curRows);
+
+        //clear out meal data except for meal name
+        setMeal({
+            name: meal.name,
+            food: '',
+            protein: 0,
+            carbohydrates: 0,
+            fats: 0,
+            calories: 0
+        });
+    }
 
     const updateTable = () => {
         // update local rows array and update mealRows with it
         curRows.push(meal);
+        const {name, food, calories, protein, carbohydrates, fats} = meal;
 
-        //calculate totals
+        //initialize totals
         let proTotal = 0;
         let carbTotal = 0;
         let fatTotal = 0;
         let calTotal = 0;
 
+        //calculate totals
         curRows.forEach(row => {
             proTotal += parseFloat(row.protein);
             carbTotal += parseFloat(row.carbohydrates);
@@ -59,29 +74,57 @@ function NewMealPage() {
             fats: Math.round(fatTotal*1000)/1000,
             calories: Math.round(calTotal*1000)/1000
         })
+
         // console.log('mealTotals: ', mealTotals);
-        const body = 
+        //check if meal name already exists
+        API.getMealByName(name).then((res) => {
+            console.log('res: ', res);
+            if (res.data) {
+                //name was found so just add the food
+                console.log('name was found: ', name);
+                
+                const body = {
+                    meal: {
+                        food: food,
+                        calories: calories,
+                        protein: protein,
+                        fats: fats,
+                        carbohydrates: carbohydrates
+                    }
+                }
+                
+                API.addFood(name, body).then(() => {
+                    cleanUpStates(curRows);
+                }).catch((error) => {
+                    console.log(error);
+                });
+            } else {
+                // name is not found so create new meal
+                console.log('name is not found so create new meal: ', name);
+                
+                const body = {
+                    name: name,
+                    meal: [{
+                        food: food,
+                        calories: calories,
+                        protein: protein,
+                        fats: fats,
+                        carbohydrates: carbohydrates
+                    }]
+                }
 
-        API.postMeal(body).then(() => {
-
-            setMealRows(curRows);
-         //clear out meal data except for meal name
-            setMeal({
-                name: meal.name,
-                food: '',
-                protein: 0,
-                carbohydrates: 0,
-                fats: 0,
-                calories: 0
-            });
-        
-               
-        // }).catch((error) => {
-        //     console.log(error);
-        // });
-        })
+                console.log('body: ', body);
+                API.postMeal(body).then(() => {
+                    cleanUpStates(curRows);
+                }).catch((err) => {
+                    console.log('err: ', err);
+                });
+            }
+        }).catch((err) => {
+            console.log('err: ', err);
+        });
     }
-    
+
     const getFoodDetails = (food) => {
         API.getFoodData(food).then(({ data }) => {
             // console.log('data.results: ', data.results[0]);
@@ -135,9 +178,11 @@ function NewMealPage() {
                 <NewMealBanner />
                 <AddFood />
                 <MealTable />
+                
             </div>
         </MealContext.Provider>
 
     );
-};
+}
+
 export default NewMealPage;

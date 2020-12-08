@@ -17,14 +17,17 @@ export default {
     getMeal: function(id) {
       return axios.get("/api/meals/meal/" + id);
     },
+    getMealByName: function(name) {
+      return axios.get("/api/meals/name/" + name);
+    },
     getAllMeals: function() {
       return axios.get("/api/meals/all");
     },
-    postMeal: function() {
-      return axios.post("/api/meals/add");
+    postMeal: function(meal) {
+      return axios.post("/api/meals/add", meal);
     },
-    addFood: function(name) {
-      return axios.put("/api/meals/add/food/" + name)
+    addFood: function(name, meal) {
+      return axios.put("/api/meals/add/food/" + name, meal)
     },
     updateMeal: function(id) {
       return axios.put("/api/meals/update/" + id);

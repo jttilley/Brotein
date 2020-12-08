@@ -1,9 +1,7 @@
 import { useState } from "react";
 import React from 'react';
 import API from '../utils/API';
-import MealContex from '../utils/historyMealContex';
 import DeleteBtn from './deleteBtn';
-import Container from './grid';
 import { List, ListItem } from './listItem';
 import { Link } from "react-router-dom";
 
@@ -30,7 +28,7 @@ function HistoryMeal () {
 
     return (
         
-        <Container fluid>
+        <div>
         <h1>Previous meals</h1>
         {meals.length ? (
                 <List>
@@ -52,7 +50,7 @@ function HistoryMeal () {
             ) : (
               <h3>No Results to Display</h3>
             )}     
-        </Container>    
+        </div>   
         
 
     )
