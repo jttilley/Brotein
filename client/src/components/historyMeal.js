@@ -35,9 +35,9 @@ function HistoryMeal () {
                 <List>
                   {meals.map(meal => (
                     <ListItem key={meal._id}>
-                      {/* <Link to={"/history" + meal._id}> */}
+                        <div>
                         {meal.meal.map(data => (
-                          <div>
+                          <span>
                             <strong>
                                 {data.food} 
                                 {data.protein} 
@@ -45,10 +45,10 @@ function HistoryMeal () {
                                 {data.fats} 
                                 {data.calories} 
                             </strong>
-                      <DeleteBtn onClick={() => deleteMeal(meal._id)} />
-                      {/* </Link> */}
-                          </div>
+                          </span>
                         ))}
+                        <DeleteBtn onClick={() => deleteMeal(meal._id)} />
+                        </div>
                     </ListItem>
                   ))}
                 </List>

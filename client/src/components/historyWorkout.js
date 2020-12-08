@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import API from '../utils/API';
 import HealthContex from '../utils/healthContex';
 import DeleteBtn from './deleteBtn';
@@ -12,9 +11,10 @@ function HistoryWorkout () {
 
     function getAllWorkouts() {
     API.getAllWorkouts()
-        .then(res => 
-        setWorkout(res.data)
-        )
+        .then(res => {
+          console.log('workout res.data: ', res.data);
+          setWorkout(res.data)
+        })
         .catch(err => console.log(err));
     };
 
@@ -29,33 +29,37 @@ function HistoryWorkout () {
     //.catch(err => console.log(err));
     //}
 
-
+    useEffect(() => {
+      getAllWorkouts();
+    }, [])
 
     return (
         
-       <div>
+      <div>
         <h1>Previous Workouts</h1>
         {workouts.length ? (
                 <List>
                   {workouts.map(workout => (
                     <ListItem key={workout._id}>
-                      <Link to={"/api/meals/all" + workout._id}>
-                        <strong>
-                          {workout.excercise} 
-                          {workout.sets} 
-                          {workout.reps} 
-                          {workout.weight} 
-                          {workout.duration} 
-                        </strong>
-                      </Link>
-                      <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
+                        {workout.workout.map(data => (
+                          <span>
+                            <strong>
+                              {data.exercise} 
+                              {data.sets} 
+                              {data.reps} 
+                              {data.weight} 
+                              {data.duration} 
+                            </strong>
+                          </span>
+                        ))}
+                        <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
                     </ListItem>
                   ))}
                 </List>
             ) : (
               <h3>No Results to Display</h3>
             )}     
-           
+
         </div>
 
     )
