@@ -73,10 +73,10 @@ function MealTable() {
           { mealTotals ? (
             <StyledTableRow key="totals">
               <StyledTableCell component="th" scope="row">Totals</StyledTableCell>
-              <StyledTableCell align="center">{mealTotals.calories}</StyledTableCell>
-              <StyledTableCell align="center">{mealTotals.protein}</StyledTableCell>
-              <StyledTableCell align="center">{mealTotals.carbohydrates}</StyledTableCell>
-              <StyledTableCell align="center">{mealTotals.fats}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.calTotal}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.proTotal}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.carbTotal}</StyledTableCell>
+              <StyledTableCell align="center">{mealTotals.fatTotal}</StyledTableCell>
             </StyledTableRow>
           ) : null}
         {mealRows.map((row) => (

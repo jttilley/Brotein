@@ -14,5 +14,5 @@
   });
   
   const Meals = mongoose.model('Meals', mealSchema);
- 
+
   module.exports = Meals;

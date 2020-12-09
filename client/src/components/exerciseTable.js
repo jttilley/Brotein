@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import "../css/exerciseTable.css"
 import Box from '@material-ui/core/Box';
 import WorkoutContext from '../utils/workoutContext';
+import DeleteBtn from './deleteBtn';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -22,7 +23,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-
+    width: 20,
   },
 }))(TableCell);
 
@@ -54,12 +55,11 @@ const useStyles = makeStyles({
 
 function ExcerciseTable() {
   const classes = useStyles();
-  const { rows, workout } = useContext(WorkoutContext);
+  const { rows, workout, workoutTotals } = useContext(WorkoutContext);
   console.log('rows: ', rows);
 
   return (
-
-    <Grid item xs={6}>
+    <Grid item xs={12}>
 
       {/* <Box boxShadow={0}> */}
       <Card className={classes.card} style={{ borderRadius: '15px', boxShadow: '12px 12px 2px 1px rgba(0, 0, 255, .2)', marginTop: '20px', marginLeft: '450px' }}>
@@ -76,6 +76,15 @@ function ExcerciseTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
+                {workoutTotals ? (
+                  <StyledTableRow key="totals">
+                    <StyledTableCell component="th" scope="row">Totals</StyledTableCell>
+                    <StyledTableCell align="center">{workoutTotals.wtTotal}</StyledTableCell>
+                    <StyledTableCell align="center">{workoutTotals.repTotal}</StyledTableCell>
+                    <StyledTableCell align="center">{workoutTotals.setTotal}</StyledTableCell>
+                    <StyledTableCell align="center">{workoutTotals.durTotal}</StyledTableCell>
+                  </StyledTableRow>
+                ) : null}
                 {rows.map((row) => (
                   <StyledTableRow key={row.exercise}>
                     <StyledTableCell component="th" scope="row">

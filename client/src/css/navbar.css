@@ -1,4 +1,4 @@
- /* .navbar {
+/* .navbar {
      background: linear-gradient(90deg, rgb(28, 27, 27) 0%, rgb(26, 23, 23) 100%); 
     background-color:grey;
     height: 80px;
@@ -163,51 +163,45 @@
     color:grey;
     font-size:0px;
   }
-
 li {
   list-style-type: none;
 }  */
 
-* {text-decoration:none;
-   list-style:none;
-    margin:0px;
-     padding:0px;
-      outline:none;
-    }
+*{text-decoration:none;
+  list-style:none;
+  margin:0px;
+  padding:0px;
+  outline:none;
+}
 
-section{
-  width:100%;
-   max-width:1200px;
-    margin:auto; 
-    display:table;
-     position:relative;
+section{width:100%;
+ max-width:1200px;
+  margin:0px auto; 
+  display:table;
+   position:relative;
 }
 
 
 header{
-  width:100%; 
-  display:table;
-   background-color:grey;
+width:100%; 
+display:table;
+ background-color:grey;
+  /* margin-bottom:50px;} */
     }
 
-
 nav{
-  width:auto; 
-  float:right;
-  background-color:grey !important;
+width:auto; 
+float:right;
+background-color:grey !important;
 }
 
- ul{
-  display:table;
-   float:right;
-  }
-
- ul li{
-  float:left;
+ul{
+display:table;
+ float:right;
 }
 
- ul li:last-child{
-  padding-right:0px;
+ul li{
+float:left;
 }
 
  ul li a{
@@ -229,7 +223,8 @@ nav{
     transition: all 2s;
 
      transition: all 5s ease; 
-      border-radius: 0; } 
+      border-radius: 0; 
+    background-color:#58bcd4 } 
   
 
  ul li a :hover{
@@ -265,7 +260,7 @@ nav{
 }
 
 .toggle-menu ul li:last-child{
-  margin-bottom:0px;
+margin-bottom:0px;
 }
 
 input[type=checkbox], label{display:none;
@@ -281,23 +276,22 @@ header{
 }
 
 input[type=checkbox] {
-  position: absolute; 
-  top: -9999px; 
-  left: -9999px;
-   background:none;
-  }
+position: absolute; 
+top: -9999px; 
+left: -9999px;
+ background:none;
+}
 
 input[type=checkbox]:fous{background:none;
 }
 
 label {
-  float: right; 
-  padding:8px 0px; 
-  display:inline-block; 
-  cursor:pointer;
-}
+float:right; 
+padding:8px 0px; 
+display:inline-block; 
+cursor:pointer; }
 
- input[type=checkbox]:checked ~ nav {display:block;
+input[type=checkbox]:checked ~ nav {display:block;
 } 
 
 nav{
@@ -313,12 +307,12 @@ right:0px; top:53px;
   width:100%;
 }
 
- ul li{
-  float:none; 
-  padding:0px; 
-  width:100%;
-   display:table;
-  }
+ul li{
+float:none; 
+padding:0px; 
+width:100%;
+ display:table;
+}
 
  ul li {
   font-size:15px;
@@ -327,9 +321,9 @@ right:0px; top:53px;
   border-bottom: 1px solid rgb( rgb(246, 247, 255));
 }
 
- ul li {
-   padding-right:13px;
-   background-color:#000000b3;
+ul li {
+ padding-right:13px;
+ background-color:#000000b3;
 }
   }
 

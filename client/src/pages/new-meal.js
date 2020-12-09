@@ -7,7 +7,7 @@ import NewMealBanner from '../components/newMealBanner';
 import API from '../utils/API';
 import MealContext from '../utils/mealContext';
 
-const curRows = [];
+let curRows = [];
 
 function NewMealPage() {
     let [meal, setMeal] = useState({
@@ -30,11 +30,11 @@ function NewMealPage() {
 
     useEffect(() => {
         if (meal.calories > 0) {
-            updateTable();
+            updateDB();
         }
     },[meal])
 
-    const cleanUpStates = (curRows) => {
+    const cleanUpStates = () => {
         setMealRows(curRows);
 
         //clear out meal data except for meal name
@@ -51,7 +51,6 @@ function NewMealPage() {
     const updateTable = () => {
         // update local rows array and update mealRows with it
         curRows.push(meal);
-        const {name, food, calories, protein, carbohydrates, fats} = meal;
 
         //initialize totals
         let proTotal = 0;
@@ -69,20 +68,33 @@ function NewMealPage() {
 
         //set totals
         setMealTotals({
-            protein: Math.round(proTotal*1000)/1000,
-            carbohydrates: Math.round(carbTotal*1000)/1000,
-            fats: Math.round(fatTotal*1000)/1000,
-            calories: Math.round(calTotal*1000)/1000
+            proTotal: Math.round(proTotal*1000)/1000,
+            carbTotal: Math.round(carbTotal*1000)/1000,
+            fatTotal: Math.round(fatTotal*1000)/1000,
+            calTotal: Math.round(calTotal*1000)/1000
         })
+    }
 
+    const updateDB = () => {
+        const {name, food, calories, protein, carbohydrates, fats} = meal;
+
+        curRows = [];
         // console.log('mealTotals: ', mealTotals);
         //check if meal name already exists
         API.getMealByName(name).then((res) => {
             console.log('res: ', res);
             if (res.data) {
+                console.log('res.data: ', res.data);
                 //name was found so just add the food
+                // setMeal({...meal, id: res.data._id})
                 console.log('name was found: ', name);
-                
+
+                res.data.meal.forEach(item => {
+                    curRows.push(item);
+                });
+
+                updateTable();
+
                 const body = {
                     meal: {
                         food: food,
@@ -94,11 +106,13 @@ function NewMealPage() {
                 }
                 
                 API.addFood(name, body).then(() => {
-                    cleanUpStates(curRows);
+                    cleanUpStates();
                 }).catch((error) => {
                     console.log(error);
                 });
             } else {
+                updateTable();
+
                 // name is not found so create new meal
                 console.log('name is not found so create new meal: ', name);
                 
@@ -115,7 +129,7 @@ function NewMealPage() {
 
                 console.log('body: ', body);
                 API.postMeal(body).then(() => {
-                    cleanUpStates(curRows);
+                    cleanUpStates();
                 }).catch((err) => {
                     console.log('err: ', err);
                 });
@@ -156,11 +170,22 @@ function NewMealPage() {
         
     }
     
+    
+
     const handleInputChange = (event) => {
-        const { name, value } = event.target;
+        let { name, value } = event.target;
         // console.log('value: ', value);
         // console.log('name: ', name);
-
+        if (name === "name") {
+            value = value.split(' ')
+            .map(w => {
+                if (w !== "") {
+                    return w[0].toUpperCase() + w.substr(1).toLowerCase();
+                }
+            })
+            .join(' ')
+        }
+        //title case the meal name 
         setMeal({...meal, [name]: value});
         // console.log('meal: ', meal);
     }

@@ -23,11 +23,7 @@ function HistoryWorkout () {
         .then(res => getAllWorkouts())
         .catch(err => console.log(err));
     }
-    //function updateWorkout(id) {
-    //API.updateWorkout(id)
-    //.then(res => getAllWorkouts())
-    //.catch(err => console.log(err));
-    //}
+    
 
     useEffect(() => {
       getAllWorkouts();
