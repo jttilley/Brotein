@@ -128,7 +128,7 @@ const App = () => {
 
   return (
     <UserContext.Provider value={contextValue}>
-      <Router basename="/">
+      <Router >
         <Route exact path="/" component={AuthForm} />
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/health" component={HealthPage} />

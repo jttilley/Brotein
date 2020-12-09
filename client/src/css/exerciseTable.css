@@ -6,7 +6,7 @@
 
 .exercise .ui.card {
   width: 33%;
-  max-width: 560px;
+  max-width: 380px;
   left: 50px;
 }
 
@@ -24,6 +24,6 @@
   flex-basis: 100%; */
   /* background-color: gray; */
   width: 50%;
-    margin: 40px;
+  margin: 40px;
 }
 
