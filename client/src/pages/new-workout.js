@@ -28,8 +28,8 @@ const newExercisePage = () => {
     let [rows, setRows] = useState([]);
 
     useEffect(() => {
-        
-    },[])
+
+    }, [])
 
     const cleanUpStates = () => {
         setRows(workoutRows);
@@ -37,11 +37,11 @@ const newExercisePage = () => {
         //reset form for next exercise
         setWorkout({
             name: workout.name,
-            exercise:"",
-            reps:"",
-            sets:"",
-            weight:"",
-            duration:""
+            exercise: "",
+            reps: "",
+            sets: "",
+            weight: "",
+            duration: ""
         });
     }
 
@@ -72,7 +72,7 @@ const newExercisePage = () => {
     const handleAddWorkout = (event) => {
         event.preventDefault();
 
-        const {name, exercise} = workout;
+        const { name, exercise } = workout;
 
         if (exercise === "") {
             return;
@@ -133,12 +133,12 @@ const newExercisePage = () => {
         // console.log('name: ', name);
         if (name === "name") {
             value = value.split(' ')
-            .map(w => {
-                if (w !== "") {
-                    return w[0].toUpperCase() + w.substr(1).toLowerCase();
-                }
-            })
-            .join(' ')
+                .map(w => {
+                    if (w !== "") {
+                        return w[0].toUpperCase() + w.substr(1).toLowerCase();
+                    }
+                })
+                .join(' ')
         } else if (name !== "exercise") {
             value = parseFloat(value);
         }
