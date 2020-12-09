@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import AuthForm from './pages/auth';
 import API from './utils/API';
 import HomePage from './pages/home';
@@ -128,7 +128,7 @@ const App = () => {
 
   return (
     <UserContext.Provider value={contextValue}>
-      <Router>
+      <Router basename="/">
         <Route exact path="/" component={AuthForm} />
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/health" component={HealthPage} />
