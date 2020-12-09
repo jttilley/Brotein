@@ -31,6 +31,7 @@
     object-fit: contain;
     background-size: cover;
     background-position: center;
+    margin-bottom: 20px;
   }
   .history-container{
     background-image: url("../images/history.jpg");
@@ -47,7 +48,7 @@
 
   .home-container, .history-container, .health-container, .NewMeal-container, .Workout-container > h1 {
     color: #fff;
-    font-size: 100px;
+    font-size: 90px;
     
   }
   
@@ -161,7 +162,7 @@
 }
 
 .card {
-  background-color: #fff;
+  background-color: #fff; 
   /* padding: 45px; */
   position: absolute;
   box-shadow: 0 0 5px rgba(75, 75, 75, .07);
@@ -257,7 +258,7 @@ img.card-media {
 
 
     html {
-    background: #FAF7F2;
+    background: grey;
     font-family: 'Lato', sans-serif;
   } 
 
@@ -291,6 +292,7 @@ input[type="text"], .yt-search
 p {
   font-weight: bolder;
   font-size: .5px;
+  margin-top:15px;
 }
 .MuiGrid-grid-xs-12 {
   flex-grow: 0;
@@ -298,3 +300,26 @@ p {
   flex-basis: 100%;
   background-color: gray;
 }
+
+ .meal-form {
+   margin: 40px !important;
+   width: 60%;
+   background-color:grey;
+ }
+ .MuiCard-root {
+  overflow: hidden;
+  width: 75%;
+  margin-left: 40px;
+  margin-right:40px;
+  margin-top:50px;
+}
+.ad-form{
+  padding: 20px;
+  margin-left:40px;
+  width:60%;
+}
+.food-button {
+  background-color: linear-gradient(to bottom, #ffffff 0%, blue);
+  margin-top: 15px;
+}
+
