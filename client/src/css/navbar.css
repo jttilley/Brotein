@@ -200,11 +200,11 @@ display:table;
  float:right;
 }
 
-ul li{
+nav ul li{
 float:left;
 }
 
- ul li a{
+nav ul li a{
   transition: cubic-bezier(.29, 1.01, 1, -0.68);
   color: #ffffff;
   font-size: 20px;
@@ -214,20 +214,18 @@ float:left;
    font-size:20px;
    padding: 5px 20px;
     display:inline-block;
-     transition: all 10s ease ; 
+
+  
     }
 
-  ul li a :hover{
+  nav ul li a :hover{
   
     padding: 24px 10px;
     transition: all 2s;
-
-     transition: all 5s ease; 
       border-radius: 0; 
-    background-color:#58bcd4 } 
-  
+  }
 
- ul li a :hover{
+ /* ul li a :hover{
 
   background-color: #58bcd4;
   color: black;
@@ -236,14 +234,14 @@ float:left;
    transition: all 20s ease; 
    width:100px;
    height:100px;
-      }
+      } */
 
- ul li a {
+ /* ul li a {
    padding-bottom:2px;  
    
    transition: all 5s ease; 
 
-}
+} */
 
 .toggle-menu ul{
   display:table; 
@@ -303,25 +301,25 @@ right:0px; top:53px;
   
 }
 
- ul{
+ nav ul{
   width:100%;
 }
 
-ul li{
+nav ul li{
 float:none; 
 padding:0px; 
 width:100%;
  display:table;
 }
 
- ul li {
+ nav ul li {
   font-size:15px;
   padding:10px 20px; 
   display:block;
   border-bottom: 1px solid rgb( rgb(246, 247, 255));
 }
 
-ul li {
+nav ul li {
  padding-right:13px;
  background-color:#000000b3;
 }
