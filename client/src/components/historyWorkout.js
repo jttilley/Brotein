@@ -34,7 +34,7 @@ function HistoryWorkout () {
       <div>
         <h1>Previous Workouts</h1>
         {workouts.length ? (
-                <List>
+                <List className="our-list" >
                   {workouts.map(workout => (
                     <ListItem key={workout._id}>
                     <br/>

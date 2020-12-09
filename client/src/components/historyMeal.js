@@ -31,18 +31,27 @@ function HistoryMeal () {
                   {meals.map(meal => (
                     <ListItem key={meal._id}>
                         <div>
+                          <br />
+                          <br />
+                          <strong>
+                          <DeleteBtn onClick={() => deleteMeal(meal._id)} />
+                          Meal Name: {meal.name}
+                          <br />
                         {meal.meal.map(data => (
                           <span>
-                            <strong>
-                                {data.food}
-                                {data.protein}
-                                {data.carbohydrates}
-                                {data.fats}
-                                {data.calories}
-                            </strong>
+                                Food: {data.food}
+                                <br />
+                                Protein: {data.protein}
+                                <br />
+                                Carbs: {data.carbohydrates}
+                                <br />
+                                Fats: {data.fats}
+                                <br />
+                                Calories: {data.calories}
+                                <br />
                           </span>
                         ))}
-                        <DeleteBtn onClick={() => deleteMeal(meal._id)} />
+                        </strong>
                         </div>
                     </ListItem>
                   ))}
