@@ -34,21 +34,31 @@ function HistoryWorkout () {
       <div>
         <h1>Previous Workouts</h1>
         {workouts.length ? (
-                <List>
+                <List className="our-list" >
                   {workouts.map(workout => (
                     <ListItem key={workout._id}>
+                    <br/>
+                    <br/>
+
+                      <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
+                      <br/>
+
                         {workout.workout.map(data => (
                           <span>
                             <strong>
-                              {data.exercise} 
-                              {data.sets} 
-                              {data.reps} 
-                              {data.weight} 
-                              {data.duration} 
+                              Exercise: {data.exercise} 
+                              <br/>
+                              Sets: {data.sets} 
+                              <br/>
+                              Reps: {data.reps} 
+                              <br/>
+                              Weight: {data.weight}(lbs)
+                              <br/>
+                              Duration: {data.duration} 
+                              <br/>
                             </strong>
                           </span>
                         ))}
-                        <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
                     </ListItem>
                   ))}
                 </List>

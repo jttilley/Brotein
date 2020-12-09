@@ -31,3 +31,9 @@
   .list-overflow-container li:last-child {
     border-bottom: none;
   }
+
+  .our-list {
+    display: flex;
+    justify-items: center;
+    text-align: center;
+  }
