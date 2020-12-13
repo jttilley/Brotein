@@ -61,10 +61,14 @@ router.get('/name/:name', (req, res) => {
 // add a workout --- WORKING 
 
     router.post('/add', (req, res) =>{
+    console.log("🚀 ~ file: workoutRoutes.js ~ line 64 ~ router.post ~ req", req)
+ 
+        
         db.Workouts.create({
             name: req.body.name, 
             workout: req.body.workout
         })
+        .then(({_id}) => db.User.findOneAndUpdate({_id: id}, {$push: {workout: _id}}, {new: true}))
         .then(addWorkout => {
             res.send(addWorkout);
         })

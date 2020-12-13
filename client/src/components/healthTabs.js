@@ -23,21 +23,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredTabs() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(2);
+    const [tabValue, setTabValue] = React.useState("2");
 
     const handleChange = (event, newValue) => {
         console.log('newValue: ', newValue);
-        setValue(newValue);
+        setTabValue(newValue);
     };
 
     return (
         <Paper className={classes.root}>
-            <TabContext value={value}>
+            <TabContext value={tabValue}>
                 <Tabs
-                    value={value}
+                    value={tabValue}
                     onChange={handleChange}
                     indicatorColor="primary"
-                    textColor="primary"
+                    textColor="secondary"
                     centered
                 >
 

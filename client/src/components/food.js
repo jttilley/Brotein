@@ -39,7 +39,7 @@ function Food() {
 
   return (
     <div className="Search">
-      {/* <h1>Find a Recipe</h1> */}
+      <h1>Find a Recipe</h1>
       <form onSubmit={onSubmit} className="yt-search">
         {alert !== "" && <Alert alert={alert} />}
         <input id="search-box"
