@@ -14,14 +14,13 @@ function Navbar() {
     return (
 
         <header>
-            {/* <section> */}
-            <label for="toggle-1" className="toggle-menu"><ul><li></li> <li></li> <li></li></ul></label>
+            <label htmlFor="toggle-1" className="toggle-menu"><ul><li></li> <li></li> <li></li></ul></label>
             <input type="checkbox" id="toggle-1" />
 
             <nav>
 
-                <ul>
-                    <li>
+                <ul className="nav-link">
+                    <li className="nav-link">
 
                         <Link
                             to='/home'
@@ -31,7 +30,7 @@ function Navbar() {
                             Home
                             </Link>
                     </li>
-                    <li >
+                    <li  className="nav-link">
                         <Link
                             to='/health'
                             className='nav-links'
@@ -40,7 +39,7 @@ function Navbar() {
                             Health
                             </Link>
                     </li>
-                    <li>
+                    <li className="nav-link">
                         <Link
                             to='/history'
                             className='nav-links'
@@ -50,7 +49,7 @@ function Navbar() {
                             History
                             </Link>
                     </li>
-                    <li>
+                    <li className="nav-link">
                         <Link
                             to='/new-meal'
                             className='nav-links'
@@ -61,7 +60,7 @@ function Navbar() {
                             </Link>
                     </li>
 
-                    <li>
+                    <li className="nav-link">
                         <Link
                             to='/new-workout'
                             className='nav-links'
@@ -73,7 +72,7 @@ function Navbar() {
                     </li>
 
 
-                    <li>
+                    <li className="nav-link">
                         <Link
                             to='/'
                             className='nav-links'
@@ -85,7 +84,6 @@ function Navbar() {
                 </ul>
 
             </nav >
-            {/* </section> */}
         </header>
 
 

@@ -25,6 +25,18 @@ const usersSchema = new Schema({
     required: true,
     default: false,
   },
+  meals: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Meals"
+    }
+  ],
+  workouts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Workouts"
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now(),

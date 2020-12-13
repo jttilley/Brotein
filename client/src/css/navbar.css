@@ -351,7 +351,7 @@ nav{top:47px;}
 
 
 @media only screen and (max-width: 980px) {
-ul li {
+.nav-link {
     float: none;
     padding: 1px;
     width: 100%;

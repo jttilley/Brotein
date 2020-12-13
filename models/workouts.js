@@ -2,6 +2,9 @@
   const Schema = mongoose.Schema;
     
   const workoutSchema = new Schema({
+    userId: { 
+      type: Schema.Types.ObjectId,
+    },
     name: {type: String},
     workout: [{
       exercise: {type: String},

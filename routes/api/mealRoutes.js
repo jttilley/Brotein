@@ -61,6 +61,7 @@ router.get('/name/:name', (req, res) => {
       name: req.body.name,
       meal: req.body.meal,
     })
+    .then(({_id}) => db.User.findOneAndUpdate({}, {$push: {meals: _id}}, {new: true}))
     .then(addMeal => {
         res.send(addMeal);
     })

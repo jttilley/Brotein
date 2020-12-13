@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import Navbar from '../components/navbar';
 import HistoryBanner from '../components/historyBanner';
-import CenteredTabs from '../components/tabView';
+import CenteredTabs from '../components/historyTabView';
 
 
 function HistoryPage() {
