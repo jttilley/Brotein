@@ -3,7 +3,7 @@ import '../App.css';
 import Navbar from '../components/navbar';
 import HistoryBanner from '../components/historyBanner';
 import CenteredTabs from '../components/historyTabView';
-
+import Pane from '../components/splitPane';
 
 function HistoryPage() {
     
@@ -12,7 +12,7 @@ function HistoryPage() {
         <>
             <Navbar />
             <HistoryBanner />
-            <CenteredTabs />
+            <Pane />
             
         </>
     );

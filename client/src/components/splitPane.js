@@ -1,8 +1,8 @@
 import SplitPane from "react-split-pane";
 import '../css/main.css'
 import React, { Component } from 'react';
-import Youtube from '../components/youtube';
-import Food from '../components/food';
+import HistoryWorkout from './historyWorkout';
+import HistoryMeal from './historyMeal';
 
 
 class Pane extends Component {
@@ -30,16 +30,10 @@ class Pane extends Component {
                     onChange={size => this.toggleBtmHeight(size)}
                 >
                     <div className='Food-pane'>
-                        <Food />
+                        <HistoryWorkout />
                     </div>
                     <div className='Youtube-pane'>
-                        <h1>search Youtube for workouts</h1>
-                        <Youtube
-                            btmHorizontal
-                            bottomHeight={this.state.btmHeight}
-                            minSize={200}
-                            maxSize={1000}
-                        />
+                        <HistoryMeal />
                     </div>
                 </SplitPane>
             </div>
