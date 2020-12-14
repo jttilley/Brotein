@@ -3,7 +3,10 @@ import API from '../utils/API';
 import DeleteBtn from './deleteBtn';
 import { List, ListItem } from './listItem';
 import { Link } from "react-router-dom";
-
+import Container from './grid';
+import Row from './grid';
+import Col from './grid';
+import "../css/main.css";
 
 function HistoryMeal () {
     const [ meals ,setMeal] = useState([])
@@ -24,10 +27,13 @@ function HistoryMeal () {
       getAllMeals();
     }, [])
     return (
-        <div>
+      <div>
+        
         <h1>Previous meals</h1>
         {meals.length ? (
-                <List>
+              <div className='card-body'>
+              <div className="recipe">
+                
                   {meals.map(meal => (
                     <ListItem key={meal._id}>
                         <div>
@@ -35,17 +41,17 @@ function HistoryMeal () {
                           <br />
                           <strong>
                           <DeleteBtn onClick={() => deleteMeal(meal._id)} />
-                          Meal Name: {meal.name}
+                          <h2 className="card-meal">{meal.name}</h2>  
                           <br />
                         {meal.meal.map(data => (
                           <span>
                                 Food: {data.food}
                                 <br />
-                                Protein: {data.protein}
+                                Protein: {data.protein} grams
                                 <br />
-                                Carbs: {data.carbohydrates}
+                                Carbs: {data.carbohydrates} grams
                                 <br />
-                                Fats: {data.fats}
+                                Fats: {data.fats} grams
                                 <br />
                                 Calories: {data.calories}
                                 <br />
@@ -55,11 +61,13 @@ function HistoryMeal () {
                         </div>
                     </ListItem>
                   ))}
-                </List>
+                <div className="card-shadow"></div>
+                </div>
+                </div>
             ) : (
               <h3>No Results to Display</h3>
             )}
-        </div>
+      </div>    
     )
 }
 export default HistoryMeal;

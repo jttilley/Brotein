@@ -176,6 +176,14 @@ margin: 10px;
 padding: 30px;
 background-color: white;
 }
+.card-previous {
+  display: inline-block;
+  width: 450px;
+margin: 10px;
+padding: 30px;
+background-color: white;
+
+}
 
 
 .card-author {
@@ -220,6 +228,19 @@ background-color: white;
   text-transform: uppercase;
   top: auto;
   width:95%;
+}
+.card-meal {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin: 5px 0 20px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: auto;
+  width:95%;
+  overflow-y: scroll;
 }
 .MuiPaper-root {
   color:none;
