@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
 function MealTable() {
   const classes = useStyles();
-  const { meal, mealRows, mealTotals } = useContext(MealContext);
+  const { name, meal, mealRows, mealTotals } = useContext(MealContext);
   // console.log('mealRows: ', mealRows);
   // console.log('meal: ', meal);
   // console.log('mealTotals: ', mealTotals);
@@ -62,7 +62,7 @@ function MealTable() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>{meal.name}   Foods</StyledTableCell>
+            <StyledTableCell>{name}   Foods</StyledTableCell>
             <StyledTableCell align="center">Calories</StyledTableCell>
             <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
             <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
