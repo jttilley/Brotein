@@ -31,18 +31,16 @@ function HistoryMeal () {
         
         <h1>Previous meals</h1>
         {meals.length ? (
-              <div className='card-body'>
+              <div className='card-previous'>
               <div className="recipe">
-                
+              <span>
                   {meals.map(meal => (
                     <ListItem key={meal._id}>
                         <div>
-                          <br />
-                          <br />
                           <strong>
                           <DeleteBtn onClick={() => deleteMeal(meal._id)} />
-                          <h2 className="card-meal">{meal.name}</h2>  
                           <br />
+                          <h2 className="card-meal">{meal.name}</h2>  
                         {meal.meal.map(data => (
                           <span>
                                 Food: {data.food}
@@ -55,6 +53,7 @@ function HistoryMeal () {
                                 <br />
                                 Calories: {data.calories}
                                 <br />
+                                <hr class="solid"></hr>
                           </span>
                         ))}
                         </strong>
@@ -62,8 +61,10 @@ function HistoryMeal () {
                     </ListItem>
                   ))}
                 <div className="card-shadow"></div>
-                </div>
-                </div>
+              </span>   
+              </div>
+              </div>
+              
             ) : (
               <h3>No Results to Display</h3>
             )}
