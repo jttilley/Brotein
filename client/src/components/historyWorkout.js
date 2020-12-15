@@ -34,15 +34,14 @@ function HistoryWorkout () {
       <div>
         <h1>Previous Workouts</h1>
         {workouts.length ? (
-                <List className="our-list" >
+          <div className='card-previous'>
+          <div className="recipe">
                   {workouts.map(workout => (
                     <ListItem key={workout._id}>
-                    <br/>
-                    <br/>
 
                       <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
                       <br/>
-
+                      <h2 className="card-meal">{workout.name}</h2>  
                         {workout.workout.map(data => (
                           <span>
                             <strong>
@@ -54,14 +53,18 @@ function HistoryWorkout () {
                               <br/>
                               Weight: {data.weight}(lbs)
                               <br/>
-                              Duration: {data.duration} 
+                              Duration: {data.duration} mins
                               <br/>
                             </strong>
+                            
+                            <hr class="solid"></hr>
                           </span>
                         ))}
                     </ListItem>
                   ))}
-                </List>
+                  <div className="card-shadow"></div>
+                  </div>
+                </div>
             ) : (
               <h3>No Results to Display</h3>
             )}     

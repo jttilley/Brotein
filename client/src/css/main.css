@@ -88,16 +88,16 @@
 
 } */
 .Resizer {
-  background: rgb(218, 3, 3);
+  background: rgb(46, 47, 77);
   opacity: 0.6;
   z-index: 1;
   /* background-clip: padding-box; */
   margin: 5px; 
 }
 
-/* .Resizer:hover {
+ .Resizer:hover {
   transition: all 2s ease;
-}  */
+}  
 
 .Resizer.horizontal {
   height: 20px;
@@ -109,20 +109,20 @@
 
 }
 
-/* .Resizer.vertical {
+ .Resizer.vertical {
   width: 4px;
   cursor: col-resize;
   border-left: 5px solid rgba(255, 255, 255, 0);
   border-right: 5px solid rgba(255, 255, 255, 0);
 }
 .Resizer.vertical:hover, .Resizer.horizontal:hover {
-  border-left: 5px solid red;
-  border-right: 5px solid red;
+  border-left: 5px solid rgb(75, 205, 245);
+  border-right: 5px solid rgb(75, 205, 245);
   width: 4px;
-}   */
+}   
 
-/* .Youtube-pane {
-  background: linear-gradient(to right, rgb(5, 5, 10), rgb(78, 75, 75));
+ .Youtube-pane {
+  background: linear-gradient(to right, rgb(61, 78, 110), rgb(183, 243, 228));
   margin-left: 6px;
   color: black;
   margin-right: 10px;
@@ -130,12 +130,12 @@
 }
 
 .Food-pane {
-  background:  linear-gradient(to left, rgb(5, 5, 10), rgb(78, 75, 75)); 
+  background:  linear-gradient(to left, rgb(61, 78, 110), rgb(183, 243, 228)); 
   margin-right: 6px;
    color: linear-gradient(to right, rgb(5, 5, 10), rgb(78, 75, 75));
    margin-left:10px;
    background-color:white;
-} */
+} 
 
 .u-clearfix:before,
 .u-clearfix:after {
@@ -175,6 +175,14 @@
 margin: 10px;
 padding: 30px;
 background-color: white;
+}
+.card-previous {
+  display: inline-block;
+  width: 450px;
+margin: 10px;
+padding: 30px;
+background-color: white;
+
 }
 
 
@@ -220,6 +228,22 @@ background-color: white;
   text-transform: uppercase;
   top: auto;
   width:95%;
+}
+.card-meal {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin: 5px 0 20px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  top: auto;
+  width:95%;
+  overflow-y: scroll;
+}
+hr.solid {
+  border-top: 3px solid #bbb;
 }
 .MuiPaper-root {
   color:none;
