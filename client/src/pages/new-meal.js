@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../App.css';
 import AddFood from '../components/addMeal';
 import MealTable from '../components/mealTable';
@@ -8,10 +8,13 @@ import API from '../utils/API';
 import MealContext from '../utils/mealContext';
 
 let curRows = [];
+let curName = "";
+let curFood = "";
 
 function NewMealPage() {
+
+    let [name, setName] = useState("");
     let [meal, setMeal] = useState({
-        name:'',
         food: '',
         protein: 0,
         carbohydrates: 0,
@@ -150,7 +153,6 @@ function NewMealPage() {
                 // console.log('protein: ', protein);
 
                 setMeal({
-                    name: meal.name,
                     food: food,
                     protein: protein,
                     carbohydrates: carbohydrates,
@@ -163,9 +165,15 @@ function NewMealPage() {
 
     const handleAddMeal = (event) => {
         event.preventDefault()
+
+        console.log("🚀 ~ file: new-meal.js ~ line 173 ~ handleAddMeal ~ curName", curName)
+        console.log("🚀 ~ file: new-meal.js ~ line 173 ~ handleAddMeal ~ curFood", curFood)
+        
+        setName(curName);
+        
         // console.log('in handleAdd for new-meal page'); 
-        if (meal.food != "") {
-            getFoodDetails(meal.food);
+        if (curFood !== "") {
+            getFoodDetails(curFood);
         }
         
     }
@@ -174,8 +182,10 @@ function NewMealPage() {
 
     const handleInputChange = (event) => {
         let { name, value } = event.target;
-        // console.log('value: ', value);
-        // console.log('name: ', name);
+        console.log('value: ', value);
+        console.log('name: ', name);
+        
+        // title case the meal name 
         if (name === "name") {
             value = value.split(' ')
             .map(w => {
@@ -184,14 +194,16 @@ function NewMealPage() {
                 }
             })
             .join(' ')
+            curName = value;
+        } else {
+            curFood = value;
+            // console.log('meal: ', meal);
         }
-        //title case the meal name 
-        setMeal({...meal, [name]: value});
-        // console.log('meal: ', meal);
     }
 
     return (
         <MealContext.Provider value={{
+            name,
             meal,
             mealRows,
             mealTotals,
