@@ -13,8 +13,8 @@ let curFood = "";
 
 function NewMealPage() {
 
-    let [name, setName] = useState("");
     let [meal, setMeal] = useState({
+        name: '',
         food: '',
         protein: 0,
         carbohydrates: 0,
@@ -42,13 +42,17 @@ function NewMealPage() {
 
         //clear out meal data except for meal name
         setMeal({
-            name: meal.name,
+            name: curName,
             food: '',
             protein: 0,
             carbohydrates: 0,
             fats: 0,
             calories: 0
         });
+
+        // clear food input
+        document.querySelector("#food").value = "";
+        
     }
 
     const updateTable = () => {
@@ -142,8 +146,8 @@ function NewMealPage() {
         });
     }
 
-    const getFoodDetails = (food) => {
-        API.getFoodData(food).then(({ data }) => {
+    const getFoodDetails = () => {
+        API.getFoodData(curFood).then(({ data }) => {
             // console.log('data.results: ', data.results[0]);
             if (data.results[0]) {
                 const { protein, carbohydrates, fat, energy } = data.results[0];
@@ -153,7 +157,8 @@ function NewMealPage() {
                 // console.log('protein: ', protein);
 
                 setMeal({
-                    food: food,
+                    name: curName,
+                    food: curFood,
                     protein: protein,
                     carbohydrates: carbohydrates,
                     fats: fat,
@@ -169,11 +174,9 @@ function NewMealPage() {
         console.log("🚀 ~ file: new-meal.js ~ line 173 ~ handleAddMeal ~ curName", curName)
         console.log("🚀 ~ file: new-meal.js ~ line 173 ~ handleAddMeal ~ curFood", curFood)
         
-        setName(curName);
-        
         // console.log('in handleAdd for new-meal page'); 
         if (curFood !== "") {
-            getFoodDetails(curFood);
+            getFoodDetails();
         }
         
     }
@@ -203,7 +206,6 @@ function NewMealPage() {
 
     return (
         <MealContext.Provider value={{
-            name,
             meal,
             mealRows,
             mealTotals,

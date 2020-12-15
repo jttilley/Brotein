@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
 function MealTable() {
   const classes = useStyles();
-  const { name, meal, mealRows, mealTotals } = useContext(MealContext);
+  const { meal, mealRows, mealTotals } = useContext(MealContext);
   // console.log('mealRows: ', mealRows);
   // console.log('meal: ', meal);
   // console.log('mealTotals: ', mealTotals);
@@ -62,7 +62,7 @@ function MealTable() {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>{name}   Foods</StyledTableCell>
+            <StyledTableCell>{meal.name}   Foods</StyledTableCell>
             <StyledTableCell align="center">Calories</StyledTableCell>
             <StyledTableCell align="center">Protein&nbsp;(g)</StyledTableCell>
             <StyledTableCell align="center">Carbs&nbsp;(g)</StyledTableCell>
@@ -79,8 +79,8 @@ function MealTable() {
               <StyledTableCell align="center">{mealTotals.fatTotal}</StyledTableCell>
             </StyledTableRow>
           ) : null}
-        {mealRows.map((row) => (
-            <StyledTableRow key={row.food}>
+        {mealRows.map((row,index) => (
+            <StyledTableRow key={index}>
               <StyledTableCell component="th" scope="row">
                 {row.food}
               </StyledTableCell>
