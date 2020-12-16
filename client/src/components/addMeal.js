@@ -4,7 +4,7 @@ import "../css/main.css"
 import FoodSelection from "./foodSelect";
 
 function AddFood() {
-  const { name, meal, mealRows, handleInputChange, handleAddMeal } = useContext(MealContext)
+  const { meal, mealRows, handleInputChange, handleAddMeal } = useContext(MealContext)
 
   // console.log('foods: ', foods[0]);
 
