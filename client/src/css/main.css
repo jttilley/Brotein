@@ -88,11 +88,15 @@
 
 } */
 .Resizer {
-  background: rgb(46, 47, 77);
-  opacity: 0.6;
-  z-index: 1;
-  /* background-clip: padding-box; */
-  margin: 5px; 
+  -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #000;
+    opacity: 0.2;
+    z-index: 1;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
 }
 
  .Resizer:hover {
@@ -136,7 +140,10 @@
    margin-left:10px;
    background-color:white;
 } 
-
+.splitpane {
+  position: relative;
+  height: 100vh;
+}
 .u-clearfix:before,
 .u-clearfix:after {
   content: " ";

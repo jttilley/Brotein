@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/delete.css'
 
 function DeleteBtn(props) {
     return (
