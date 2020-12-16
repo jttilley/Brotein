@@ -38,13 +38,14 @@ function HistoryWorkout () {
           <div className="recipe">
                   {workouts.map(workout => (
                     <ListItem key={workout._id}>
-
+                      
+                      <strong>
                       <DeleteBtn onClick={() => deleteWorkout(workout._id)} />
                       <br/>
                       <h2 className="card-meal">{workout.name}</h2>  
                         {workout.workout.map(data => (
                           <span>
-                            <strong>
+                            
                               Exercise: {data.exercise} 
                               <br/>
                               Sets: {data.sets} 
@@ -55,11 +56,12 @@ function HistoryWorkout () {
                               <br/>
                               Duration: {data.duration} mins
                               <br/>
-                            </strong>
+                            
                             
                             <hr class="solid"></hr>
                           </span>
                         ))}
+                      </strong>  
                     </ListItem>
                   ))}
                   <div className="card-shadow"></div>

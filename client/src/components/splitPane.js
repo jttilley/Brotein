@@ -3,6 +3,8 @@ import '../css/main.css'
 import React, { Component } from 'react';
 import HistoryWorkout from './historyWorkout';
 import HistoryMeal from './historyMeal';
+//import styled from "styled-components";
+
 
 
 class Pane extends Component {
@@ -21,9 +23,11 @@ class Pane extends Component {
         const btmPaneHeight = maxHeight - topPaneHeight - padding;
         this.setState({ btmHeight: btmPaneHeight + "px" });
     }
+    
     render() {
         return (
             <div class id="splitpane">
+                
                 <SplitPane
                     split="vertical" minSize={200}
                     defaultSize="50%"
@@ -36,6 +40,7 @@ class Pane extends Component {
                         <HistoryMeal />
                     </div>
                 </SplitPane>
+               
             </div>
         );
     }
