@@ -1,7 +1,6 @@
 import React, { createContext } from 'react';
 
 const MealContext = createContext({
-  name: "",
   meal: {},
   mealTotals: {},
   mealRows: [],
