@@ -16,7 +16,7 @@ class Pane extends Component {
         });
     }
     toggleBtmHeight(topPaneHeight) {
-        const maxHeight = 15000;
+        const maxHeight = 1000;
         const padding = 225;
         const btmPaneHeight = maxHeight - topPaneHeight - padding;
         this.setState({ btmHeight: btmPaneHeight + "px" });

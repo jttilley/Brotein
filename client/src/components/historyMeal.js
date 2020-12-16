@@ -10,7 +10,6 @@ import "../css/main.css";
 
 function HistoryMeal () {
     const [ meals ,setMeal] = useState([])
-    
     function getAllMeals() {
     API.getAllMeals()
         .then(res => {
@@ -19,17 +18,14 @@ function HistoryMeal () {
         })
         .catch(err => console.log(err));
     };
-    
     function deleteMeal(id) {
     API.deleteMeal(id)
         .then(res => getAllMeals())
         .catch(err => console.log(err));
     }
-    
     useEffect(() => {
       getAllMeals();
     }, [])
-    
     return (
       <div>
         
