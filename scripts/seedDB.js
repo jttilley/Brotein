@@ -103,16 +103,28 @@ db.Meals.deleteMany({})
     process.exit(1);
   });
 
-// db.User.deleteMany({})
-//   .then(data => {
-//     console.log("Cleared users!");
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
 
+  const users = [
+    {
+      admin : false,
+      meals : [],
+      workouts : [],
+      fullname : "tom",
+      username : "tomjoe",
+      password : "$2a$10$T/zP4O0r4MpEkTDgohM3cOtoE2qqBGE9p4rvRP8GYHiylhMFe/2mq"
+    }
+  ]
+
+db.User.deleteMany({})
+  .then(() => db.User.collection.insertMany(users))
+  .then(data => {
+    console.log("Cleared users!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
 // db.Ingredients.collection.insertMany(ingList)
 //   .then(data => {

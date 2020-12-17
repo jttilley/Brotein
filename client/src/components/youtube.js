@@ -38,16 +38,16 @@ function YouTube() {
               {list.map(item => (
                 <li className="item" key={item.id}>
                   <div id="yt-contents">
-                    <b><a href={item.link}>{item.title}</a></b>
+                    <b><a href={item.link} target="_blank" >{item.title}</a></b>
                     <p>{item.description}</p>
                   </div>
                   <ul className="meta">
-                    <li>By: <a href={item.author.ref}>{item.author.name}</a></li>
+                    <li>By: <a href={item.author.ref} target="_blank" >{item.author.name}</a></li>
                     <li>Views: {item.views}</li>
                     <li>Duration: {item.duration}</li>
                     <li>Uploaded: {item.uploaded_at}</li>
                   </ul>
-                    <a href={item.link}>
+                    <a href={item.link} target="_blank" >
                       <img className="yt-img" alt="" src={item.thumbnail} />
                     </a>
                 </li>
