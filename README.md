@@ -6,7 +6,7 @@
 A React website for recording workouts and meals. Also search youtube for workouts or exercises, and recipies for healty meals.
 
 ## Links
-Deployed link: 
+Deployed link: https://brotein.herokuapp.com/
 
 Repo link: https://github.com/jttilley/Brotein
 
